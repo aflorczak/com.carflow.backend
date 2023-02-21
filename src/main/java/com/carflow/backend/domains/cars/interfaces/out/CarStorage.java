@@ -1,6 +1,6 @@
 package com.carflow.backend.domains.cars.interfaces.out;
 
-import com.carflow.backend.domains.cars.entity.Car;
+import com.carflow.backend.domains.cars.entities.Car;
 
 import java.util.List;
 

@@ -1,7 +1,8 @@
-package com.carflow.backend.domains.cars.service;
+package com.carflow.backend.domains.cars.services;
 
-import com.carflow.backend.domains.cars.entity.Car;
+import com.carflow.backend.domains.cars.entities.Car;
 import com.carflow.backend.domains.cars.interfaces.out.CarStorage;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,8 +11,9 @@ import java.util.List;
 public class CarService {
     private CarStorage storage;
 
+    @Autowired
     public CarService(CarStorage storage) {
-        storage = storage;
+        this.storage = storage;
     }
 
     public Car createNewCar(Car car) {

@@ -1,8 +1,7 @@
-package com.carflow.backend.infrastructure.boundaries.out;
+package com.carflow.backend.infrastructure.boundaries.out.cars;
 
-import com.carflow.backend.domains.cars.entity.Car;
+import com.carflow.backend.domains.cars.entities.Car;
 import com.carflow.backend.domains.cars.interfaces.out.CarStorage;
-import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -14,12 +13,12 @@ public class CarStorageMemory implements CarStorage {
     private HashMap<String, Car> cars = new HashMap<String, Car>();
     private Integer nextId = 0;
     public CarStorageMemory() {
-        createNewCar(new Car(nextId, "Peugeot", "308 CC", "D1 SMOK"));
+        createNewCar(new Car(nextId+1, "Peugeot", "308 CC", "D1 SMOK"));
     }
 
     @Override
     public Car createNewCar(Car car) {
-        return cars.put((++nextId).toString(), car);
+        return cars.put((++nextId).toString(), new Car(nextId, car.getBrand(), car.getModel(), car.getRegistrationNumber()));
     }
 
     @Override
@@ -34,9 +33,8 @@ public class CarStorageMemory implements CarStorage {
 
     @Override
     public Car updateCarById(String id, Car car) {
-        Car removedCar = cars.remove(id);
-        if (removedCar == null) {
-            return null;
+        if (cars.get(id) != null) {
+            cars.remove(id);
         }
         return cars.put(id, car);
     }

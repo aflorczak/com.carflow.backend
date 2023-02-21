@@ -1,4 +1,4 @@
-package com.carflow.backend.domains.cars.entity;
+package com.carflow.backend.domains.cars.entities;
 
 public class Car {
     private int id;
