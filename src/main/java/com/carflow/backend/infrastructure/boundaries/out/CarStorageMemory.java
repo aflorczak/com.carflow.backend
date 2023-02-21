@@ -14,7 +14,7 @@ public class CarStorageMemory implements CarStorage {
     private HashMap<String, Car> cars = new HashMap<String, Car>();
     private Integer nextId = 0;
     public CarStorageMemory() {
-        createNewCar(new Car("Peugeot", "308 CC", "D1 SMOK"));
+        createNewCar(new Car(nextId, "Peugeot", "308 CC", "D1 SMOK"));
     }
 
     @Override

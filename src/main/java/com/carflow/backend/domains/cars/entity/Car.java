@@ -1,14 +1,24 @@
 package com.carflow.backend.domains.cars.entity;
 
 public class Car {
+    private int id;
     private String brand;
     private String model;
     private String registrationNumber;
 
-    public Car(String brand, String model, String registrationNumber) {
+    public Car(int id, String brand, String model, String registrationNumber) {
+        this.id = id;
         this.brand = brand;
         this.model = model;
         this.registrationNumber = registrationNumber;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getBrand() {
