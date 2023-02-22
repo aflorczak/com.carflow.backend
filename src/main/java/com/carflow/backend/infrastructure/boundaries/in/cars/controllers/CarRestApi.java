@@ -17,17 +17,59 @@ public class CarRestApi {
         this.carService = carService;
     }
     @PostMapping("/cars")
-    public CarDto createNewCar(@RequestBody CarDto carRequest) {
-        Car car = carService.createNewCar(new Car(carRequest.getId(), carRequest.getBrand(), carRequest.getModel(), carRequest.getRegistrationNumber())); // convert to CarDto
-        CarDto carResponse = new CarDto(car.getId(), car.getBrand(), car.getModel(), car.getRegistrationNumber());
-        return carResponse;
+    public Car createNewCar(@RequestBody CarDto carRequest) {
+        Car car = carService.createNewCar(
+                new Car(
+                        carRequest.getId(),
+                        carRequest.getBrand(),
+                        carRequest.getModel(),
+                        carRequest.getMileage(),
+                        carRequest.getFuel(),
+                        carRequest.getNumberOfSeats(),
+                        carRequest.getNumberOfDoors(),
+                        carRequest.getBodyType(),
+                        carRequest.getVIN(),
+                        carRequest.getRegistrationNumber(),
+                        carRequest.getTechnicalExaminationDate(),
+                        carRequest.getEndDateOfInsurance()
+                )
+        );
+        CarDto carResponse = new CarDto(
+                car.getId(),
+                car.getBrand(),
+                car.getModel(),
+                car.getMileage(),
+                car.getFuel(),
+                car.getNumberOfSeats(),
+                car.getNumberOfDoors(),
+                car.getBodyType(),
+                car.getVIN(),
+                car.getRegistrationNumber(),
+                car.getTechnicalExaminationDate(),
+                car.getEndDateOfInsurance()
+        );
+        return car;
     }
 
     @GetMapping("/cars")
     public List<CarDto> getAllCars() {
         List<Car> cars = carService.getAllCars();
 
-        List<CarDto> carsResponse = cars.stream().map(car -> new CarDto(car.getId(), car.getBrand(), car.getModel(), car.getRegistrationNumber())).toList();
+        List<CarDto> carsResponse = cars.stream().map(car -> new CarDto(
+                car.getId(),
+                car.getBrand(),
+                car.getModel(),
+                car.getMileage(),
+                car.getFuel(),
+                car.getNumberOfSeats(),
+                car.getNumberOfDoors(),
+                car.getBodyType(),
+                car.getVIN(),
+                car.getRegistrationNumber(),
+                car.getTechnicalExaminationDate(),
+                car.getEndDateOfInsurance()
+                )
+        ).toList();
 
         return carsResponse;
     }
@@ -36,17 +78,24 @@ public class CarRestApi {
     public CarDto getCarById(@PathVariable String id) {
         Car car = carService.getCarById(id);
         if (!(car==null)) {
-            return new CarDto(car.getId(), car.getBrand(), car.getModel(), car.getRegistrationNumber());
+            return new CarDto(
+                    car.getId(),
+                    car.getBrand(),
+                    car.getModel(),
+                    car.getMileage(),
+                    car.getFuel(),
+                    car.getNumberOfSeats(),
+                    car.getNumberOfDoors(),
+                    car.getBodyType(),
+                    car.getVIN(),
+                    car.getRegistrationNumber(),
+                    car.getTechnicalExaminationDate(),
+                    car.getEndDateOfInsurance()
+            );
         } else {
             return null;
         }
 
-    }
-
-    // not working
-    @PutMapping("/cars/{id}")
-    public Car updateCarById(@PathVariable String id, @RequestBody Car car) {
-        return carService.updateCarById(id, car);
     }
 
     @DeleteMapping("/cars/{id}")

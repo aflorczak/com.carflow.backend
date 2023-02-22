@@ -13,12 +13,46 @@ public class CarStorageMemory implements CarStorage {
     private HashMap<String, Car> cars = new HashMap<String, Car>();
     private Integer nextId = 0;
     public CarStorageMemory() {
-        createNewCar(new Car(nextId+1, "Peugeot", "308 CC", "D1 SMOK"));
+        createNewCar(
+                new Car(
+                        nextId+1,
+                        "Peugeot",
+                        "308 CC",
+                        16524,
+                        "Pb95",
+                        4,
+                        3,
+                        "Coupe Cabrio",
+                        "VF3WA5FWC34021008",
+                        "D1 SMOK",
+                        "19-05-2023",
+                        "19-05-2023"
+                )
+        );
     }
 
     @Override
     public Car createNewCar(Car car) {
-        return cars.put((++nextId).toString(), new Car(nextId, car.getBrand(), car.getModel(), car.getRegistrationNumber()));
+        String id = (++nextId).toString();
+        cars.put(
+                id,
+                new Car(
+                        nextId,
+                        car.getBrand(),
+                        car.getModel(),
+                        car.getMileage(),
+                        car.getFuel(),
+                        car.getNumberOfSeats(),
+                        car.getNumberOfDoors(),
+                        car.getBodyType(),
+                        car.getVIN(),
+                        car.getRegistrationNumber(),
+                        car.getTechnicalExaminationDate(),
+                        car.getEndDateOfInsurance()
+                )
+        );
+        Car carResponse = cars.get(id);
+        return carResponse;
     }
 
     @Override
@@ -29,14 +63,6 @@ public class CarStorageMemory implements CarStorage {
     @Override
     public Car getCarById(String id) {
         return cars.get(id);
-    }
-
-    @Override
-    public Car updateCarById(String id, Car car) {
-        if (cars.get(id) != null) {
-            cars.remove(id);
-        }
-        return cars.put(id, car);
     }
 
     @Override

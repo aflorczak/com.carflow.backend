@@ -25,9 +25,6 @@ public class CarService {
     public Car getCarById(String id) {
         return storage.getCarById(id);
     }
-    public Car updateCarById(String id, Car car) {
-        return storage.updateCarById(id, car);
-    }
     public void deleteCarById(String id) {
         storage.deleteCarById(id);
     }
