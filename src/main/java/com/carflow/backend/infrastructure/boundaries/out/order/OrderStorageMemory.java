@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class OrderStorageMemory implements OrderStorage {
@@ -17,13 +18,16 @@ public class OrderStorageMemory implements OrderStorage {
         createNewOrder(
                 new Order(
                         nextId + 1,
+                        "ACCEPTED",
                         "PZU",
                         "ZA230223000047",
                         "ul.Narutowicza 4, 50-522 Nibylandia",
                         "08:00",
                         "ul.Narutowicza 4, 50-522 Nibylandia",
                         "08:00",
-                        "Maciej Bogacz, Justyna Bogacz"
+                        "Maciej Bogacz, Justyna Bogacz",
+                        "Tutaj wpisujemy wszystkie komentarze do sprawy.",
+                        "C"
                 )
         );
     }
@@ -35,13 +39,16 @@ public class OrderStorageMemory implements OrderStorage {
                 id,
                 new Order(
                         nextId,
+                        order.getStatus(),
                         order.getPrincipal(),
                         order.getCaseNumber(),
                         order.getDeliveryAddress(),
                         order.getDeliveryTime(),
                         order.getReturnAddress(),
                         order.getReturnTime(),
-                        order.getDrivers()
+                        order.getDrivers(),
+                        order.getComments(),
+                        order.getSegment()
                 )
         );
         Order orderResponse = orders.get(id);
@@ -51,6 +58,20 @@ public class OrderStorageMemory implements OrderStorage {
     @Override
     public List<Order> getAllOrders() {
         return orders.values().stream().toList();
+    }
+
+    @Override
+    public List<Order> getOrdersWithStatus(String status) {
+
+        List<Order> ordersResponse = new ArrayList<Order>();
+
+        orders.forEach((key, order) -> {
+            if (Objects.equals(order.getStatus(), status)) {
+                ordersResponse.add(order);
+            }
+        });
+
+        return ordersResponse;
     }
 
     @Override

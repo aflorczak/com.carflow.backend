@@ -22,6 +22,8 @@ public class OrderService {
         return storage.getAllOrders();
     }
 
+    public List<Order> getOrdersWithStatus(String status) { return storage.getOrdersWithStatus(status); }
+
     public Order getOrderById(String id) {
         return storage.getOrderById(id);
     }

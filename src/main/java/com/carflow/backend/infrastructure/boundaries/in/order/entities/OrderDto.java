@@ -1,7 +1,9 @@
 package com.carflow.backend.infrastructure.boundaries.in.order.entities;
 
+
 public class OrderDto {
     private Integer id;
+    private String status;
     private String principal;
     private String caseNumber;
     private String deliveryAddress;
@@ -9,9 +11,12 @@ public class OrderDto {
     private String returnAddress;
     private String returnTime;
     private String drivers;
+    private String comments;
+    private String segment;
 
-    public OrderDto(Integer id, String principal, String caseNumber, String deliveryAddress, String deliveryTime, String returnAddress, String returnTime, String drivers) {
+    public OrderDto(Integer id, String status, String principal, String caseNumber, String deliveryAddress, String deliveryTime, String returnAddress, String returnTime, String drivers, String comments, String segment) {
         this.id = id;
+        this.status = status;
         this.principal = principal;
         this.caseNumber = caseNumber;
         this.deliveryAddress = deliveryAddress;
@@ -19,6 +24,8 @@ public class OrderDto {
         this.returnAddress = returnAddress;
         this.returnTime = returnTime;
         this.drivers = drivers;
+        this.comments = comments;
+        this.segment = segment;
     }
 
     public Integer getId() {
@@ -27,6 +34,14 @@ public class OrderDto {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getPrincipal() {
@@ -83,5 +98,21 @@ public class OrderDto {
 
     public void setDrivers(String drivers) {
         this.drivers = drivers;
+    }
+
+    public String getComments() {
+        return comments;
+    }
+
+    public void setComments(String comments) {
+        this.comments = comments;
+    }
+
+    public String getSegment() {
+        return segment;
+    }
+
+    public void setSegment(String segment) {
+        this.segment = segment;
     }
 }

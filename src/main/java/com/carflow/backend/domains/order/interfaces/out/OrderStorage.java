@@ -7,6 +7,7 @@ import java.util.List;
 public interface OrderStorage {
     Order createNewOrder(Order order);
     List<Order> getAllOrders();
+    List<Order> getOrdersWithStatus(String status);
     Order getOrderById(String id);
     void deleteOrderById(String id);
 }

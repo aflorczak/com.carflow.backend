@@ -6,7 +6,10 @@ import com.carflow.backend.infrastructure.boundaries.in.order.entities.OrderDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
 @RestController
 public class OrderRestApi {
@@ -19,45 +22,86 @@ public class OrderRestApi {
 
     @PostMapping("/orders")
     public OrderDto createNewOrder(@RequestBody OrderDto orderRequest) {
+
+
         Order order = orderService.createNewOrder(
                 new Order(
                         orderRequest.getId(),
+                        orderRequest.getStatus(),
                         orderRequest.getPrincipal(),
                         orderRequest.getCaseNumber(),
                         orderRequest.getDeliveryAddress(),
                         orderRequest.getDeliveryTime(),
                         orderRequest.getReturnAddress(),
                         orderRequest.getReturnTime(),
-                        orderRequest.getDrivers()
+                        orderRequest.getDrivers(),
+                        orderRequest.getComments(),
+                        orderRequest.getSegment()
                 )
         );
 
+
         OrderDto orderResponse = new OrderDto(
                 order.getId(),
+                order.getStatus(),
                 order.getPrincipal(),
                 order.getCaseNumber(),
                 order.getDeliveryAddress(),
                 order.getDeliveryTime(),
                 order.getReturnAddress(),
                 order.getReturnTime(),
-                order.getDrivers()
+                order.getDrivers(),
+                order.getComments(),
+                order.getSegment()
         );
 
         return orderResponse;
     }
 
+//    @GetMapping("/orders")
+//    public List<OrderDto> getAllOrders() {
+//        List<Order> orders = orderService.getAllOrders();
+//
+//
+//        List<OrderDto> ordersResponse = orders.stream().map(order -> new OrderDto(
+//                order.getId(),
+//                order.getStatus(),
+//                order.getPrincipal(),
+//                order.getCaseNumber(),
+//                order.getDeliveryAddress(),
+//                order.getDeliveryTime(),
+//                order.getReturnAddress(),
+//                order.getReturnTime(),
+//                order.getDrivers(),
+//                order.getComments(),
+//                order.getSegment()
+//        )).toList();
+//
+//        return ordersResponse;
+//    }
+
     @GetMapping("/orders")
-    public List<OrderDto> getAllOrders() {
-        List<Order> orders = orderService.getAllOrders();
+    public List<OrderDto> getOrders(@RequestParam(defaultValue = "ALL") String status) {
+        List<Order> orders = new ArrayList<Order>();
+        if (Objects.equals(status, "ALL")){
+            orders = orderService.getAllOrders();
+        } else {
+            orders = orderService.getOrdersWithStatus(String.valueOf(status));
+        }
+
+
         List<OrderDto> ordersResponse = orders.stream().map(order -> new OrderDto(
                 order.getId(),
+                order.getStatus(),
                 order.getPrincipal(),
                 order.getCaseNumber(),
                 order.getDeliveryAddress(),
                 order.getDeliveryTime(),
                 order.getReturnAddress(),
                 order.getReturnTime(),
-                order.getDrivers()
+                order.getDrivers(),
+                order.getComments(),
+                order.getSegment()
         )).toList();
 
         return ordersResponse;
@@ -66,16 +110,22 @@ public class OrderRestApi {
     @GetMapping("/orders/{id}")
     public OrderDto getOrderById(@PathVariable String id) {
         Order order = orderService.getOrderById(id);
+
+
+
         if (!(order==null)) {
             return new OrderDto(
                     order.getId(),
+                    order.getStatus(),
                     order.getPrincipal(),
                     order.getCaseNumber(),
                     order.getDeliveryAddress(),
                     order.getDeliveryTime(),
                     order.getReturnAddress(),
                     order.getReturnTime(),
-                    order.getDrivers()
+                    order.getDrivers(),
+                    order.getComments(),
+                    order.getSegment()
             );
         } else {
             return null;
