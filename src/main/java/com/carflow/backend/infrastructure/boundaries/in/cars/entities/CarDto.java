@@ -19,8 +19,10 @@ public class CarDto {
     private String registrationNumber;
     private String technicalExaminationDate;
     private String endDateOfInsurance;
+    private String damagedDescription;
+    private String damagedPhotosUrls;
 
-    public CarDto(Integer id, String brand, String model, Integer mileage, String fuel, Integer numberOfSeats, Integer numberOfDoors, String bodyType, String segment, String VIN, String registrationNumber, String technicalExaminationDate, String endDateOfInsurance) {
+    public CarDto(Integer id, String brand, String model, Integer mileage, String fuel, Integer numberOfSeats, Integer numberOfDoors, String bodyType, String segment, String VIN, String registrationNumber, String technicalExaminationDate, String endDateOfInsurance, String damagedDescription, String damagedPhotosUrls) {
         this.id = id;
         this.brand = brand;
         this.model = model;
@@ -34,6 +36,8 @@ public class CarDto {
         this.registrationNumber = registrationNumber;
         this.technicalExaminationDate = technicalExaminationDate;
         this.endDateOfInsurance = endDateOfInsurance;
+        this.damagedDescription = damagedDescription;
+        this.damagedPhotosUrls = damagedPhotosUrls;
     }
 
     public Integer getId() {
@@ -138,5 +142,21 @@ public class CarDto {
 
     public void setEndDateOfInsurance(String endDateOfInsurance) {
         this.endDateOfInsurance = endDateOfInsurance;
+    }
+
+    public String getDamagedDescription() {
+        return damagedDescription;
+    }
+
+    public void setDamagedDescription(String damagedDescription) {
+        this.damagedDescription = damagedDescription;
+    }
+
+    public String getDamagedPhotosUrls() {
+        return damagedPhotosUrls;
+    }
+
+    public void setDamagedPhotosUrls(String damagedPhotosUrls) {
+        this.damagedPhotosUrls = damagedPhotosUrls;
     }
 }

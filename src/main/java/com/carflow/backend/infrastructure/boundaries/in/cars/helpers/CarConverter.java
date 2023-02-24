@@ -20,7 +20,9 @@ public class CarConverter {
                 carDto.getVIN(),
                 carDto.getRegistrationNumber(),
                 carDto.getTechnicalExaminationDate(),
-                carDto.getEndDateOfInsurance()
+                carDto.getEndDateOfInsurance(),
+                carDto.getDamagedDescription(),
+                carDto.getDamagedPhotosUrls()
         );
     }
 
@@ -38,7 +40,9 @@ public class CarConverter {
                 car.getVIN(),
                 car.getRegistrationNumber(),
                 car.getTechnicalExaminationDate(),
-                car.getEndDateOfInsurance()
+                car.getEndDateOfInsurance(),
+                car.getDamagedDescription(),
+                car.getDamagedPhotosUrls()
         );
     }
 }
