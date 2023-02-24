@@ -12,9 +12,10 @@ public class OrderDto {
     private String returnTime;
     private String drivers;
     private String comments;
+    private String reasonForCancelingTheOrder;
     private String segment;
 
-    public OrderDto(Integer id, String status, String principal, String caseNumber, String deliveryAddress, String deliveryTime, String returnAddress, String returnTime, String drivers, String comments, String segment) {
+    public OrderDto(Integer id, String status, String principal, String caseNumber, String deliveryAddress, String deliveryTime, String returnAddress, String returnTime, String drivers, String comments, String reasonForCancelingTheOrder, String segment) {
         this.id = id;
         this.status = status;
         this.principal = principal;
@@ -25,6 +26,7 @@ public class OrderDto {
         this.returnTime = returnTime;
         this.drivers = drivers;
         this.comments = comments;
+        this.reasonForCancelingTheOrder = reasonForCancelingTheOrder;
         this.segment = segment;
     }
 
@@ -106,6 +108,14 @@ public class OrderDto {
 
     public void setComments(String comments) {
         this.comments = comments;
+    }
+
+    public String getReasonForCancelingTheOrder() {
+        return reasonForCancelingTheOrder;
+    }
+
+    public void setReasonForCancelingTheOrder(String reasonForCancelingTheOrder) {
+        this.reasonForCancelingTheOrder = reasonForCancelingTheOrder;
     }
 
     public String getSegment() {

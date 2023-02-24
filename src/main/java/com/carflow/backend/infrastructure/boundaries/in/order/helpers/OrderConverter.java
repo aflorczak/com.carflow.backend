@@ -18,6 +18,7 @@ public class OrderConverter {
                 orderDto.getReturnTime(),
                 orderDto.getDrivers(),
                 orderDto.getComments(),
+                orderDto.getReasonForCancelingTheOrder(),
                 orderDto.getSegment()
         );
     }
@@ -34,6 +35,7 @@ public class OrderConverter {
                 order.getReturnTime(),
                 order.getDrivers(),
                 order.getComments(),
+                order.getReasonForCancelingTheOrder(),
                 order.getSegment()
         );
     }
