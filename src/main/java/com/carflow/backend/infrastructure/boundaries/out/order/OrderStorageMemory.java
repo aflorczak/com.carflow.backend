@@ -1,13 +1,11 @@
 package com.carflow.backend.infrastructure.boundaries.out.order;
 
 import com.carflow.backend.domains.order.entities.Order;
-import com.carflow.backend.domains.order.interfaces.out.OrderStorage;
+import com.carflow.backend.domains.order.interfaces.OrderStorage;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
 
 @Service
 public class OrderStorageMemory implements OrderStorage {
@@ -72,7 +70,8 @@ public class OrderStorageMemory implements OrderStorage {
 
     @Override
     public Order updateOrderById(String id, Order order) {
-        return orders.replace(id,order);
+        orders.remove(id);
+        return orders.put(id, order);
     }
 
     @Override
