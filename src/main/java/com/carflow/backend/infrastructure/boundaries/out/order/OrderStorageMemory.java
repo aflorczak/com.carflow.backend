@@ -61,22 +61,18 @@ public class OrderStorageMemory implements OrderStorage {
     }
 
     @Override
-    public List<Order> getOrdersWithStatus(String status) {
-
-        List<Order> ordersResponse = new ArrayList<Order>();
-
-        orders.forEach((key, order) -> {
-            if (Objects.equals(order.getStatus(), status)) {
-                ordersResponse.add(order);
-            }
-        });
-
-        return ordersResponse;
+    public List<Order> getOrders(List<String> statuses) {
+        return orders.values().stream().filter(order ->  statuses.contains(order.getStatus())).toList();
     }
 
     @Override
     public Order getOrderById(String id) {
         return orders.get(id);
+    }
+
+    @Override
+    public Order updateOrderById(String id, Order order) {
+        return orders.replace(id,order);
     }
 
     @Override

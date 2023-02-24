@@ -6,7 +6,10 @@ import com.carflow.backend.infrastructure.boundaries.in.cars.entities.CarDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.SimpleTimeZone;
 
 @RestController
 public class CarRestApi {
@@ -28,6 +31,7 @@ public class CarRestApi {
                         carRequest.getNumberOfSeats(),
                         carRequest.getNumberOfDoors(),
                         carRequest.getBodyType(),
+                        carRequest.getSegment(),
                         carRequest.getVIN(),
                         carRequest.getRegistrationNumber(),
                         carRequest.getTechnicalExaminationDate(),
@@ -43,6 +47,7 @@ public class CarRestApi {
                 car.getNumberOfSeats(),
                 car.getNumberOfDoors(),
                 car.getBodyType(),
+                car.getSegment(),
                 car.getVIN(),
                 car.getRegistrationNumber(),
                 car.getTechnicalExaminationDate(),
@@ -52,10 +57,16 @@ public class CarRestApi {
     }
 
     @GetMapping("/cars")
-    public List<CarDto> getAllCars() {
-        List<Car> cars = carService.getAllCars();
+    public List<CarDto> getCars(
+            @RequestParam(defaultValue = "B,C,D,SUV") String segments,
+            @RequestParam(defaultValue = "SEDAN,HATCHBACK,COMBI,SUV") String bodyTypes
+    ) {
+        final List<String> segmentsList = Arrays.stream(segments.split(",")).toList();
+        final List<String> bodyTypesList = Arrays.stream(bodyTypes.split(",")).toList();
 
-        List<CarDto> carsResponse = cars.stream().map(car -> new CarDto(
+        List<Car> cars = carService.getCarsWithParams(segmentsList, bodyTypesList);
+
+        return cars.stream().map(car -> new CarDto(
                 car.getId(),
                 car.getBrand(),
                 car.getModel(),
@@ -64,14 +75,13 @@ public class CarRestApi {
                 car.getNumberOfSeats(),
                 car.getNumberOfDoors(),
                 car.getBodyType(),
+                car.getSegment(),
                 car.getVIN(),
                 car.getRegistrationNumber(),
                 car.getTechnicalExaminationDate(),
                 car.getEndDateOfInsurance()
                 )
         ).toList();
-
-        return carsResponse;
     }
 
     @GetMapping("/cars/{id}")
@@ -87,6 +97,7 @@ public class CarRestApi {
                     car.getNumberOfSeats(),
                     car.getNumberOfDoors(),
                     car.getBodyType(),
+                    car.getSegment(),
                     car.getVIN(),
                     car.getRegistrationNumber(),
                     car.getTechnicalExaminationDate(),
@@ -96,6 +107,43 @@ public class CarRestApi {
             return null;
         }
 
+    }
+
+    @PutMapping("/cars/{id}")
+    public CarDto updateCarById(@PathVariable String id, @RequestBody CarDto carDto) {
+        Car updatedCar = new Car(
+                carDto.getId(),
+                carDto.getBrand(),
+                carDto.getModel(),
+                carDto.getMileage(),
+                carDto.getFuel(),
+                carDto.getNumberOfSeats(),
+                carDto.getNumberOfDoors(),
+                carDto.getBodyType(),
+                carDto.getSegment(),
+                carDto.getVIN(),
+                carDto.getRegistrationNumber(),
+                carDto.getTechnicalExaminationDate(),
+                carDto.getEndDateOfInsurance()
+        );
+        Car carResponse = carService.updateCarById(id, updatedCar);
+
+        CarDto carDtoResponse = new CarDto(
+                carResponse.getId(),
+                carDto.getBrand(),
+                carDto.getModel(),
+                carDto.getMileage(),
+                carDto.getFuel(),
+                carDto.getNumberOfSeats(),
+                carDto.getNumberOfDoors(),
+                carDto.getBodyType(),
+                carDto.getSegment(),
+                carDto.getVIN(),
+                carDto.getRegistrationNumber(),
+                carDto.getTechnicalExaminationDate(),
+                carDto.getEndDateOfInsurance()
+        );
+        return carDtoResponse;
     }
 
     @DeleteMapping("/cars/{id}")

@@ -12,6 +12,7 @@ public class CarDto {
     private Integer numberOfSeats;
     private Integer numberOfDoors;
     private String bodyType;
+    private String segment;
 
     // Legal properties
     private String VIN;
@@ -19,7 +20,7 @@ public class CarDto {
     private String technicalExaminationDate;
     private String endDateOfInsurance;
 
-    public CarDto(Integer id, String brand, String model, Integer mileage, String fuel, Integer numberOfSeats, Integer numberOfDoors, String bodyType, String VIN, String registrationNumber, String technicalExaminationDate, String endDateOfInsurance) {
+    public CarDto(Integer id, String brand, String model, Integer mileage, String fuel, Integer numberOfSeats, Integer numberOfDoors, String bodyType, String segment, String VIN, String registrationNumber, String technicalExaminationDate, String endDateOfInsurance) {
         this.id = id;
         this.brand = brand;
         this.model = model;
@@ -28,6 +29,7 @@ public class CarDto {
         this.numberOfSeats = numberOfSeats;
         this.numberOfDoors = numberOfDoors;
         this.bodyType = bodyType;
+        this.segment = segment;
         this.VIN = VIN;
         this.registrationNumber = registrationNumber;
         this.technicalExaminationDate = technicalExaminationDate;
@@ -96,6 +98,14 @@ public class CarDto {
 
     public void setBodyType(String bodyType) {
         this.bodyType = bodyType;
+    }
+
+    public String getSegment() {
+        return segment;
+    }
+
+    public void setSegment(String segment) {
+        this.segment = segment;
     }
 
     public String getVIN() {

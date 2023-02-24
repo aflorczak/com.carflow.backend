@@ -21,11 +21,14 @@ public class OrderService {
     public List<Order> getAllOrders() {
         return storage.getAllOrders();
     }
-
-    public List<Order> getOrdersWithStatus(String status) { return storage.getOrdersWithStatus(status); }
+    public List<Order> getOrders(List<String> statuses) { return storage.getOrders(statuses); }
 
     public Order getOrderById(String id) {
         return storage.getOrderById(id);
+    }
+
+    public Order updateOrderById(String id, Order order) {
+        return storage.updateOrderById(id, order);
     }
 
     public void deleteOrderById(String id) {

@@ -14,6 +14,8 @@ public class Car {
     private Integer numberOfDoors;
     private String bodyType;
 
+    private String segment;
+
     // Legal properties
     private String VIN;
     private String registrationNumber;
@@ -29,6 +31,7 @@ public class Car {
             Integer numberOfSeats,
             Integer numberOfDoors,
             String bodyType,
+            String segment,
             String VIN,
             String registrationNumber,
             String technicalExaminationDate,
@@ -41,6 +44,7 @@ public class Car {
         this.numberOfSeats = numberOfSeats;
         this.numberOfDoors = numberOfDoors;
         this.bodyType = bodyType;
+        this.segment = segment;
         this.VIN = VIN;
         this.registrationNumber = registrationNumber;
         this.technicalExaminationDate = technicalExaminationDate;
@@ -109,6 +113,14 @@ public class Car {
 
     public void setBodyType(String bodyType) {
         this.bodyType = bodyType;
+    }
+
+    public String getSegment() {
+        return segment;
+    }
+
+    public void setSegment(String segment) {
+        this.segment = segment;
     }
 
     public String getVIN() {

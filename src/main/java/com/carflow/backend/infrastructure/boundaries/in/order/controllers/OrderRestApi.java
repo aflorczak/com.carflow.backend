@@ -6,10 +6,7 @@ import com.carflow.backend.infrastructure.boundaries.in.order.entities.OrderDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 
 @RestController
 public class OrderRestApi {
@@ -22,8 +19,6 @@ public class OrderRestApi {
 
     @PostMapping("/orders")
     public OrderDto createNewOrder(@RequestBody OrderDto orderRequest) {
-
-
         Order order = orderService.createNewOrder(
                 new Order(
                         orderRequest.getId(),
@@ -39,7 +34,6 @@ public class OrderRestApi {
                         orderRequest.getSegment()
                 )
         );
-
 
         OrderDto orderResponse = new OrderDto(
                 order.getId(),
@@ -58,39 +52,13 @@ public class OrderRestApi {
         return orderResponse;
     }
 
-//    @GetMapping("/orders")
-//    public List<OrderDto> getAllOrders() {
-//        List<Order> orders = orderService.getAllOrders();
-//
-//
-//        List<OrderDto> ordersResponse = orders.stream().map(order -> new OrderDto(
-//                order.getId(),
-//                order.getStatus(),
-//                order.getPrincipal(),
-//                order.getCaseNumber(),
-//                order.getDeliveryAddress(),
-//                order.getDeliveryTime(),
-//                order.getReturnAddress(),
-//                order.getReturnTime(),
-//                order.getDrivers(),
-//                order.getComments(),
-//                order.getSegment()
-//        )).toList();
-//
-//        return ordersResponse;
-//    }
-
     @GetMapping("/orders")
-    public List<OrderDto> getOrders(@RequestParam(defaultValue = "ALL") String status) {
-        List<Order> orders = new ArrayList<Order>();
-        if (Objects.equals(status, "ALL")){
-            orders = orderService.getAllOrders();
-        } else {
-            orders = orderService.getOrdersWithStatus(String.valueOf(status));
-        }
+    public List<OrderDto> getOrders(@RequestParam(defaultValue = "ACCEPTED,CANCELLED,IN_PROGRESS,RETURNED,WAITOING_FOR_PAYMENT,ENDED") String statuses) {
+        final List<String> paramsList = Arrays.stream(statuses.split(",")).toList();
+        List<Order> orders = orderService.getOrders(paramsList);
 
 
-        List<OrderDto> ordersResponse = orders.stream().map(order -> new OrderDto(
+        return orders.stream().map(order -> new OrderDto(
                 order.getId(),
                 order.getStatus(),
                 order.getPrincipal(),
@@ -103,15 +71,11 @@ public class OrderRestApi {
                 order.getComments(),
                 order.getSegment()
         )).toList();
-
-        return ordersResponse;
     }
 
     @GetMapping("/orders/{id}")
     public OrderDto getOrderById(@PathVariable String id) {
         Order order = orderService.getOrderById(id);
-
-
 
         if (!(order==null)) {
             return new OrderDto(
@@ -128,6 +92,17 @@ public class OrderRestApi {
                     order.getSegment()
             );
         } else {
+            return null;
+        }
+    }
+
+    @PutMapping("/orders/{id}")
+    public Order updateOrderById(@PathVariable String id, @RequestBody Order order) {
+        Order orderResponse = orderService.updateOrderById(id, order);
+        if (!(orderResponse == null)) {
+            return orderResponse;
+        } else  {
+            // tutaj 404 zrobić :)
             return null;
         }
     }
