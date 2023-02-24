@@ -21,6 +21,8 @@ public class Car {
     private String registrationNumber;
     private String technicalExaminationDate;
     private String endDateOfInsurance;
+    private String damagedDescription;
+    private String damagedPhotosUrls;
 
     public Car(
             Integer id,
@@ -35,7 +37,9 @@ public class Car {
             String VIN,
             String registrationNumber,
             String technicalExaminationDate,
-            String endDateOfInsurance) {
+            String endDateOfInsurance,
+            String damagedDescription,
+            String damagedPhotosUrls ) {
         this.id = id;
         this.brand = brand;
         this.model = model;
@@ -49,6 +53,8 @@ public class Car {
         this.registrationNumber = registrationNumber;
         this.technicalExaminationDate = technicalExaminationDate;
         this.endDateOfInsurance = endDateOfInsurance;
+        this.damagedDescription = damagedDescription;
+        this.damagedPhotosUrls = damagedPhotosUrls;
     }
 
     public Integer getId() {
@@ -153,5 +159,21 @@ public class Car {
 
     public void setEndDateOfInsurance(String endDateOfInsurance) {
         this.endDateOfInsurance = endDateOfInsurance;
+    }
+
+    public String getDamagedDescription() {
+        return damagedDescription;
+    }
+
+    public void setDamagedDescription(String damagedDescription) {
+        this.damagedDescription = damagedDescription;
+    }
+
+    public String getDamagedPhotosUrls() {
+        return damagedPhotosUrls;
+    }
+
+    public void setDamagedPhotosUrls(String damagedPhotosUrls) {
+        this.damagedPhotosUrls = damagedPhotosUrls;
     }
 }
