@@ -25,6 +25,7 @@ public class OrderStorageMemory implements OrderStorage {
                         "08:00",
                         "Maciej Bogacz, Justyna Bogacz",
                         "Tutaj wpisujemy wszystkie komentarze do sprawy.",
+                        null,
                         "C"
                 )
         );
@@ -46,6 +47,7 @@ public class OrderStorageMemory implements OrderStorage {
                         order.getReturnTime(),
                         order.getDrivers(),
                         order.getComments(),
+                        order.getReasonForCancelingTheOrder(),
                         order.getSegment()
                 )
         );
