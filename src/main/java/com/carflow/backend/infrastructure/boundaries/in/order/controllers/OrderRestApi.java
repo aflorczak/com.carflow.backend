@@ -3,6 +3,7 @@ package com.carflow.backend.infrastructure.boundaries.in.order.controllers;
 import com.carflow.backend.domains.order.entities.Order;
 import com.carflow.backend.domains.order.services.OrderService;
 import com.carflow.backend.infrastructure.boundaries.in.order.entities.OrderDto;
+import com.carflow.backend.infrastructure.boundaries.in.order.helpers.OrderConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,42 +13,18 @@ import java.util.*;
 public class OrderRestApi {
 
     private OrderService orderService;
+    private OrderConverter orderConverter;
     @Autowired
-    public OrderRestApi(OrderService orderService) {
+    public OrderRestApi(OrderService orderService, OrderConverter orderConverter) {
         this.orderService = orderService;
+        this.orderConverter = orderConverter;
     }
 
     @PostMapping("/orders")
     public OrderDto createNewOrder(@RequestBody OrderDto orderRequest) {
-        Order order = orderService.createNewOrder(
-                new Order(
-                        orderRequest.getId(),
-                        orderRequest.getStatus(),
-                        orderRequest.getPrincipal(),
-                        orderRequest.getCaseNumber(),
-                        orderRequest.getDeliveryAddress(),
-                        orderRequest.getDeliveryTime(),
-                        orderRequest.getReturnAddress(),
-                        orderRequest.getReturnTime(),
-                        orderRequest.getDrivers(),
-                        orderRequest.getComments(),
-                        orderRequest.getSegment()
-                )
-        );
+        Order order = orderService.createNewOrder(orderConverter.convertOrderDtoToOrder(orderRequest));
 
-        OrderDto orderResponse = new OrderDto(
-                order.getId(),
-                order.getStatus(),
-                order.getPrincipal(),
-                order.getCaseNumber(),
-                order.getDeliveryAddress(),
-                order.getDeliveryTime(),
-                order.getReturnAddress(),
-                order.getReturnTime(),
-                order.getDrivers(),
-                order.getComments(),
-                order.getSegment()
-        );
+        OrderDto orderResponse = orderConverter.convertOrderToOrderDto(order);
 
         return orderResponse;
     }
@@ -57,20 +34,7 @@ public class OrderRestApi {
         final List<String> paramsList = Arrays.stream(statuses.split(",")).toList();
         List<Order> orders = orderService.getOrders(paramsList);
 
-
-        return orders.stream().map(order -> new OrderDto(
-                order.getId(),
-                order.getStatus(),
-                order.getPrincipal(),
-                order.getCaseNumber(),
-                order.getDeliveryAddress(),
-                order.getDeliveryTime(),
-                order.getReturnAddress(),
-                order.getReturnTime(),
-                order.getDrivers(),
-                order.getComments(),
-                order.getSegment()
-        )).toList();
+        return orders.stream().map(order -> orderConverter.convertOrderToOrderDto(order)).toList();
     }
 
     @GetMapping("/orders/{id}")
@@ -78,29 +42,17 @@ public class OrderRestApi {
         Order order = orderService.getOrderById(id);
 
         if (!(order==null)) {
-            return new OrderDto(
-                    order.getId(),
-                    order.getStatus(),
-                    order.getPrincipal(),
-                    order.getCaseNumber(),
-                    order.getDeliveryAddress(),
-                    order.getDeliveryTime(),
-                    order.getReturnAddress(),
-                    order.getReturnTime(),
-                    order.getDrivers(),
-                    order.getComments(),
-                    order.getSegment()
-            );
+            return orderConverter.convertOrderToOrderDto(order);
         } else {
             return null;
         }
     }
 
     @PutMapping("/orders/{id}")
-    public Order updateOrderById(@PathVariable String id, @RequestBody Order order) {
+    public OrderDto updateOrderById(@PathVariable String id, @RequestBody Order order) {
         Order orderResponse = orderService.updateOrderById(id, order);
         if (!(orderResponse == null)) {
-            return orderResponse;
+            return orderConverter.convertOrderToOrderDto(orderResponse);
         } else  {
             // tutaj 404 zrobić :)
             return null;
