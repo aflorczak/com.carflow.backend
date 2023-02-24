@@ -47,7 +47,8 @@ public class CarStorageMemory implements CarStorage {
 
     @Override
     public Car updateCarById(String id, Car updatedCar) {
-        return cars.replace(id, updatedCar);
+        cars.remove(id);
+        return cars.put(id, updatedCar);
     }
 
     @Override
