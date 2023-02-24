@@ -1,7 +1,7 @@
 package com.carflow.backend.domains.order.services;
 
 import com.carflow.backend.domains.order.entities.Order;
-import com.carflow.backend.domains.order.interfaces.out.OrderStorage;
+import com.carflow.backend.domains.order.interfaces.OrderStorage;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

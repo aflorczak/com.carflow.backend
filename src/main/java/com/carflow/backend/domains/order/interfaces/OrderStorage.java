@@ -1,4 +1,4 @@
-package com.carflow.backend.domains.order.interfaces.out;
+package com.carflow.backend.domains.order.interfaces;
 
 import com.carflow.backend.domains.order.entities.Order;
 
