@@ -2,14 +2,36 @@ package com.carflow.backend.infrastructure.boundaries.out.rental;
 
 import com.carflow.backend.domains.rental.entities.Rental;
 import com.carflow.backend.domains.rental.interfaces.RentalStorage;
+import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.List;
 
+@Service
 public class RentalStorageMemory implements RentalStorage {
-
     private HashMap<String, Rental> rentals = new HashMap<String, Rental>();
     private Integer nextId = 0;
+
+    public RentalStorageMemory() {
+        createnewRental(new Rental(
+                nextId + 1,
+                "10",
+                215,
+                "ul. Kwidzyńska 4, Wrocław",
+                "15:00",
+                null,
+                null,
+                null,
+                null,
+                "ul. Kwidzyńska 4, Wrocław",
+                "15:00",
+                null,
+                null,
+                false,
+                null,
+                null
+        ));
+    }
 
     @Override
     public Rental createnewRental(Rental rental) {
@@ -48,7 +70,8 @@ public class RentalStorageMemory implements RentalStorage {
     @Override
     public Rental updateRentalById(String id, Rental updatedRental) {
         rentals.remove(id);
-        return rentals.put(id, updatedRental);
+        rentals.put(id, updatedRental);
+        return rentals.get(id);
     }
 
     @Override
