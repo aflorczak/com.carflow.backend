@@ -2,6 +2,7 @@ package com.carflow.backend.domains.cars.services;
 
 import com.carflow.backend.domains.cars.entities.Car;
 import com.carflow.backend.domains.cars.interfaces.out.CarStorage;
+import com.carflow.backend.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,14 +29,14 @@ public class CarService {
         return storage.getCarsWithParams(segments, bodyTypes);
     }
 
-    public Car getCarById(String id) {
+    public Car getCarById(String id) throws ObjectNotFoundException{
         return storage.getCarById(id);
     }
 
-    public Car updateCarById(String id, Car updatedCar) {
+    public Car updateCarById(String id, Car updatedCar) throws ObjectNotFoundException{
         return storage.updateCarById(id, updatedCar);
     }
-    public void deleteCarById(String id) {
+    public void deleteCarById(String id) throws ObjectNotFoundException {
         storage.deleteCarById(id);
     }
 }

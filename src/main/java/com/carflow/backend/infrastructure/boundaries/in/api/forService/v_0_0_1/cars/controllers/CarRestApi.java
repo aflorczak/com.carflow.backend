@@ -2,6 +2,7 @@ package com.carflow.backend.infrastructure.boundaries.in.api.forService.v_0_0_1.
 
 import com.carflow.backend.domains.cars.entities.Car;
 import com.carflow.backend.domains.cars.services.CarService;
+import com.carflow.backend.exceptions.ObjectNotFoundException;
 import com.carflow.backend.infrastructure.boundaries.in.api.forService.v_0_0_1.cars.entities.CarDto;
 import com.carflow.backend.infrastructure.boundaries.in.api.forService.v_0_0_1.cars.helpers.CarConverter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,8 @@ public class CarRestApi {
         this.carService = carService;
         this.carConverter = carConverter;
     }
+
+    // tutaj sprawdzać poprawność przyjmowanych danych i ewentualnie rzucać błędem
     @PostMapping("/cars")
     public Car createNewCar(@RequestBody CarDto carRequest) {
         Car car = carService.createNewCar(carConverter.convertCarDtoToCar(carRequest));
@@ -42,30 +45,20 @@ public class CarRestApi {
     }
 
     @GetMapping("/cars/{id}")
-    public CarDto getCarById(@PathVariable String id) {
+    public CarDto getCarById(@PathVariable String id) throws ObjectNotFoundException {
         Car car = carService.getCarById(id);
-        if (!(car==null)) {
-            return carConverter.convertCarToCarDto(car);
-        } else {
-            return null;
-        }
+        return carConverter.convertCarToCarDto(car);
     }
 
     @PutMapping("/cars/{id}")
-    public CarDto updateCarById(@PathVariable String id, @RequestBody CarDto carDto) {
+    public CarDto updateCarById(@PathVariable String id, @RequestBody CarDto carDto) throws ObjectNotFoundException {
         Car updatedCar = carConverter.convertCarDtoToCar(carDto);
         Car carResponse = carService.updateCarById(id, updatedCar);
-
-        if(!(carResponse == null)) {
-            CarDto carDtoResponse = carConverter.convertCarToCarDto(carResponse);
-            return carDtoResponse;
-        } else {
-            return null;
-        }
+        return carConverter.convertCarToCarDto(carResponse);
     }
 
     @DeleteMapping("/cars/{id}")
-    public void deleteCarById(@PathVariable String id) {
+    public void deleteCarById(@PathVariable String id) throws ObjectNotFoundException {
         carService.deleteCarById(id);
     }
 }

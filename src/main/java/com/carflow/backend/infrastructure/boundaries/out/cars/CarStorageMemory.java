@@ -2,6 +2,7 @@ package com.carflow.backend.infrastructure.boundaries.out.cars;
 
 import com.carflow.backend.domains.cars.entities.Car;
 import com.carflow.backend.domains.cars.interfaces.out.CarStorage;
+import com.carflow.backend.exceptions.ObjectNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -17,6 +18,7 @@ public class CarStorageMemory implements CarStorage {
         createNewCar(new Car(-1, "SKODA", "FABIA", 16524, "PB95", 4, 3, "COMBI", "B", "VF3WA5FWC34021008", "KR 4F514", "19-05-2023", "19-05-2023", null, null));
         createNewCar(new Car(-1, "SKODA", "OCTAVIA", 16524, "DIESEL", 4, 3, "COMBI", "D", "VF3WA5FWC34021008", "KR 5D74VB", "19-05-2023", "19-05-2023", null, null));
     }
+
 
     @Override
     public Car createNewCar(Car car) {
@@ -41,18 +43,30 @@ public class CarStorageMemory implements CarStorage {
     }
 
     @Override
-    public Car getCarById(String id) {
-        return cars.get(id);
+    public Car getCarById(String id) throws ObjectNotFoundException {
+        if (cars.containsKey(id)) {
+            return cars.get(id);
+        } else {
+            throw new ObjectNotFoundException("The vehicle with the given ID does not exist in the database.");
+        }
     }
 
     @Override
-    public Car updateCarById(String id, Car updatedCar) {
-        cars.remove(id);
-        return cars.put(id, updatedCar);
+    public Car updateCarById(String id, Car updatedCar) throws ObjectNotFoundException{
+        if (cars.containsKey(id)) {
+            cars.remove(id);
+            return cars.put(id, updatedCar);
+        } else {
+            throw new ObjectNotFoundException("The vehicle with the given ID does not exist in the database.");
+        }
     }
 
     @Override
-    public void deleteCarById(String id) {
-        cars.remove(id);
+    public void deleteCarById(String id) throws ObjectNotFoundException {
+        if (cars.containsKey(id)) {
+            cars.remove(id);
+        } else {
+            throw new ObjectNotFoundException("The vehicle with the given ID does not exist in the database.");
+        }
     }
 }
