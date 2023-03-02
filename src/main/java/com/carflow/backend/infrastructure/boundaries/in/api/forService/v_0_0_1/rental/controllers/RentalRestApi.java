@@ -2,6 +2,7 @@ package com.carflow.backend.infrastructure.boundaries.in.api.forService.v_0_0_1.
 
 import com.carflow.backend.domains.rental.entities.Rental;
 import com.carflow.backend.domains.rental.services.RentalService;
+import com.carflow.backend.exceptions.ObjectNotFoundException;
 import com.carflow.backend.infrastructure.boundaries.in.api.forService.v_0_0_1.rental.helpers.RentalConverter;
 import com.carflow.backend.infrastructure.boundaries.in.api.forService.v_0_0_1.rental.entities.RentalDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,23 +34,19 @@ public class RentalRestApi {
     }
 
     @GetMapping("/rentals/{id}")
-    public RentalDto getRentalById(@PathVariable String id) {
+    public RentalDto getRentalById(@PathVariable String id) throws ObjectNotFoundException {
         Rental rental = service.getRentalById(id);
-        if (!(rental==null)) {
-            return converter.convertRentalToRentalDto(rental);
-        } else {
-            return null;
-        }
+        return converter.convertRentalToRentalDto(rental);
     }
 
     @PutMapping("/rentals/{id}")
-    public RentalDto updateRentalById(@PathVariable String id, @RequestBody RentalDto rentalRequest) {
+    public RentalDto updateRentalById(@PathVariable String id, @RequestBody RentalDto rentalRequest) throws ObjectNotFoundException {
         Rental rental = service.updateRentalById(id, converter.convertRentalDtoToRental(rentalRequest));
         return converter.convertRentalToRentalDto(rental);
     }
 
     @DeleteMapping("/rentals/{id}")
-    public void deleteRentalById(@PathVariable String id) {
+    public void deleteRentalById(@PathVariable String id) throws ObjectNotFoundException {
         service.deleteRentalById(id);
     }
 }

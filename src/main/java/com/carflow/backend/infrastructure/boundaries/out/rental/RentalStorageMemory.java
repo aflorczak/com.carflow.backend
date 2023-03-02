@@ -2,6 +2,7 @@ package com.carflow.backend.infrastructure.boundaries.out.rental;
 
 import com.carflow.backend.domains.rental.entities.Rental;
 import com.carflow.backend.domains.rental.interfaces.RentalStorage;
+import com.carflow.backend.exceptions.ObjectNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -63,19 +64,32 @@ public class RentalStorageMemory implements RentalStorage {
     }
 
     @Override
-    public Rental getRentalById(String id) {
-        return rentals.get(id);
+    public Rental getRentalById(String id) throws ObjectNotFoundException {
+        if (rentals.containsKey(id)) {
+            return rentals.get(id);
+        } else {
+            throw new ObjectNotFoundException("The rental with the given ID does not exist in the database.");
+        }
+
     }
 
     @Override
-    public Rental updateRentalById(String id, Rental updatedRental) {
-        rentals.remove(id);
-        rentals.put(id, updatedRental);
-        return rentals.get(id);
+    public Rental updateRentalById(String id, Rental updatedRental) throws ObjectNotFoundException {
+        if (rentals.containsKey(id)) {
+            rentals.remove(id);
+            rentals.put(id, updatedRental);
+            return rentals.get(id);
+        } else {
+            throw new ObjectNotFoundException("The rental with the given ID does not exist in the database.");
+        }
     }
 
     @Override
-    public void deleteRentalById(String id) {
-        rentals.remove(id);
+    public void deleteRentalById(String id) throws ObjectNotFoundException {
+        if (rentals.containsKey(id)) {
+            rentals.remove(id);
+        } else {
+            throw new ObjectNotFoundException("The rental with the given ID does not exist in the database.");
+        }
     }
 }

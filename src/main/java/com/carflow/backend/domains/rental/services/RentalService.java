@@ -2,6 +2,7 @@ package com.carflow.backend.domains.rental.services;
 
 import com.carflow.backend.domains.rental.entities.Rental;
 import com.carflow.backend.domains.rental.interfaces.RentalStorage;
+import com.carflow.backend.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,15 +25,15 @@ public class RentalService {
         return storage.getAllRentals();
     }
 
-    public Rental getRentalById(String id) {
+    public Rental getRentalById(String id) throws ObjectNotFoundException{
         return storage.getRentalById(id);
     }
 
-    public Rental updateRentalById(String id, Rental updatedRental) {
+    public Rental updateRentalById(String id, Rental updatedRental) throws ObjectNotFoundException {
         return storage.updateRentalById(id, updatedRental);
     }
 
-    public void deleteRentalById(String id) {
+    public void deleteRentalById(String id) throws ObjectNotFoundException {
         storage.deleteRentalById(id);
     }
 
