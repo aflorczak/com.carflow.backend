@@ -1,7 +1,7 @@
-package com.carflow.backend.infrastructure.boundaries.in.cars.helpers;
+package com.carflow.backend.infrastructure.boundaries.in.api.forService.v_0_0_1.cars.helpers;
 
 import com.carflow.backend.domains.cars.entities.Car;
-import com.carflow.backend.infrastructure.boundaries.in.cars.entities.CarDto;
+import com.carflow.backend.infrastructure.boundaries.in.api.forService.v_0_0_1.cars.entities.CarDto;
 import org.springframework.stereotype.Service;
 
 @Service

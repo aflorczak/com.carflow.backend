@@ -1,7 +1,7 @@
-package com.carflow.backend.infrastructure.boundaries.in.order.helpers;
+package com.carflow.backend.infrastructure.boundaries.in.api.forService.v_0_0_1.order.helpers;
 
 import com.carflow.backend.domains.order.entities.Order;
-import com.carflow.backend.infrastructure.boundaries.in.order.entities.OrderDto;
+import com.carflow.backend.infrastructure.boundaries.in.api.forService.v_0_0_1.order.entities.OrderDto;
 import org.springframework.stereotype.Service;
 
 @Service

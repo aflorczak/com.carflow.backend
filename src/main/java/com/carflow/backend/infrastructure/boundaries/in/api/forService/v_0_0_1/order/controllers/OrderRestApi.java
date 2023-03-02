@@ -1,9 +1,9 @@
-package com.carflow.backend.infrastructure.boundaries.in.order.controllers;
+package com.carflow.backend.infrastructure.boundaries.in.api.forService.v_0_0_1.order.controllers;
 
 import com.carflow.backend.domains.order.entities.Order;
 import com.carflow.backend.domains.order.services.OrderService;
-import com.carflow.backend.infrastructure.boundaries.in.order.entities.OrderDto;
-import com.carflow.backend.infrastructure.boundaries.in.order.helpers.OrderConverter;
+import com.carflow.backend.infrastructure.boundaries.in.api.forService.v_0_0_1.order.entities.OrderDto;
+import com.carflow.backend.infrastructure.boundaries.in.api.forService.v_0_0_1.order.helpers.OrderConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,6 +11,7 @@ import java.util.*;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("/api/for-service/v-0.0.1")
 public class OrderRestApi {
 
     private OrderService orderService;

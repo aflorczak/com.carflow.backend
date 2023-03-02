@@ -1,9 +1,9 @@
-package com.carflow.backend.infrastructure.boundaries.in.cars.controllers;
+package com.carflow.backend.infrastructure.boundaries.in.api.forService.v_0_0_1.cars.controllers;
 
 import com.carflow.backend.domains.cars.entities.Car;
 import com.carflow.backend.domains.cars.services.CarService;
-import com.carflow.backend.infrastructure.boundaries.in.cars.entities.CarDto;
-import com.carflow.backend.infrastructure.boundaries.in.cars.helpers.CarConverter;
+import com.carflow.backend.infrastructure.boundaries.in.api.forService.v_0_0_1.cars.entities.CarDto;
+import com.carflow.backend.infrastructure.boundaries.in.api.forService.v_0_0_1.cars.helpers.CarConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,6 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/for-service/v-0.0.1")
 public class CarRestApi {
     private CarService carService;
     private CarConverter carConverter;

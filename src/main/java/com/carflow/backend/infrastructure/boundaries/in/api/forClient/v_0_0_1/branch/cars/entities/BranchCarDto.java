@@ -1,32 +1,21 @@
-package com.carflow.backend.infrastructure.boundaries.in.cars.entities;
+package com.carflow.backend.infrastructure.boundaries.in.api.forClient.v_0_0_1.branch.cars.entities;
 
-public class CarDto {
-    // System properties
+public class BranchCarDto {
     private Integer id;
-
-    // Technical properties
     private String brand;
     private String model;
-    private Integer mileage;
     private String fuel;
     private Integer numberOfSeats;
     private Integer numberOfDoors;
     private String bodyType;
     private String segment;
-
-    // Legal properties
     private String VIN;
     private String registrationNumber;
-    private String technicalExaminationDate;
-    private String endDateOfInsurance;
-    private String damagedDescription;
-    private String damagedPhotosUrls;
 
-    public CarDto(Integer id, String brand, String model, Integer mileage, String fuel, Integer numberOfSeats, Integer numberOfDoors, String bodyType, String segment, String VIN, String registrationNumber, String technicalExaminationDate, String endDateOfInsurance, String damagedDescription, String damagedPhotosUrls) {
+    public BranchCarDto(Integer id, String brand, String model, String fuel, Integer numberOfSeats, Integer numberOfDoors, String bodyType, String segment, String VIN, String registrationNumber) {
         this.id = id;
         this.brand = brand;
         this.model = model;
-        this.mileage = mileage;
         this.fuel = fuel;
         this.numberOfSeats = numberOfSeats;
         this.numberOfDoors = numberOfDoors;
@@ -34,10 +23,6 @@ public class CarDto {
         this.segment = segment;
         this.VIN = VIN;
         this.registrationNumber = registrationNumber;
-        this.technicalExaminationDate = technicalExaminationDate;
-        this.endDateOfInsurance = endDateOfInsurance;
-        this.damagedDescription = damagedDescription;
-        this.damagedPhotosUrls = damagedPhotosUrls;
     }
 
     public Integer getId() {
@@ -62,14 +47,6 @@ public class CarDto {
 
     public void setModel(String model) {
         this.model = model;
-    }
-
-    public Integer getMileage() {
-        return mileage;
-    }
-
-    public void setMileage(Integer mileage) {
-        this.mileage = mileage;
     }
 
     public String getFuel() {
@@ -126,37 +103,5 @@ public class CarDto {
 
     public void setRegistrationNumber(String registrationNumber) {
         this.registrationNumber = registrationNumber;
-    }
-
-    public String getTechnicalExaminationDate() {
-        return technicalExaminationDate;
-    }
-
-    public void setTechnicalExaminationDate(String technicalExaminationDate) {
-        this.technicalExaminationDate = technicalExaminationDate;
-    }
-
-    public String getEndDateOfInsurance() {
-        return endDateOfInsurance;
-    }
-
-    public void setEndDateOfInsurance(String endDateOfInsurance) {
-        this.endDateOfInsurance = endDateOfInsurance;
-    }
-
-    public String getDamagedDescription() {
-        return damagedDescription;
-    }
-
-    public void setDamagedDescription(String damagedDescription) {
-        this.damagedDescription = damagedDescription;
-    }
-
-    public String getDamagedPhotosUrls() {
-        return damagedPhotosUrls;
-    }
-
-    public void setDamagedPhotosUrls(String damagedPhotosUrls) {
-        this.damagedPhotosUrls = damagedPhotosUrls;
     }
 }
