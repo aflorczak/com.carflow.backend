@@ -2,6 +2,7 @@ package com.carflow.backend.infrastructure.boundaries.in.api.forService.v_0_0_1.
 
 import com.carflow.backend.domains.order.entities.Order;
 import com.carflow.backend.domains.order.services.OrderService;
+import com.carflow.backend.exceptions.ObjectNotFoundException;
 import com.carflow.backend.infrastructure.boundaries.in.api.forService.v_0_0_1.order.entities.OrderDto;
 import com.carflow.backend.infrastructure.boundaries.in.api.forService.v_0_0_1.order.helpers.OrderConverter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,29 +41,19 @@ public class OrderRestApi {
     }
 
     @GetMapping("/orders/{id}")
-    public OrderDto getOrderById(@PathVariable String id) {
+    public OrderDto getOrderById(@PathVariable String id)  throws ObjectNotFoundException {
         Order order = orderService.getOrderById(id);
-
-        if (!(order==null)) {
-            return orderConverter.convertOrderToOrderDto(order);
-        } else {
-            return null;
-        }
+        return orderConverter.convertOrderToOrderDto(order);
     }
 
     @PutMapping("/orders/{id}")
-    public OrderDto updateOrderById(@PathVariable String id, @RequestBody Order order) {
+    public OrderDto updateOrderById(@PathVariable String id, @RequestBody Order order) throws ObjectNotFoundException{
         Order orderResponse = orderService.updateOrderById(id, order);
-        if (!(orderResponse == null)) {
-            return orderConverter.convertOrderToOrderDto(orderResponse);
-        } else  {
-            // tutaj 404 zrobić :)
-            return null;
-        }
+        return orderConverter.convertOrderToOrderDto(orderResponse);
     }
 
     @DeleteMapping("/orders/{id}")
-    public void deleteOrderById(@PathVariable String id) {
+    public void deleteOrderById(@PathVariable String id) throws ObjectNotFoundException {
         orderService.deleteOrderById(id);
     }
 }

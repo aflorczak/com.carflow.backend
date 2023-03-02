@@ -2,6 +2,7 @@ package com.carflow.backend.infrastructure.boundaries.out.order;
 
 import com.carflow.backend.domains.order.entities.Order;
 import com.carflow.backend.domains.order.interfaces.OrderStorage;
+import com.carflow.backend.exceptions.ObjectNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -66,18 +67,30 @@ public class OrderStorageMemory implements OrderStorage {
     }
 
     @Override
-    public Order getOrderById(String id) {
-        return orders.get(id);
+    public Order getOrderById(String id) throws ObjectNotFoundException {
+        if (orders.containsKey(id)) {
+            return orders.get(id);
+        } else {
+            throw new ObjectNotFoundException("The order with the given ID does not exist in the database.");
+        }
     }
 
     @Override
-    public Order updateOrderById(String id, Order order) {
-        orders.remove(id);
-        return orders.put(id, order);
+    public Order updateOrderById(String id, Order order) throws ObjectNotFoundException {
+        if (orders.containsKey(id)) {
+            orders.remove(id);
+            return orders.put(id, order);
+        } else {
+            throw new ObjectNotFoundException("The order with the given ID does not exist in the database.");
+        }
     }
 
     @Override
-    public void deleteOrderById(String id) {
-        orders.remove(id);
+    public void deleteOrderById(String id) throws ObjectNotFoundException {
+        if (orders.containsKey(id)) {
+            orders.remove(id);
+        } else {
+            throw new ObjectNotFoundException("The order with the given ID does not exist in the database.");
+        }
     }
 }

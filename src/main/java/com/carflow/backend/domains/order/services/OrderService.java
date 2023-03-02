@@ -2,6 +2,7 @@ package com.carflow.backend.domains.order.services;
 
 import com.carflow.backend.domains.order.entities.Order;
 import com.carflow.backend.domains.order.interfaces.OrderStorage;
+import com.carflow.backend.exceptions.ObjectNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,15 +24,15 @@ public class OrderService {
     }
     public List<Order> getOrders(List<String> statuses) { return storage.getOrders(statuses); }
 
-    public Order getOrderById(String id) {
+    public Order getOrderById(String id) throws ObjectNotFoundException {
         return storage.getOrderById(id);
     }
 
-    public Order updateOrderById(String id, Order order) {
+    public Order updateOrderById(String id, Order order) throws ObjectNotFoundException {
         return storage.updateOrderById(id, order);
     }
 
-    public void deleteOrderById(String id) {
+    public void deleteOrderById(String id) throws ObjectNotFoundException {
         storage.deleteOrderById(id);
     }
 }
