@@ -29,6 +29,10 @@ public class CarService {
         return storage.getCarsWithParams(segments, bodyTypes);
     }
 
+    public List<Car> getCarsByBranchSlug(String branchSlug) {
+        return storage.getCarsByBranchSlug(branchSlug);
+    }
+
     public Car getCarById(String id) throws ObjectNotFoundException{
         return storage.getCarById(id);
     }

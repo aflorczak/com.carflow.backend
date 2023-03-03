@@ -5,6 +5,7 @@ public class Car {
     // System properties
     private Integer id;
     private Boolean archive;
+    private String branchSlug;
 
     // Technical properties
     private String brand;
@@ -25,9 +26,10 @@ public class Car {
     private String damagedDescription;
     private String damagedPhotosUrls;
 
-    public Car(Integer id, Boolean archive, String brand, String model, Integer mileage, String fuel, Integer numberOfSeats, Integer numberOfDoors, String bodyType, String segment, String VIN, String registrationNumber, String technicalExaminationDate, String endDateOfInsurance, String damagedDescription, String damagedPhotosUrls) {
+    public Car(Integer id, Boolean archive, String branchSlug, String brand, String model, Integer mileage, String fuel, Integer numberOfSeats, Integer numberOfDoors, String bodyType, String segment, String VIN, String registrationNumber, String technicalExaminationDate, String endDateOfInsurance, String damagedDescription, String damagedPhotosUrls) {
         this.id = id;
         this.archive = archive;
+        this.branchSlug = branchSlug;
         this.brand = brand;
         this.model = model;
         this.mileage = mileage;
@@ -58,6 +60,14 @@ public class Car {
 
     public void setArchive(Boolean archive) {
         this.archive = archive;
+    }
+
+    public String getBranchSlug() {
+        return branchSlug;
+    }
+
+    public void setBranchSlug(String branchSlug) {
+        this.branchSlug = branchSlug;
     }
 
     public String getBrand() {

@@ -10,6 +10,7 @@ public class CarConverter {
         return new Car(
                 carDto.getId(),
                 carDto.getArchive(),
+                carDto.getBranchSlug(),
                 carDto.getBrand(),
                 carDto.getModel(),
                 carDto.getMileage(),
@@ -31,6 +32,7 @@ public class CarConverter {
         return new CarDto(
                 car.getId(),
                 car.getArchive(),
+                car.getBranchSlug(),
                 car.getBrand(),
                 car.getModel(),
                 car.getMileage(),

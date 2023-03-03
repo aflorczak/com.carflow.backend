@@ -1,6 +1,6 @@
 package com.carflow.backend.infrastructure.boundaries.in.api.forClient.v_0_0_1.branch.cars.entities;
 
-public class BranchCarDto {
+public class CarDto {
     private Integer id;
     private Boolean archive;
     private String brand;
@@ -13,7 +13,7 @@ public class BranchCarDto {
     private String VIN;
     private String registrationNumber;
 
-    public BranchCarDto(Integer id,Boolean archive, String brand, String model, String fuel, Integer numberOfSeats, Integer numberOfDoors, String bodyType, String segment, String VIN, String registrationNumber) {
+    public CarDto(Integer id, Boolean archive, String brand, String model, String fuel, Integer numberOfSeats, Integer numberOfDoors, String bodyType, String segment, String VIN, String registrationNumber) {
         this.id = id;
         this.archive = archive;
         this.brand = brand;
