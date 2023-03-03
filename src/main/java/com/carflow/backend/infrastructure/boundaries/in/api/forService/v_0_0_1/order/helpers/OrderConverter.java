@@ -9,6 +9,7 @@ public class OrderConverter {
     public Order convertOrderDtoToOrder(OrderDto orderDto) {
         return new Order(
                 orderDto.getId(),
+                orderDto.getArchive(),
                 orderDto.getStatus(),
                 orderDto.getPrincipal(),
                 orderDto.getCaseNumber(),
@@ -26,6 +27,7 @@ public class OrderConverter {
     public OrderDto convertOrderToOrderDto(Order order) {
         return new OrderDto(
                 order.getId(),
+                order.getArchive(),
                 order.getStatus(),
                 order.getPrincipal(),
                 order.getCaseNumber(),

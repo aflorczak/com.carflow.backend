@@ -3,6 +3,7 @@ package com.carflow.backend.infrastructure.boundaries.in.api.forService.v_0_0_1.
 public class CarDto {
     // System properties
     private Integer id;
+    private Boolean archive;
 
     // Technical properties
     private String brand;
@@ -22,8 +23,9 @@ public class CarDto {
     private String damagedDescription;
     private String damagedPhotosUrls;
 
-    public CarDto(Integer id, String brand, String model, Integer mileage, String fuel, Integer numberOfSeats, Integer numberOfDoors, String bodyType, String segment, String VIN, String registrationNumber, String technicalExaminationDate, String endDateOfInsurance, String damagedDescription, String damagedPhotosUrls) {
+    public CarDto(Integer id, Boolean archive, String brand, String model, Integer mileage, String fuel, Integer numberOfSeats, Integer numberOfDoors, String bodyType, String segment, String VIN, String registrationNumber, String technicalExaminationDate, String endDateOfInsurance, String damagedDescription, String damagedPhotosUrls) {
         this.id = id;
+        this.archive = archive;
         this.brand = brand;
         this.model = model;
         this.mileage = mileage;
@@ -46,6 +48,14 @@ public class CarDto {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public boolean getArchive() {
+        return archive;
+    }
+
+    public void setArchive(Boolean archive) {
+        this.archive = archive;
     }
 
     public String getBrand() {

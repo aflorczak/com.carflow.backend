@@ -6,6 +6,7 @@ import java.util.List;
 
 public class Rental {
     private Integer id;
+    private Boolean archive;
     private String ordersId; // all id orders assigned to this rental
     private Integer carId; // car assigned to this rental
     private String deliveryAddress;
@@ -22,8 +23,9 @@ public class Rental {
     private String damagedDescription; // description of damage, save this info in car when client return this car
     private String damagedPhotosUrls; // photos of damage, save this info in car when client return this car
 
-    public Rental(Integer id, String ordersId, Integer carId, String deliveryAddress, String deliveryTime, String scanOfTheContractUrl, String scansOfTheRegulationsUrls, String scanOfTheDeliveryProtocolUrl, String deliveryPhotosUrls, String returnAddress, String returnTime, String returnPhotosUrls, String scanOfTheReturnProtocolUrl, boolean damagedVehicle, String damagedDescription, String damagedPhotosUrls) {
+    public Rental(Integer id, Boolean archive, String ordersId, Integer carId, String deliveryAddress, String deliveryTime, String scanOfTheContractUrl, String scansOfTheRegulationsUrls, String scanOfTheDeliveryProtocolUrl, String deliveryPhotosUrls, String returnAddress, String returnTime, String returnPhotosUrls, String scanOfTheReturnProtocolUrl, boolean damagedVehicle, String damagedDescription, String damagedPhotosUrls) {
         this.id = id;
+        this.archive = archive;
         this.ordersId = ordersId;
         this.carId = carId;
         this.deliveryAddress = deliveryAddress;
@@ -47,6 +49,14 @@ public class Rental {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Boolean getArchive() {
+        return archive;
+    }
+
+    public void setArchive(Boolean archive) {
+        this.archive = archive;
     }
 
     public String getOrdersId() {

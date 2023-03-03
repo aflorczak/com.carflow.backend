@@ -9,6 +9,7 @@ public class RentalConverter {
     public Rental convertRentalDtoToRental(RentalDto rentalDto) {
         return new Rental(
                 rentalDto.getId(),
+                rentalDto.getArchive(),
                 rentalDto.getOrdersId(),
                 rentalDto.getCarId(),
                 rentalDto.getDeliveryAddress(),
@@ -30,6 +31,7 @@ public class RentalConverter {
     public RentalDto convertRentalToRentalDto(Rental rental) {
         return new RentalDto(
                 rental.getId(),
+                rental.getArchive(),
                 rental.getOrdersId(),
                 rental.getCarId(),
                 rental.getDeliveryAddress(),

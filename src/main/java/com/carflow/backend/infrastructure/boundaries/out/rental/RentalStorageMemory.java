@@ -16,6 +16,7 @@ public class RentalStorageMemory implements RentalStorage {
     public RentalStorageMemory() {
         createnewRental(new Rental(
                 nextId + 1,
+                false,
                 "10",
                 215,
                 "ul. Kwidzyńska 4, Wrocław",
@@ -39,6 +40,7 @@ public class RentalStorageMemory implements RentalStorage {
         String id = (++nextId).toString();
         rentals.put(id, new Rental(
                 nextId,
+                rental.getArchive(),
                 rental.getOrdersId(),
                 rental.getCarId(),
                 rental.getDeliveryAddress(),

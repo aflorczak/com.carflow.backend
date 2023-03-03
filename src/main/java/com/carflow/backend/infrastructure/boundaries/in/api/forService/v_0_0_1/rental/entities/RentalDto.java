@@ -2,6 +2,7 @@ package com.carflow.backend.infrastructure.boundaries.in.api.forService.v_0_0_1.
 
 public class RentalDto {
     private Integer id;
+    private Boolean archive;
     private String ordersId;
     private Integer carId;
     private String deliveryAddress;
@@ -18,8 +19,9 @@ public class RentalDto {
     private String damagedDescription;
     private String damagedPhotosUrls;
 
-    public RentalDto(Integer id, String ordersId, Integer carId, String deliveryAddress, String deliveryTime, String scanOfTheContractUrl, String scansOfTheRegulationsUrls, String scanOfTheDeliveryProtocolUrl, String deliveryPhotosUrls, String returnAddress, String returnTime, String returnPhotosUrls, String scanOfTheReturnProtocolUrl, boolean damagedVehicle, String damagedDescription, String damagedPhotosUrls) {
+    public RentalDto(Integer id, Boolean archive, String ordersId, Integer carId, String deliveryAddress, String deliveryTime, String scanOfTheContractUrl, String scansOfTheRegulationsUrls, String scanOfTheDeliveryProtocolUrl, String deliveryPhotosUrls, String returnAddress, String returnTime, String returnPhotosUrls, String scanOfTheReturnProtocolUrl, boolean damagedVehicle, String damagedDescription, String damagedPhotosUrls) {
         this.id = id;
+        this.archive = archive;
         this.ordersId = ordersId;
         this.carId = carId;
         this.deliveryAddress = deliveryAddress;
@@ -43,6 +45,14 @@ public class RentalDto {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Boolean getArchive() {
+        return archive;
+    }
+
+    public void setArchive(Boolean archive) {
+        this.archive = archive;
     }
 
     public String getOrdersId() {

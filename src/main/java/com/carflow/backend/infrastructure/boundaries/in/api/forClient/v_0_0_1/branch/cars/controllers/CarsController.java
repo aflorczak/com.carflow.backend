@@ -16,13 +16,13 @@ public class CarsController {
     public List<BranchCarDto> getBranchCars(@PathVariable String branchSlug) {
         List<BranchCarDto> cars = new ArrayList<>();
         cars.add(
-                new BranchCarDto(1, "Opel", "Astra", "Pb95", 5, 5, "Combi", "C", "numer vin", "DLK 5F147")
+                new BranchCarDto(1, false, "Opel", "Astra", "Pb95", 5, 5, "Combi", "C", "numer vin", "DLK 5F147")
         );
         return cars;
     }
 
     @GetMapping("/cars/{carId}")
     public BranchCarDto getBranchCarById(@PathVariable String branchSlug, @PathVariable String carId) {
-        return new BranchCarDto(1, "Opel", "Astra", "Pb95", 5, 5, "Combi", "C", "numer vin", "DLK 5F147");
+        return new BranchCarDto(1, false, "Opel", "Astra", "Pb95", 5, 5, "Combi", "C", "numer vin", "DLK 5F147");
     }
 }
