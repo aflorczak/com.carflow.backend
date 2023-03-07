@@ -1,4 +1,4 @@
-package com.carflow.backend.infrastructure.boundaries.in.api.forService.v_0_0_1.cars.entities;
+package com.carflow.backend.infrastructure.boundaries.in.api.v_0_0_1.cars.entities;
 
 public class CarDto {
     // System properties

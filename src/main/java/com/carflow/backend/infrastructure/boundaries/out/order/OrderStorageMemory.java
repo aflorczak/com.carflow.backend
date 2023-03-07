@@ -17,6 +17,7 @@ public class OrderStorageMemory implements OrderStorage {
         createNewOrder(
                 new Order(
                         nextId + 1,
+                        "parametry",
                         false,
                         "ACCEPTED",
                         "PZU",
@@ -40,6 +41,7 @@ public class OrderStorageMemory implements OrderStorage {
                 id,
                 new Order(
                         nextId,
+                        order.getParameters(),
                         order.getArchive(),
                         order.getStatus(),
                         order.getPrincipal(),

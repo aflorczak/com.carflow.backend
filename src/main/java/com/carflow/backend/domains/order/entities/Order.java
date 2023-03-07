@@ -4,6 +4,7 @@ import java.util.List;
 
 public class Order {
     private Integer id;
+    private String parameters;
     private Boolean archive;
     private String status;
     private String principal;
@@ -17,8 +18,9 @@ public class Order {
     private String reasonForCancelingTheOrder;
     private String segment;
 
-    public Order(Integer id, Boolean archive, String status, String principal, String caseNumber, String deliveryAddress, String deliveryTime, String returnAddress, String returnTime, String drivers, String comments, String reasonForCancelingTheOrder, String segment) {
+    public Order(Integer id, String parameters, Boolean archive, String status, String principal, String caseNumber, String deliveryAddress, String deliveryTime, String returnAddress, String returnTime, String drivers, String comments, String reasonForCancelingTheOrder, String segment) {
         this.id = id;
+        this.parameters = parameters;
         this.archive = archive;
         this.status = status;
         this.principal = principal;
@@ -39,6 +41,14 @@ public class Order {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getParameters() {
+        return parameters;
+    }
+
+    public void setParameters(String parameters) {
+        this.parameters = parameters;
     }
 
     public Boolean getArchive() {

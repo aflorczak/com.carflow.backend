@@ -1,7 +1,7 @@
-package com.carflow.backend.infrastructure.boundaries.in.api.forService.v_0_0_1.order.helpers;
+package com.carflow.backend.infrastructure.boundaries.in.api.v_0_0_1.order.helpers;
 
 import com.carflow.backend.domains.order.entities.Order;
-import com.carflow.backend.infrastructure.boundaries.in.api.forService.v_0_0_1.order.entities.OrderDto;
+import com.carflow.backend.infrastructure.boundaries.in.api.v_0_0_1.order.entities.OrderDto;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -9,6 +9,7 @@ public class OrderConverter {
     public Order convertOrderDtoToOrder(OrderDto orderDto) {
         return new Order(
                 orderDto.getId(),
+                orderDto.getParameters(),
                 orderDto.getArchive(),
                 orderDto.getStatus(),
                 orderDto.getPrincipal(),
@@ -27,6 +28,7 @@ public class OrderConverter {
     public OrderDto convertOrderToOrderDto(Order order) {
         return new OrderDto(
                 order.getId(),
+                order.getParameters(),
                 order.getArchive(),
                 order.getStatus(),
                 order.getPrincipal(),

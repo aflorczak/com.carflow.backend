@@ -1,10 +1,10 @@
-package com.carflow.backend.infrastructure.boundaries.in.api.forService.v_0_0_1.cars.controllers;
+package com.carflow.backend.infrastructure.boundaries.in.api.v_0_0_1.cars.controllers;
 
 import com.carflow.backend.domains.cars.entities.Car;
 import com.carflow.backend.domains.cars.services.CarService;
 import com.carflow.backend.exceptions.ObjectNotFoundException;
-import com.carflow.backend.infrastructure.boundaries.in.api.forService.v_0_0_1.cars.entities.CarDto;
-import com.carflow.backend.infrastructure.boundaries.in.api.forService.v_0_0_1.cars.helpers.CarConverter;
+import com.carflow.backend.infrastructure.boundaries.in.api.v_0_0_1.cars.entities.CarDto;
+import com.carflow.backend.infrastructure.boundaries.in.api.v_0_0_1.cars.helpers.CarConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,18 +12,17 @@ import java.util.Arrays;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/for-service/v-0.0.1")
+@RequestMapping("/api/v-0.0.1")
 public class CarRestApi {
     private CarService carService;
     private CarConverter carConverter;
 
-    @Autowired // required
+    @Autowired
     public CarRestApi(CarService carService, CarConverter carConverter) {
         this.carService = carService;
         this.carConverter = carConverter;
     }
 
-    // tutaj sprawdzać poprawność przyjmowanych danych i ewentualnie rzucać błędem
     @PostMapping("/cars")
     public Car createNewCar(@RequestBody CarDto carRequest) {
         Car car = carService.createNewCar(carConverter.convertCarDtoToCar(carRequest));

@@ -1,8 +1,9 @@
-package com.carflow.backend.infrastructure.boundaries.in.api.forService.v_0_0_1.order.entities;
+package com.carflow.backend.infrastructure.boundaries.in.api.v_0_0_1.order.entities;
 
 
 public class OrderDto {
     private Integer id;
+    private String parameters;
     private Boolean archive;
     private String status;
     private String principal;
@@ -16,8 +17,9 @@ public class OrderDto {
     private String reasonForCancelingTheOrder;
     private String segment;
 
-    public OrderDto(Integer id, Boolean archive, String status, String principal, String caseNumber, String deliveryAddress, String deliveryTime, String returnAddress, String returnTime, String drivers, String comments, String reasonForCancelingTheOrder, String segment) {
+    public OrderDto(Integer id, String parameters, Boolean archive, String status, String principal, String caseNumber, String deliveryAddress, String deliveryTime, String returnAddress, String returnTime, String drivers, String comments, String reasonForCancelingTheOrder, String segment) {
         this.id = id;
+        this.parameters = parameters;
         this.archive = archive;
         this.status = status;
         this.principal = principal;
@@ -38,6 +40,14 @@ public class OrderDto {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getParameters() {
+        return parameters;
+    }
+
+    public void setParameters(String parameters) {
+        this.parameters = parameters;
     }
 
     public Boolean getArchive() {
