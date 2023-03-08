@@ -9,38 +9,51 @@ public class OrderConverter {
     public Order convertOrderDtoToOrder(OrderDto orderDto) {
         return new Order(
                 orderDto.getId(),
-                orderDto.getParameters(),
-                orderDto.getArchive(),
                 orderDto.getStatus(),
+                orderDto.getClientsData(),
                 orderDto.getPrincipal(),
-                orderDto.getCaseNumber(),
+                orderDto.getInternalCaseNumber(),
+                orderDto.getExternalCaseNumber(),
+                orderDto.getSegment(),
                 orderDto.getDeliveryAddress(),
+                orderDto.getDeliveryDate(),
                 orderDto.getDeliveryTime(),
+                orderDto.getDeliveryComments(),
+                orderDto.getDeliveryBranch(),
                 orderDto.getReturnAddress(),
+                orderDto.getReturnDate(),
                 orderDto.getReturnTime(),
-                orderDto.getDrivers(),
-                orderDto.getComments(),
-                orderDto.getReasonForCancelingTheOrder(),
-                orderDto.getSegment()
+                orderDto.getReturnComments(),
+                orderDto.getReturnBranch(),
+                orderDto.getArchive(),
+                orderDto.getReasonForCancelingTheOrder()
         );
     }
 
     public OrderDto convertOrderToOrderDto(Order order) {
         return new OrderDto(
                 order.getId(),
-                order.getParameters(),
-                order.getArchive(),
                 order.getStatus(),
+                order.getClientsData(),
                 order.getPrincipal(),
-                order.getCaseNumber(),
+                order.getInternalCaseNumber(),
+                order.getExternalCaseNumber(),
+                order.getSegment(),
                 order.getDeliveryAddress(),
+                order.getDeliveryDate(),
                 order.getDeliveryTime(),
+                order.getDeliveryComments(),
+                order.getDeliveryBranch(),
                 order.getReturnAddress(),
+                order.getReturnDate(),
                 order.getReturnTime(),
-                order.getDrivers(),
-                order.getComments(),
-                order.getReasonForCancelingTheOrder(),
-                order.getSegment()
+                order.getReturnComments(),
+                order.getReturnBranch(),
+                order.getArchive(),
+                order.getReasonForCancelingTheOrder()
         );
     }
+
+
+
 }

@@ -26,10 +26,8 @@ public class OrderRestApi {
     @PostMapping("/orders")
     public OrderDto createNewOrder(@RequestBody OrderDto orderRequest) {
         Order order = orderService.createNewOrder(orderConverter.convertOrderDtoToOrder(orderRequest));
-
-        OrderDto orderResponse = orderConverter.convertOrderToOrderDto(order);
-
-        return orderResponse;
+        OrderDto orderDto = orderConverter.convertOrderToOrderDto(order);
+        return orderDto;
     }
 
     @GetMapping("/orders")
