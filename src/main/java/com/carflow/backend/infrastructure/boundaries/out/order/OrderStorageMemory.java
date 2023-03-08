@@ -27,12 +27,12 @@ public class OrderStorageMemory implements OrderStorage {
                         "D",
                         "ul. Wymyślona 14, 54-325 Niblandia, Polska",
                         "2023.03.07",
-                        "18:00",
+                        "18:15",
                         "Komentarz do wydania",
                         "wroclaw-lotnisko",
                         "ul. Wymyślona 14, 54-325 Niblandia, Polska",
                         "2023.03.17",
-                        "18:00",
+                        "18:25",
                         "Komentarz do zwrotu",
                         "wroclaw-lotnisko",
                         false,
@@ -106,6 +106,31 @@ public class OrderStorageMemory implements OrderStorage {
             orders.remove(id);
             orders.put(id, order);
             return orders.get(id);
+        } else {
+            throw new ObjectNotFoundException("The order with the given ID does not exist in the database.");
+        }
+    }
+
+    @Override
+    public void moveToArchiveById(String id) throws ObjectNotFoundException {
+        if (orders.containsKey(id)) {
+            Order oldOrder = orders.get(id);
+            Order newOrder = orders.get(id);
+            newOrder.setArchive(true);
+            orders.replace(id,oldOrder, newOrder);
+        } else {
+            throw new ObjectNotFoundException("The order with the given ID does not exist in the database.");
+        }
+    }
+
+    @Override
+    public void moveToCancelledById(String id, String message) throws ObjectNotFoundException {
+        if (orders.containsKey(id)) {
+            Order oldOrder = orders.get(id);
+            Order newOrder = orders.get(id);
+            newOrder.setStatus("CANCELLED");
+            newOrder.setReasonForCancelingTheOrder(message);
+            orders.replace(id,oldOrder, newOrder);
         } else {
             throw new ObjectNotFoundException("The order with the given ID does not exist in the database.");
         }
