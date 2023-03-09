@@ -26,10 +26,8 @@ public class OrderRestApi {
     @PostMapping("/orders")
     public OrderDto createNewOrder(@RequestBody OrderDto orderRequest) {
         Order order = orderService.createNewOrder(orderConverter.convertOrderDtoToOrder(orderRequest));
-
-        OrderDto orderResponse = orderConverter.convertOrderToOrderDto(order);
-
-        return orderResponse;
+        OrderDto orderDto = orderConverter.convertOrderToOrderDto(order);
+        return orderDto;
     }
 
     @GetMapping("/orders")
@@ -50,6 +48,18 @@ public class OrderRestApi {
     public OrderDto updateOrderById(@PathVariable String id, @RequestBody Order order) throws ObjectNotFoundException{
         Order orderResponse = orderService.updateOrderById(id, order);
         return orderConverter.convertOrderToOrderDto(orderResponse);
+    }
+
+    @PatchMapping("/orders/{id}/archive")
+    public void moveToArchiveById(@PathVariable String id) throws ObjectNotFoundException {
+        orderService.moveToArchiveById(id);
+    }
+
+    @PatchMapping("/orders/{id}/cancelled")
+    public void moveToCancelledById(@PathVariable String id, @RequestBody String cancelledMessage) throws ObjectNotFoundException {
+        String[] splitMessage = cancelledMessage.split(":");
+        String message = splitMessage[1].replace("}", "").replace("\"", "");
+        orderService.moveToCancelledById(id, message);
     }
 
     @DeleteMapping("/orders/{id}")

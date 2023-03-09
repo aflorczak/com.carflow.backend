@@ -5,6 +5,8 @@ import com.carflow.backend.domains.order.interfaces.OrderStorage;
 import com.carflow.backend.exceptions.ObjectNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
 
@@ -16,22 +18,36 @@ public class OrderStorageMemory implements OrderStorage {
     public OrderStorageMemory() {
         createNewOrder(
                 new Order(
-                        nextId + 1,
-                        "parametry",
-                        false,
-                        "ACCEPTED",
-                        "PZU",
-                        "ZA230223000047",
-                        "ul.Narutowicza 4, 50-522 Nibylandia",
-                        "08:00",
-                        "ul.Narutowicza 4, 50-522 Nibylandia",
-                        "08:00",
-                        "Maciej Bogacz, Justyna Bogacz",
-                        "Tutaj wpisujemy wszystkie komentarze do sprawy.",
                         null,
-                        "C"
+                        null,
+                        "Stefan Wymyślony",
+                        "PZU",
+                        null,
+                        "ZA230307000024",
+                        "D",
+                        "ul. Wymyślona 14, 54-325 Niblandia, Polska",
+                        "2023.03.07",
+                        "18:15",
+                        "Komentarz do wydania",
+                        "wroclaw-lotnisko",
+                        "ul. Wymyślona 14, 54-325 Niblandia, Polska",
+                        "2023.03.17",
+                        "18:25",
+                        "Komentarz do zwrotu",
+                        "wroclaw-lotnisko",
+                        false,
+                        null
                 )
         );
+    }
+
+
+    private Integer counter = 0;
+    private String getInternalCaseNumber() {
+        counter++;
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyMMdd");
+        LocalDateTime time = LocalDateTime.now();
+        return "CF" + dtf.format(time) +  counter;
     }
 
     @Override
@@ -41,19 +57,24 @@ public class OrderStorageMemory implements OrderStorage {
                 id,
                 new Order(
                         nextId,
-                        order.getParameters(),
-                        order.getArchive(),
-                        order.getStatus(),
+                        "ACCEPTED",
+                        order.getClientsData(),
                         order.getPrincipal(),
-                        order.getCaseNumber(),
+                        getInternalCaseNumber(),
+                        order.getExternalCaseNumber(),
+                        order.getSegment(),
                         order.getDeliveryAddress(),
+                        order.getDeliveryDate(),
                         order.getDeliveryTime(),
+                        order.getDeliveryComments(),
+                        order.getDeliveryBranch(),
                         order.getReturnAddress(),
+                        order.getReturnDate(),
                         order.getReturnTime(),
-                        order.getDrivers(),
-                        order.getComments(),
-                        order.getReasonForCancelingTheOrder(),
-                        order.getSegment()
+                        order.getReturnComments(),
+                        order.getReturnBranch(),
+                        false,
+                        null
                 )
         );
         Order orderResponse = orders.get(id);
@@ -83,7 +104,33 @@ public class OrderStorageMemory implements OrderStorage {
     public Order updateOrderById(String id, Order order) throws ObjectNotFoundException {
         if (orders.containsKey(id)) {
             orders.remove(id);
-            return orders.put(id, order);
+            orders.put(id, order);
+            return orders.get(id);
+        } else {
+            throw new ObjectNotFoundException("The order with the given ID does not exist in the database.");
+        }
+    }
+
+    @Override
+    public void moveToArchiveById(String id) throws ObjectNotFoundException {
+        if (orders.containsKey(id)) {
+            Order oldOrder = orders.get(id);
+            Order newOrder = orders.get(id);
+            newOrder.setArchive(true);
+            orders.replace(id,oldOrder, newOrder);
+        } else {
+            throw new ObjectNotFoundException("The order with the given ID does not exist in the database.");
+        }
+    }
+
+    @Override
+    public void moveToCancelledById(String id, String message) throws ObjectNotFoundException {
+        if (orders.containsKey(id)) {
+            Order oldOrder = orders.get(id);
+            Order newOrder = orders.get(id);
+            newOrder.setStatus("CANCELLED");
+            newOrder.setReasonForCancelingTheOrder(message);
+            orders.replace(id,oldOrder, newOrder);
         } else {
             throw new ObjectNotFoundException("The order with the given ID does not exist in the database.");
         }
