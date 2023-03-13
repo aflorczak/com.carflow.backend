@@ -1,6 +1,6 @@
 package com.carflow.backend.infrastructure.boundaries.in.api.v_0_0_1.rental.controllers;
 
-import com.carflow.backend.domains.rental.entities.Rental;
+import com.carflow.backend.domains.rental.models.Rental;
 import com.carflow.backend.domains.rental.services.RentalService;
 import com.carflow.backend.exceptions.ObjectNotFoundException;
 import com.carflow.backend.infrastructure.boundaries.in.api.v_0_0_1.rental.helpers.RentalConverter;

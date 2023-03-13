@@ -1,8 +1,4 @@
-package com.carflow.backend.domains.rental.entities;
-
-import com.carflow.backend.domains.order.entities.Order;
-
-import java.util.List;
+package com.carflow.backend.domains.rental.models;
 
 public class Rental {
     private Integer id;

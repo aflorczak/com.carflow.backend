@@ -1,4 +1,4 @@
-package com.carflow.backend.domains.cars.entities;
+package com.carflow.backend.domains.cars.models;
 
 public class Car {
 

@@ -1,6 +1,6 @@
 package com.carflow.backend.domains.order.services;
 
-import com.carflow.backend.domains.order.entities.Order;
+import com.carflow.backend.domains.order.models.Order;
 import com.carflow.backend.domains.order.interfaces.OrderStorage;
 import com.carflow.backend.exceptions.ObjectNotFoundException;
 import org.springframework.stereotype.Service;

@@ -1,8 +1,9 @@
-package com.carflow.backend.infrastructure.boundaries.out.order;
+package com.carflow.backend.infrastructure.boundaries.out.order.implementations;
 
-import com.carflow.backend.domains.order.entities.Order;
+import com.carflow.backend.domains.order.models.Order;
 import com.carflow.backend.domains.order.interfaces.OrderStorage;
 import com.carflow.backend.exceptions.ObjectNotFoundException;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -11,6 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 
 @Service
+@Profile("mememoryStorage")
 public class OrderStorageMemory implements OrderStorage {
     private HashMap<String, Order> orders = new HashMap<String, Order>();
     private Integer nextId = 0;

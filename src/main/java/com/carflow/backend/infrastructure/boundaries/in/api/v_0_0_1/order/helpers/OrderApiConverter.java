@@ -1,11 +1,11 @@
 package com.carflow.backend.infrastructure.boundaries.in.api.v_0_0_1.order.helpers;
 
-import com.carflow.backend.domains.order.entities.Order;
+import com.carflow.backend.domains.order.models.Order;
 import com.carflow.backend.infrastructure.boundaries.in.api.v_0_0_1.order.entities.OrderDto;
 import org.springframework.stereotype.Service;
 
 @Service
-public class OrderConverter {
+public class OrderApiConverter {
     public Order convertOrderDtoToOrder(OrderDto orderDto) {
         return new Order(
                 orderDto.getId(),

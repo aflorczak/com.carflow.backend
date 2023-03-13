@@ -1,8 +1,13 @@
-package com.carflow.backend.domains.order.entities;
+package com.carflow.backend.infrastructure.boundaries.out.order.entity;
 
-import java.util.List;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 
-public class Order {
+@Entity
+public class OrderEntity {
+    @Id
+    @GeneratedValue
     private Integer id;
     private String status;
     private String clientsData;
@@ -23,8 +28,7 @@ public class Order {
     private Boolean archive;
     private String reasonForCancelingTheOrder;
 
-    public Order(Integer id, String status, String clientsData, String principal, String internalCaseNumber, String externalCaseNumber, String segment, String deliveryAddress, String deliveryDate, String deliveryTime, String deliveryComments, String deliveryBranch, String returnAddress, String returnDate, String returnTime, String returnComments, String returnBranch, Boolean archive, String reasonForCancelingTheOrder) {
-        this.id = id;
+    public OrderEntity(String status, String clientsData, String principal, String internalCaseNumber, String externalCaseNumber, String segment, String deliveryAddress, String deliveryDate, String deliveryTime, String deliveryComments, String deliveryBranch, String returnAddress, String returnDate, String returnTime, String returnComments, String returnBranch, Boolean archive, String reasonForCancelingTheOrder) {
         this.status = status;
         this.clientsData = clientsData;
         this.principal = principal;
@@ -43,6 +47,9 @@ public class Order {
         this.returnBranch = returnBranch;
         this.archive = archive;
         this.reasonForCancelingTheOrder = reasonForCancelingTheOrder;
+    }
+
+    public OrderEntity() {
     }
 
     public Integer getId() {

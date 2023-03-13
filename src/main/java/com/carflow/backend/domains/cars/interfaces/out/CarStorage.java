@@ -1,6 +1,6 @@
 package com.carflow.backend.domains.cars.interfaces.out;
 
-import com.carflow.backend.domains.cars.entities.Car;
+import com.carflow.backend.domains.cars.models.Car;
 import com.carflow.backend.exceptions.ObjectNotFoundException;
 
 import java.util.List;

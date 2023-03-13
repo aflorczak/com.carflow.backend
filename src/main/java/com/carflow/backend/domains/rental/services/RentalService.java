@@ -1,6 +1,6 @@
 package com.carflow.backend.domains.rental.services;
 
-import com.carflow.backend.domains.rental.entities.Rental;
+import com.carflow.backend.domains.rental.models.Rental;
 import com.carflow.backend.domains.rental.interfaces.RentalStorage;
 import com.carflow.backend.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;

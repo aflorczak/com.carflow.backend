@@ -1,6 +1,6 @@
 package com.carflow.backend.infrastructure.boundaries.in.api.v_0_0_1.cars.controllers;
 
-import com.carflow.backend.domains.cars.entities.Car;
+import com.carflow.backend.domains.cars.models.Car;
 import com.carflow.backend.domains.cars.services.CarService;
 import com.carflow.backend.exceptions.ObjectNotFoundException;
 import com.carflow.backend.infrastructure.boundaries.in.api.v_0_0_1.cars.entities.CarDto;
