@@ -47,7 +47,7 @@ public class CarRestApi {
         return carConverter.convertCarToCarDto(carResponse);
     }
 
-    @PatchMapping("/cars/{id}/archive")
+    @PostMapping("/cars/{id}/archive")
     public void moveToArchive(@PathVariable String id) throws ObjectNotFoundException {
         carService.moveToArchive(id);
     }

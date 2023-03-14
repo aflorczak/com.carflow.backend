@@ -58,10 +58,8 @@ public class CarStorageMemory implements CarStorage {
     public Car moveToArchive(String id) throws ObjectNotFoundException {
         if (cars.containsKey(id)) {
             Car car = cars.get(id);
-            Car carArchive = cars.get(id);
-            carArchive.setArchive(true);
-            cars.replace(id, car, carArchive);
-            return cars.get(id);
+            car.setArchive(true);
+            return car;
         } else {
             throw new ObjectNotFoundException("The vehicle with the given ID does not exist in the database.");
         }
