@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 public class OrderEntityConverter {
     public OrderEntity convertOrderToOrderEntity(Order order) {
         return new OrderEntity(
+                order.getId(),
                 order.getStatus(),
                 order.getClientsData(),
                 order.getPrincipal(),
