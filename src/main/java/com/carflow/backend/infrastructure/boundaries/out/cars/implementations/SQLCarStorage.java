@@ -40,7 +40,7 @@ public class SQLCarStorage implements CarStorage {
         if (car.isPresent()) {
             return carEntityConverter.convertCarEntityToCar(car.get());
         } else {
-            throw new ObjectNotFoundException("Obiekt nie istnieje");
+            throw new ObjectNotFoundException("Object not found");
         }
     }
 
@@ -58,7 +58,7 @@ public class SQLCarStorage implements CarStorage {
             updatedCar.setArchive(true);
             return carEntityConverter.convertCarEntityToCar(carRepository.save(updatedCar));
         } else {
-            throw new ObjectNotFoundException("Obiekt nie istnieje");
+            throw new ObjectNotFoundException("Object not found");
         }
     }
 
@@ -68,7 +68,7 @@ public class SQLCarStorage implements CarStorage {
         if (car.isPresent()) {
             carRepository.deleteById(id);
         } else {
-            throw new ObjectNotFoundException("Obiekt nie istnieje");
+            throw new ObjectNotFoundException("Object not found");
         }
 
     }
