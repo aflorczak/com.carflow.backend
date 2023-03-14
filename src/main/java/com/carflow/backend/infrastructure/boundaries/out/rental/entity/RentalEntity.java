@@ -1,6 +1,13 @@
-package com.carflow.backend.domains.rental.models;
+package com.carflow.backend.infrastructure.boundaries.out.rental.entity;
 
-public class Rental {
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+
+@Entity
+public class RentalEntity {
+    @Id
+    @GeneratedValue
     private Integer id;
     private Boolean archive;
     private String orderId;
@@ -19,7 +26,10 @@ public class Rental {
     private String scanOfTheReturnProtocolUrl;
     private String damageIds;
 
-    public Rental(Integer id, Boolean archive, String orderId, Integer carId, String realDeliveryAddress, String realDeliveryDate, String realDeliveryTime, String scanOfTheContractUrl, String scansOfTheRegulationsUrls, String scanOfTheDeliveryProtocolUrl, String deliveryPhotosUrls, String realReturnAddress, String realReturnDate, String realReturnTime, String returnPhotosUrls, String scanOfTheReturnProtocolUrl, String damageIds) {
+    public RentalEntity() {
+    }
+
+    public RentalEntity(Integer id, Boolean archive, String orderId, Integer carId, String realDeliveryAddress, String realDeliveryDate, String realDeliveryTime, String scanOfTheContractUrl, String scansOfTheRegulationsUrls, String scanOfTheDeliveryProtocolUrl, String deliveryPhotosUrls, String realReturnAddress, String realReturnDate, String realReturnTime, String returnPhotosUrls, String scanOfTheReturnProtocolUrl, String damageIds) {
         this.id = id;
         this.archive = archive;
         this.orderId = orderId;

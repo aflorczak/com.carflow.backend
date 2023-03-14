@@ -1,42 +1,42 @@
-package com.carflow.backend.infrastructure.boundaries.in.api.v_0_0_1.rental.entities;
+package com.carflow.backend.infrastructure.boundaries.in.api.v_0_0_1.rental.models;
 
 public class RentalDto {
     private Integer id;
     private Boolean archive;
-    private String ordersId;
+    private String orderId;
     private Integer carId;
-    private String deliveryAddress;
-    private String deliveryTime;
+    private String realDeliveryAddress;
+    private String realDeliveryDate;
+    private String realDeliveryTime;
     private String scanOfTheContractUrl;
     private String scansOfTheRegulationsUrls;
     private String scanOfTheDeliveryProtocolUrl;
     private String deliveryPhotosUrls;
-    private String returnAddress;
-    private String returnTime;
+    private String realReturnAddress;
+    private String realReturnDate;
+    private String realReturnTime;
     private String returnPhotosUrls;
     private String scanOfTheReturnProtocolUrl;
-    private boolean damagedVehicle;
-    private String damagedDescription;
-    private String damagedPhotosUrls;
+    private String damageIds;
 
-    public RentalDto(Integer id, Boolean archive, String ordersId, Integer carId, String deliveryAddress, String deliveryTime, String scanOfTheContractUrl, String scansOfTheRegulationsUrls, String scanOfTheDeliveryProtocolUrl, String deliveryPhotosUrls, String returnAddress, String returnTime, String returnPhotosUrls, String scanOfTheReturnProtocolUrl, boolean damagedVehicle, String damagedDescription, String damagedPhotosUrls) {
+    public RentalDto(Integer id, Boolean archive, String orderId, Integer carId, String realDeliveryAddress, String realDeliveryDate, String realDeliveryTime, String scanOfTheContractUrl, String scansOfTheRegulationsUrls, String scanOfTheDeliveryProtocolUrl, String deliveryPhotosUrls, String realReturnAddress, String realReturnDate, String realReturnTime, String returnPhotosUrls, String scanOfTheReturnProtocolUrl, String damageIds) {
         this.id = id;
         this.archive = archive;
-        this.ordersId = ordersId;
+        this.orderId = orderId;
         this.carId = carId;
-        this.deliveryAddress = deliveryAddress;
-        this.deliveryTime = deliveryTime;
+        this.realDeliveryAddress = realDeliveryAddress;
+        this.realDeliveryDate = realDeliveryDate;
+        this.realDeliveryTime = realDeliveryTime;
         this.scanOfTheContractUrl = scanOfTheContractUrl;
         this.scansOfTheRegulationsUrls = scansOfTheRegulationsUrls;
         this.scanOfTheDeliveryProtocolUrl = scanOfTheDeliveryProtocolUrl;
         this.deliveryPhotosUrls = deliveryPhotosUrls;
-        this.returnAddress = returnAddress;
-        this.returnTime = returnTime;
+        this.realReturnAddress = realReturnAddress;
+        this.realReturnDate = realReturnDate;
+        this.realReturnTime = realReturnTime;
         this.returnPhotosUrls = returnPhotosUrls;
         this.scanOfTheReturnProtocolUrl = scanOfTheReturnProtocolUrl;
-        this.damagedVehicle = damagedVehicle;
-        this.damagedDescription = damagedDescription;
-        this.damagedPhotosUrls = damagedPhotosUrls;
+        this.damageIds = damageIds;
     }
 
     public Integer getId() {
@@ -55,12 +55,12 @@ public class RentalDto {
         this.archive = archive;
     }
 
-    public String getOrdersId() {
-        return ordersId;
+    public String getOrderId() {
+        return orderId;
     }
 
-    public void setOrdersId(String ordersId) {
-        this.ordersId = ordersId;
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
     }
 
     public Integer getCarId() {
@@ -71,20 +71,28 @@ public class RentalDto {
         this.carId = carId;
     }
 
-    public String getDeliveryAddress() {
-        return deliveryAddress;
+    public String getRealDeliveryAddress() {
+        return realDeliveryAddress;
     }
 
-    public void setDeliveryAddress(String deliveryAddress) {
-        this.deliveryAddress = deliveryAddress;
+    public void setRealDeliveryAddress(String realDeliveryAddress) {
+        this.realDeliveryAddress = realDeliveryAddress;
     }
 
-    public String getDeliveryTime() {
-        return deliveryTime;
+    public String getRealDeliveryDate() {
+        return realDeliveryDate;
     }
 
-    public void setDeliveryTime(String deliveryTime) {
-        this.deliveryTime = deliveryTime;
+    public void setRealDeliveryDate(String realDeliveryDate) {
+        this.realDeliveryDate = realDeliveryDate;
+    }
+
+    public String getRealDeliveryTime() {
+        return realDeliveryTime;
+    }
+
+    public void setRealDeliveryTime(String realDeliveryTime) {
+        this.realDeliveryTime = realDeliveryTime;
     }
 
     public String getScanOfTheContractUrl() {
@@ -119,20 +127,28 @@ public class RentalDto {
         this.deliveryPhotosUrls = deliveryPhotosUrls;
     }
 
-    public String getReturnAddress() {
-        return returnAddress;
+    public String getRealReturnAddress() {
+        return realReturnAddress;
     }
 
-    public void setReturnAddress(String returnAddress) {
-        this.returnAddress = returnAddress;
+    public void setRealReturnAddress(String realReturnAddress) {
+        this.realReturnAddress = realReturnAddress;
     }
 
-    public String getReturnTime() {
-        return returnTime;
+    public String getRealReturnDate() {
+        return realReturnDate;
     }
 
-    public void setReturnTime(String returnTime) {
-        this.returnTime = returnTime;
+    public void setRealReturnDate(String realReturnDate) {
+        this.realReturnDate = realReturnDate;
+    }
+
+    public String getRealReturnTime() {
+        return realReturnTime;
+    }
+
+    public void setRealReturnTime(String realReturnTime) {
+        this.realReturnTime = realReturnTime;
     }
 
     public String getReturnPhotosUrls() {
@@ -151,27 +167,11 @@ public class RentalDto {
         this.scanOfTheReturnProtocolUrl = scanOfTheReturnProtocolUrl;
     }
 
-    public boolean isDamagedVehicle() {
-        return damagedVehicle;
+    public String getDamageIds() {
+        return damageIds;
     }
 
-    public void setDamagedVehicle(boolean damagedVehicle) {
-        this.damagedVehicle = damagedVehicle;
-    }
-
-    public String getDamagedDescription() {
-        return damagedDescription;
-    }
-
-    public void setDamagedDescription(String damagedDescription) {
-        this.damagedDescription = damagedDescription;
-    }
-
-    public String getDamagedPhotosUrls() {
-        return damagedPhotosUrls;
-    }
-
-    public void setDamagedPhotosUrls(String damagedPhotosUrls) {
-        this.damagedPhotosUrls = damagedPhotosUrls;
+    public void setDamageIds(String damageIds) {
+        this.damageIds = damageIds;
     }
 }

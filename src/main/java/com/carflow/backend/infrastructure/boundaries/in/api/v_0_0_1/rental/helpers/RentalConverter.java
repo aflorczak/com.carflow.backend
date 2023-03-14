@@ -1,7 +1,7 @@
 package com.carflow.backend.infrastructure.boundaries.in.api.v_0_0_1.rental.helpers;
 
 import com.carflow.backend.domains.rental.models.Rental;
-import com.carflow.backend.infrastructure.boundaries.in.api.v_0_0_1.rental.entities.RentalDto;
+import com.carflow.backend.infrastructure.boundaries.in.api.v_0_0_1.rental.models.RentalDto;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -10,21 +10,21 @@ public class RentalConverter {
         return new Rental(
                 rentalDto.getId(),
                 rentalDto.getArchive(),
-                rentalDto.getOrdersId(),
+                rentalDto.getOrderId(),
                 rentalDto.getCarId(),
-                rentalDto.getDeliveryAddress(),
-                rentalDto.getDeliveryTime(),
+                rentalDto.getRealDeliveryAddress(),
+                rentalDto.getRealReturnDate(),
+                rentalDto.getRealDeliveryTime(),
                 rentalDto.getScanOfTheContractUrl(),
                 rentalDto.getScansOfTheRegulationsUrls(),
                 rentalDto.getScanOfTheDeliveryProtocolUrl(),
                 rentalDto.getDeliveryPhotosUrls(),
-                rentalDto.getReturnAddress(),
-                rentalDto.getReturnTime(),
+                rentalDto.getRealReturnAddress(),
+                rentalDto.getRealReturnDate(),
+                rentalDto.getRealReturnTime(),
                 rentalDto.getReturnPhotosUrls(),
                 rentalDto.getScanOfTheReturnProtocolUrl(),
-                rentalDto.isDamagedVehicle(),
-                rentalDto.getDamagedDescription(),
-                rentalDto.getDamagedPhotosUrls()
+                rentalDto.getDamageIds()
         );
     }
 
@@ -32,21 +32,21 @@ public class RentalConverter {
         return new RentalDto(
                 rental.getId(),
                 rental.getArchive(),
-                rental.getOrdersId(),
+                rental.getOrderId(),
                 rental.getCarId(),
-                rental.getDeliveryAddress(),
-                rental.getDeliveryTime(),
+                rental.getRealDeliveryAddress(),
+                rental.getRealReturnDate(),
+                rental.getRealDeliveryTime(),
                 rental.getScanOfTheContractUrl(),
                 rental.getScansOfTheRegulationsUrls(),
                 rental.getScanOfTheDeliveryProtocolUrl(),
                 rental.getDeliveryPhotosUrls(),
-                rental.getReturnAddress(),
-                rental.getReturnTime(),
+                rental.getRealReturnAddress(),
+                rental.getRealReturnDate(),
+                rental.getRealReturnTime(),
                 rental.getReturnPhotosUrls(),
                 rental.getScanOfTheReturnProtocolUrl(),
-                rental.isDamagedVehicle(),
-                rental.getDamagedDescription(),
-                rental.getDamagedPhotosUrls()
+                rental.getDamageIds()
         );
     }
 }

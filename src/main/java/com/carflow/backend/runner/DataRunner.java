@@ -4,6 +4,8 @@ import com.carflow.backend.infrastructure.boundaries.out.cars.entity.CarEntity;
 import com.carflow.backend.infrastructure.boundaries.out.cars.repository.CarRepository;
 import com.carflow.backend.infrastructure.boundaries.out.order.repository.OrderRepository;
 import com.carflow.backend.infrastructure.boundaries.out.order.entity.OrderEntity;
+import com.carflow.backend.infrastructure.boundaries.out.rental.entity.RentalEntity;
+import com.carflow.backend.infrastructure.boundaries.out.rental.repository.RentalRepository;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Service;
@@ -13,10 +15,12 @@ public class DataRunner implements ApplicationRunner {
 
     private final OrderRepository orderRepository;
     private final CarRepository carRepository;
+    private final RentalRepository rentalRepository;
 
-    public DataRunner(OrderRepository orderRepository, CarRepository carRepository) {
+    public DataRunner(OrderRepository orderRepository, CarRepository carRepository, RentalRepository rentalRepository) {
         this.orderRepository = orderRepository;
         this.carRepository = carRepository;
+        this.rentalRepository = rentalRepository;
     }
 
     @Override
@@ -64,6 +68,27 @@ public class DataRunner implements ApplicationRunner {
                 null
         );
 
+        RentalEntity rentalEntity = new RentalEntity(
+                1,
+                false,
+                "1",
+                1,
+                "realny adres dostawy",
+                "realna data dostawy",
+                "realna godzina dostawy",
+                "URL do skanu umowy",
+                "URL do skanu regulaminu",
+                "URL do skanu protokou dostawy",
+                "URLe ze zdjeciami z wydania",
+                "realny adres zwrotu",
+                "realna data zwrotu",
+                "realna godzina zwrotu",
+                "URLe ze zdjęciami",
+                "URL do skanu protokołu zwrotu",
+                null
+        );
+
+        rentalRepository.save(rentalEntity);
         carRepository.save(carEntity);
         orderRepository.save(orderEntity);
     }

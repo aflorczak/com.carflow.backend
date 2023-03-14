@@ -5,10 +5,12 @@ import com.carflow.backend.exceptions.ObjectNotFoundException;
 
 import java.util.List;
 
+
 public interface RentalStorage {
     public Rental createnewRental(Rental rental);
     public List<Rental> getAllRentals();
     public Rental getRentalById(String id) throws ObjectNotFoundException;
     public Rental updateRentalById(String id, Rental updatedRental) throws ObjectNotFoundException;
     public void deleteRentalById(String id) throws ObjectNotFoundException;
+    public void moveRentalToArchive(String id) throws ObjectNotFoundException;
 }

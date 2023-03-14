@@ -4,17 +4,17 @@ import com.carflow.backend.domains.rental.models.Rental;
 import com.carflow.backend.domains.rental.services.RentalService;
 import com.carflow.backend.exceptions.ObjectNotFoundException;
 import com.carflow.backend.infrastructure.boundaries.in.api.v_0_0_1.rental.helpers.RentalConverter;
-import com.carflow.backend.infrastructure.boundaries.in.api.v_0_0_1.rental.entities.RentalDto;
+import com.carflow.backend.infrastructure.boundaries.in.api.v_0_0_1.rental.models.RentalDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/for-service/v-0.0.1")
+@RequestMapping("/api/v-0.0.1")
 public class RentalRestApi {
-    private RentalService service;
-    private RentalConverter converter;
+    final private RentalService service;
+    final private RentalConverter converter;
 
     @Autowired
     public RentalRestApi(RentalService service, RentalConverter converter) {
@@ -30,7 +30,7 @@ public class RentalRestApi {
     @GetMapping("/rentals")
     public List<RentalDto> getAllRentals() {
         List<Rental> rentals = service.getAllRentals();
-        return rentals.stream().map(rental -> converter.convertRentalToRentalDto(rental)).toList();
+        return rentals.stream().map(converter::convertRentalToRentalDto).toList();
     }
 
     @GetMapping("/rentals/{id}")
@@ -48,5 +48,10 @@ public class RentalRestApi {
     @DeleteMapping("/rentals/{id}")
     public void deleteRentalById(@PathVariable String id) throws ObjectNotFoundException {
         service.deleteRentalById(id);
+    }
+
+    @PostMapping("/rentals/{id}/archive")
+    public void moveRentalToArchive(@PathVariable String id) throws ObjectNotFoundException {
+        service.moveRentalToArchive(id);
     }
 }
