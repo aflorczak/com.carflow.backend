@@ -24,23 +24,14 @@ public class CarRestApi {
     }
 
     @PostMapping("/cars")
-    public Car createNewCar(@RequestBody CarDto carRequest) {
+    public CarDto createNewCar(@RequestBody CarDto carRequest) {
         Car car = carService.createNewCar(carConverter.convertCarDtoToCar(carRequest));
-        CarDto carResponse = carConverter.convertCarToCarDto(car);
-        return car;
+        return carConverter.convertCarToCarDto(car);
     }
 
     @GetMapping("/cars")
-    public List<CarDto> getCars(
-            @RequestParam(defaultValue = "B,C,D,SUV") String segments,
-            @RequestParam(defaultValue = "SEDAN,HATCHBACK,COMBI,SUV") String bodyTypes
-    ) {
-        final List<String> segmentsList = Arrays.stream(segments.split(",")).toList();
-        final List<String> bodyTypesList = Arrays.stream(bodyTypes.split(",")).toList();
-
-        List<Car> cars = carService.getCarsWithParams(segmentsList, bodyTypesList);
-
-        return cars.stream().map(car -> carConverter.convertCarToCarDto(car)).toList();
+    public List<CarDto> getAllCars() {
+        return carService.getAllCars().stream().map(carConverter::convertCarToCarDto).toList();
     }
 
     @GetMapping("/cars/{id}")
@@ -54,6 +45,11 @@ public class CarRestApi {
         Car updatedCar = carConverter.convertCarDtoToCar(carDto);
         Car carResponse = carService.updateCarById(id, updatedCar);
         return carConverter.convertCarToCarDto(carResponse);
+    }
+
+    @PatchMapping("/cars/{id}/archive")
+    public void moveToArchive(@PathVariable String id) throws ObjectNotFoundException {
+        carService.moveToArchive(id);
     }
 
     @DeleteMapping("/cars/{id}")
