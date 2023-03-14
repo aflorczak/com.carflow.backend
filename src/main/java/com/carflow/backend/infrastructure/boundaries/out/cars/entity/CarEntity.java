@@ -6,7 +6,6 @@ import jakarta.persistence.Id;
 
 @Entity
 public class CarEntity {
-    // System properties
     @Id
     @GeneratedValue
     private Integer id;
