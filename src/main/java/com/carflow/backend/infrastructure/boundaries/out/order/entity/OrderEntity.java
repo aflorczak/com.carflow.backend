@@ -28,7 +28,8 @@ public class OrderEntity {
     private Boolean archive;
     private String reasonForCancelingTheOrder;
 
-    public OrderEntity(String status, String clientsData, String principal, String internalCaseNumber, String externalCaseNumber, String segment, String deliveryAddress, String deliveryDate, String deliveryTime, String deliveryComments, String deliveryBranch, String returnAddress, String returnDate, String returnTime, String returnComments, String returnBranch, Boolean archive, String reasonForCancelingTheOrder) {
+    public OrderEntity(Integer id, String status, String clientsData, String principal, String internalCaseNumber, String externalCaseNumber, String segment, String deliveryAddress, String deliveryDate, String deliveryTime, String deliveryComments, String deliveryBranch, String returnAddress, String returnDate, String returnTime, String returnComments, String returnBranch, Boolean archive, String reasonForCancelingTheOrder) {
+        this.id = id;
         this.status = status;
         this.clientsData = clientsData;
         this.principal = principal;

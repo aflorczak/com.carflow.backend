@@ -8,10 +8,9 @@ import java.util.List;
 public interface CarStorage {
     Car createNewCar(Car car);
     List<Car> getAllCars();
-    List<Car> getCarsWithParams(List<String> segments, List<String> bodyTypes);
-    List<Car> getCarsByBranchSlug(String branchSlug);
     Car getCarById(String id) throws ObjectNotFoundException;
     Car updateCarById(String id, Car updatedCar) throws ObjectNotFoundException;
+    Car moveToArchive(String id) throws ObjectNotFoundException;
     void deleteCarById(String id) throws ObjectNotFoundException;
 
 }

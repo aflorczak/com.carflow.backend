@@ -25,14 +25,6 @@ public class CarService {
         return storage.getAllCars();
     }
 
-    public List<Car> getCarsWithParams(List<String> segments, List<String> bodyTypes) {
-        return storage.getCarsWithParams(segments, bodyTypes);
-    }
-
-    public List<Car> getCarsByBranchSlug(String branchSlug) {
-        return storage.getCarsByBranchSlug(branchSlug);
-    }
-
     public Car getCarById(String id) throws ObjectNotFoundException{
         return storage.getCarById(id);
     }
@@ -42,5 +34,9 @@ public class CarService {
     }
     public void deleteCarById(String id) throws ObjectNotFoundException {
         storage.deleteCarById(id);
+    }
+
+    public void moveToArchive(String id) throws ObjectNotFoundException {
+        storage.moveToArchive(id);
     }
 }
