@@ -1,6 +1,7 @@
 package com.carflow.backend.domains.rental.models;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class Rental {
     private Integer id;
@@ -17,9 +18,9 @@ public class Rental {
     private LocalDateTime actualReturnDateTime;
     private String returnPhotosUrls;
     private String scanOfTheReturnProtocolUrl;
-    private String damageIds;
+    private List<String> damageIds;
 
-    public Rental(Integer id, Boolean archive, String orderId, Integer carId, String actualDeliveryAddress, LocalDateTime actualDeliveryDateTime, String scanOfTheContractUrl, String scansOfTheRegulationsUrls, String scanOfTheDeliveryProtocolUrl, String deliveryPhotosUrls, String actualReturnAddress, LocalDateTime actualReturnDateTime, String returnPhotosUrls, String scanOfTheReturnProtocolUrl, String damageIds) {
+    public Rental(Integer id, Boolean archive, String orderId, Integer carId, String actualDeliveryAddress, LocalDateTime actualDeliveryDateTime, String scanOfTheContractUrl, String scansOfTheRegulationsUrls, String scanOfTheDeliveryProtocolUrl, String deliveryPhotosUrls, String actualReturnAddress, LocalDateTime actualReturnDateTime, String returnPhotosUrls, String scanOfTheReturnProtocolUrl, List<String> damageIds) {
         this.id = id;
         this.archive = archive;
         this.orderId = orderId;
@@ -149,11 +150,11 @@ public class Rental {
         this.scanOfTheReturnProtocolUrl = scanOfTheReturnProtocolUrl;
     }
 
-    public String getDamageIds() {
+    public List<String> getDamageIds() {
         return damageIds;
     }
 
-    public void setDamageIds(String damageIds) {
+    public void setDamageIds(List<String> damageIds) {
         this.damageIds = damageIds;
     }
 }

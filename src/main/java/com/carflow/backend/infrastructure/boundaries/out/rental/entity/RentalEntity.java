@@ -5,6 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 public class RentalEntity {
@@ -24,12 +25,12 @@ public class RentalEntity {
     private LocalDateTime actualReturnDateTime;
     private String returnPhotosUrls;
     private String scanOfTheReturnProtocolUrl;
-    private String damageIds;
+    private List<String> damageIds;
 
     public RentalEntity() {
     }
 
-    public RentalEntity(Integer id, Boolean archive, String orderId, Integer carId, String actualDeliveryAddress, LocalDateTime actualDeliveryDateTime, String scanOfTheContractUrl, String scansOfTheRegulationsUrls, String scanOfTheDeliveryProtocolUrl, String deliveryPhotosUrls, String actualReturnAddress, LocalDateTime actualReturnDateTime, String returnPhotosUrls, String scanOfTheReturnProtocolUrl, String damageIds) {
+    public RentalEntity(Integer id, Boolean archive, String orderId, Integer carId, String actualDeliveryAddress, LocalDateTime actualDeliveryDateTime, String scanOfTheContractUrl, String scansOfTheRegulationsUrls, String scanOfTheDeliveryProtocolUrl, String deliveryPhotosUrls, String actualReturnAddress, LocalDateTime actualReturnDateTime, String returnPhotosUrls, String scanOfTheReturnProtocolUrl, List<String> damageIds) {
         this.id = id;
         this.archive = archive;
         this.orderId = orderId;
@@ -159,11 +160,11 @@ public class RentalEntity {
         this.scanOfTheReturnProtocolUrl = scanOfTheReturnProtocolUrl;
     }
 
-    public String getDamageIds() {
+    public List<String> getDamageIds() {
         return damageIds;
     }
 
-    public void setDamageIds(String damageIds) {
+    public void setDamageIds(List<String> damageIds) {
         this.damageIds = damageIds;
     }
 }
