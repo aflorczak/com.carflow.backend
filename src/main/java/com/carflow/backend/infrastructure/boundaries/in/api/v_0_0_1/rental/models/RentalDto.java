@@ -1,39 +1,37 @@
 package com.carflow.backend.infrastructure.boundaries.in.api.v_0_0_1.rental.models;
 
+import java.time.LocalDateTime;
+
 public class RentalDto {
     private Integer id;
     private Boolean archive;
     private String orderId;
     private Integer carId;
     private String actualDeliveryAddress;
-    private String actualDeliveryDate;
-    private String actualDeliveryTime;
+    private LocalDateTime actualDeliveryDateTime;
     private String scanOfTheContractUrl;
     private String scansOfTheRegulationsUrls;
     private String scanOfTheDeliveryProtocolUrl;
     private String deliveryPhotosUrls;
     private String actualReturnAddress;
-    private String actualReturnDate;
-    private String actualReturnTime;
+    private LocalDateTime actualReturnDateTime;
     private String returnPhotosUrls;
     private String scanOfTheReturnProtocolUrl;
     private String damageIds;
 
-    public RentalDto(Integer id, Boolean archive, String orderId, Integer carId, String actualDeliveryAddress, String actualDeliveryDate, String actualDeliveryTime, String scanOfTheContractUrl, String scansOfTheRegulationsUrls, String scanOfTheDeliveryProtocolUrl, String deliveryPhotosUrls, String actualReturnAddress, String actualReturnDate, String actualReturnTime, String returnPhotosUrls, String scanOfTheReturnProtocolUrl, String damageIds) {
+    public RentalDto(Integer id, Boolean archive, String orderId, Integer carId, String actualDeliveryAddress, LocalDateTime actualDeliveryDateTime, String scanOfTheContractUrl, String scansOfTheRegulationsUrls, String scanOfTheDeliveryProtocolUrl, String deliveryPhotosUrls, String actualReturnAddress, LocalDateTime actualReturnDateTime, String returnPhotosUrls, String scanOfTheReturnProtocolUrl, String damageIds) {
         this.id = id;
         this.archive = archive;
         this.orderId = orderId;
         this.carId = carId;
         this.actualDeliveryAddress = actualDeliveryAddress;
-        this.actualDeliveryDate = actualDeliveryDate;
-        this.actualDeliveryTime = actualDeliveryTime;
+        this.actualDeliveryDateTime = actualDeliveryDateTime;
         this.scanOfTheContractUrl = scanOfTheContractUrl;
         this.scansOfTheRegulationsUrls = scansOfTheRegulationsUrls;
         this.scanOfTheDeliveryProtocolUrl = scanOfTheDeliveryProtocolUrl;
         this.deliveryPhotosUrls = deliveryPhotosUrls;
         this.actualReturnAddress = actualReturnAddress;
-        this.actualReturnDate = actualReturnDate;
-        this.actualReturnTime = actualReturnTime;
+        this.actualReturnDateTime = actualReturnDateTime;
         this.returnPhotosUrls = returnPhotosUrls;
         this.scanOfTheReturnProtocolUrl = scanOfTheReturnProtocolUrl;
         this.damageIds = damageIds;
@@ -79,20 +77,12 @@ public class RentalDto {
         this.actualDeliveryAddress = actualDeliveryAddress;
     }
 
-    public String getActualDeliveryDate() {
-        return actualDeliveryDate;
+    public LocalDateTime getActualDeliveryDateTime() {
+        return actualDeliveryDateTime;
     }
 
-    public void setActualDeliveryDate(String actualDeliveryDate) {
-        this.actualDeliveryDate = actualDeliveryDate;
-    }
-
-    public String getActualDeliveryTime() {
-        return actualDeliveryTime;
-    }
-
-    public void setActualDeliveryTime(String actualDeliveryTime) {
-        this.actualDeliveryTime = actualDeliveryTime;
+    public void setActualDeliveryDateTime(LocalDateTime actualDeliveryDateTime) {
+        this.actualDeliveryDateTime = actualDeliveryDateTime;
     }
 
     public String getScanOfTheContractUrl() {
@@ -135,20 +125,12 @@ public class RentalDto {
         this.actualReturnAddress = actualReturnAddress;
     }
 
-    public String getActualReturnDate() {
-        return actualReturnDate;
+    public LocalDateTime getActualReturnDateTime() {
+        return actualReturnDateTime;
     }
 
-    public void setActualReturnDate(String actualReturnDate) {
-        this.actualReturnDate = actualReturnDate;
-    }
-
-    public String getActualReturnTime() {
-        return actualReturnTime;
-    }
-
-    public void setActualReturnTime(String actualReturnTime) {
-        this.actualReturnTime = actualReturnTime;
+    public void setActualReturnDateTime(LocalDateTime actualReturnDateTime) {
+        this.actualReturnDateTime = actualReturnDateTime;
     }
 
     public String getReturnPhotosUrls() {

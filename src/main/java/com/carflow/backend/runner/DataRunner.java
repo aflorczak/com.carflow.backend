@@ -10,6 +10,8 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 @Service
 public class DataRunner implements ApplicationRunner {
 
@@ -74,15 +76,13 @@ public class DataRunner implements ApplicationRunner {
                 "1",
                 1,
                 "realny adres dostawy",
-                "realna data dostawy",
-                "realna godzina dostawy",
+                LocalDateTime.now(),
                 "URL do skanu umowy",
                 "URL do skanu regulaminu",
                 "URL do skanu protokou dostawy",
                 "URLe ze zdjeciami z wydania",
                 "realny adres zwrotu",
-                "realna data zwrotu",
-                "realna godzina zwrotu",
+                null,
                 "URLe ze zdjęciami",
                 "URL do skanu protokołu zwrotu",
                 null
