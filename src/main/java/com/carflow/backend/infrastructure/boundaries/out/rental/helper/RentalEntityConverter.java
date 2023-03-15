@@ -1,6 +1,6 @@
-package com.carflow.backend.infrastructure.boundaries.out.rental.helpers;
+package com.carflow.backend.infrastructure.boundaries.out.rental.helper;
 
-import com.carflow.backend.domains.rental.models.Rental;
+import com.carflow.backend.domains.rental.model.Rental;
 import com.carflow.backend.infrastructure.boundaries.out.rental.entity.RentalEntity;
 import org.springframework.stereotype.Service;
 

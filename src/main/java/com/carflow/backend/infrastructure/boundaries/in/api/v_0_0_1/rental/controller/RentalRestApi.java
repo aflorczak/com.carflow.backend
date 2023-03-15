@@ -1,10 +1,10 @@
-package com.carflow.backend.infrastructure.boundaries.in.api.v_0_0_1.rental.controllers;
+package com.carflow.backend.infrastructure.boundaries.in.api.v_0_0_1.rental.controller;
 
-import com.carflow.backend.domains.rental.models.Rental;
-import com.carflow.backend.domains.rental.services.RentalService;
+import com.carflow.backend.domains.rental.model.Rental;
+import com.carflow.backend.domains.rental.service.RentalService;
 import com.carflow.backend.exceptions.ObjectNotFoundException;
-import com.carflow.backend.infrastructure.boundaries.in.api.v_0_0_1.rental.helpers.RentalConverter;
-import com.carflow.backend.infrastructure.boundaries.in.api.v_0_0_1.rental.models.RentalDto;
+import com.carflow.backend.infrastructure.boundaries.in.api.v_0_0_1.rental.helper.RentalConverter;
+import com.carflow.backend.infrastructure.boundaries.in.api.v_0_0_1.rental.model.RentalDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

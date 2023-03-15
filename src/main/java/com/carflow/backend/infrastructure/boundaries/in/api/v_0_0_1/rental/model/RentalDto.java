@@ -1,4 +1,4 @@
-package com.carflow.backend.infrastructure.boundaries.in.api.v_0_0_1.rental.models;
+package com.carflow.backend.infrastructure.boundaries.in.api.v_0_0_1.rental.model;
 
 import java.time.LocalDateTime;
 import java.util.List;

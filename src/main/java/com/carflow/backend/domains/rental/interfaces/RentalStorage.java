@@ -1,6 +1,6 @@
 package com.carflow.backend.domains.rental.interfaces;
 
-import com.carflow.backend.domains.rental.models.Rental;
+import com.carflow.backend.domains.rental.model.Rental;
 import com.carflow.backend.exceptions.ObjectNotFoundException;
 
 import java.util.List;

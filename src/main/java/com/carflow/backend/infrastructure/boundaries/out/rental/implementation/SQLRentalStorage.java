@@ -1,10 +1,10 @@
-package com.carflow.backend.infrastructure.boundaries.out.rental.implementations;
+package com.carflow.backend.infrastructure.boundaries.out.rental.implementation;
 
 import com.carflow.backend.domains.rental.interfaces.RentalStorage;
-import com.carflow.backend.domains.rental.models.Rental;
+import com.carflow.backend.domains.rental.model.Rental;
 import com.carflow.backend.exceptions.ObjectNotFoundException;
 import com.carflow.backend.infrastructure.boundaries.out.rental.entity.RentalEntity;
-import com.carflow.backend.infrastructure.boundaries.out.rental.helpers.RentalEntityConverter;
+import com.carflow.backend.infrastructure.boundaries.out.rental.helper.RentalEntityConverter;
 import com.carflow.backend.infrastructure.boundaries.out.rental.repository.RentalRepository;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;

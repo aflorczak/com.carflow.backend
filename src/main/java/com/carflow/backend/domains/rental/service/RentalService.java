@@ -1,6 +1,6 @@
-package com.carflow.backend.domains.rental.services;
+package com.carflow.backend.domains.rental.service;
 
-import com.carflow.backend.domains.rental.models.Rental;
+import com.carflow.backend.domains.rental.model.Rental;
 import com.carflow.backend.domains.rental.interfaces.RentalStorage;
 import com.carflow.backend.exceptions.ObjectNotFoundException;
 import org.springframework.stereotype.Service;

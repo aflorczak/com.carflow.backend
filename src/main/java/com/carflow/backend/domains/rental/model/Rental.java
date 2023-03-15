@@ -1,4 +1,4 @@
-package com.carflow.backend.domains.rental.models;
+package com.carflow.backend.domains.rental.model;
 
 import java.time.LocalDateTime;
 import java.util.List;
