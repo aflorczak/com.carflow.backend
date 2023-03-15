@@ -7,7 +7,7 @@ import java.util.List;
 
 
 public interface RentalStorage {
-    public Rental createnewRental(Rental rental);
+    public Rental createNewRental(Rental rental);
     public List<Rental> getAllRentals();
     public Rental getRentalById(String id) throws ObjectNotFoundException;
     public Rental updateRentalById(String id, Rental updatedRental) throws ObjectNotFoundException;

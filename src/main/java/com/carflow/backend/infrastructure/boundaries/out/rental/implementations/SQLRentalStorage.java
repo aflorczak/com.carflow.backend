@@ -24,7 +24,7 @@ public class SQLRentalStorage implements RentalStorage {
         this.rentalRepository = rentalRepository;
     }
     @Override
-    public Rental createnewRental(Rental rental) {
+    public Rental createNewRental(Rental rental) {
         return rentalEntityConverter.convertRentalEntityToRental(rentalRepository.save(rentalEntityConverter.convertRentalToRentalEntity(rental)));
     }
 
@@ -61,8 +61,9 @@ public class SQLRentalStorage implements RentalStorage {
     public void moveRentalToArchive(String id) throws ObjectNotFoundException {
         Optional<RentalEntity> rental = rentalRepository.findById(id);
         if (rental.isPresent()) {
-            rental.get().setArchive(true);
-            rentalRepository.save(rental.get());
+            RentalEntity getRental = rental.get();
+            getRental.setArchive(true);
+            rentalRepository.save(getRental);
         } else {
             throw new ObjectNotFoundException("Object not found");
         }

@@ -5,35 +5,35 @@ public class RentalDto {
     private Boolean archive;
     private String orderId;
     private Integer carId;
-    private String realDeliveryAddress;
-    private String realDeliveryDate;
-    private String realDeliveryTime;
+    private String actualDeliveryAddress;
+    private String actualDeliveryDate;
+    private String actualDeliveryTime;
     private String scanOfTheContractUrl;
     private String scansOfTheRegulationsUrls;
     private String scanOfTheDeliveryProtocolUrl;
     private String deliveryPhotosUrls;
-    private String realReturnAddress;
-    private String realReturnDate;
-    private String realReturnTime;
+    private String actualReturnAddress;
+    private String actualReturnDate;
+    private String actualReturnTime;
     private String returnPhotosUrls;
     private String scanOfTheReturnProtocolUrl;
     private String damageIds;
 
-    public RentalDto(Integer id, Boolean archive, String orderId, Integer carId, String realDeliveryAddress, String realDeliveryDate, String realDeliveryTime, String scanOfTheContractUrl, String scansOfTheRegulationsUrls, String scanOfTheDeliveryProtocolUrl, String deliveryPhotosUrls, String realReturnAddress, String realReturnDate, String realReturnTime, String returnPhotosUrls, String scanOfTheReturnProtocolUrl, String damageIds) {
+    public RentalDto(Integer id, Boolean archive, String orderId, Integer carId, String actualDeliveryAddress, String actualDeliveryDate, String actualDeliveryTime, String scanOfTheContractUrl, String scansOfTheRegulationsUrls, String scanOfTheDeliveryProtocolUrl, String deliveryPhotosUrls, String actualReturnAddress, String actualReturnDate, String actualReturnTime, String returnPhotosUrls, String scanOfTheReturnProtocolUrl, String damageIds) {
         this.id = id;
         this.archive = archive;
         this.orderId = orderId;
         this.carId = carId;
-        this.realDeliveryAddress = realDeliveryAddress;
-        this.realDeliveryDate = realDeliveryDate;
-        this.realDeliveryTime = realDeliveryTime;
+        this.actualDeliveryAddress = actualDeliveryAddress;
+        this.actualDeliveryDate = actualDeliveryDate;
+        this.actualDeliveryTime = actualDeliveryTime;
         this.scanOfTheContractUrl = scanOfTheContractUrl;
         this.scansOfTheRegulationsUrls = scansOfTheRegulationsUrls;
         this.scanOfTheDeliveryProtocolUrl = scanOfTheDeliveryProtocolUrl;
         this.deliveryPhotosUrls = deliveryPhotosUrls;
-        this.realReturnAddress = realReturnAddress;
-        this.realReturnDate = realReturnDate;
-        this.realReturnTime = realReturnTime;
+        this.actualReturnAddress = actualReturnAddress;
+        this.actualReturnDate = actualReturnDate;
+        this.actualReturnTime = actualReturnTime;
         this.returnPhotosUrls = returnPhotosUrls;
         this.scanOfTheReturnProtocolUrl = scanOfTheReturnProtocolUrl;
         this.damageIds = damageIds;
@@ -71,28 +71,28 @@ public class RentalDto {
         this.carId = carId;
     }
 
-    public String getRealDeliveryAddress() {
-        return realDeliveryAddress;
+    public String getActualDeliveryAddress() {
+        return actualDeliveryAddress;
     }
 
-    public void setRealDeliveryAddress(String realDeliveryAddress) {
-        this.realDeliveryAddress = realDeliveryAddress;
+    public void setActualDeliveryAddress(String actualDeliveryAddress) {
+        this.actualDeliveryAddress = actualDeliveryAddress;
     }
 
-    public String getRealDeliveryDate() {
-        return realDeliveryDate;
+    public String getActualDeliveryDate() {
+        return actualDeliveryDate;
     }
 
-    public void setRealDeliveryDate(String realDeliveryDate) {
-        this.realDeliveryDate = realDeliveryDate;
+    public void setActualDeliveryDate(String actualDeliveryDate) {
+        this.actualDeliveryDate = actualDeliveryDate;
     }
 
-    public String getRealDeliveryTime() {
-        return realDeliveryTime;
+    public String getActualDeliveryTime() {
+        return actualDeliveryTime;
     }
 
-    public void setRealDeliveryTime(String realDeliveryTime) {
-        this.realDeliveryTime = realDeliveryTime;
+    public void setActualDeliveryTime(String actualDeliveryTime) {
+        this.actualDeliveryTime = actualDeliveryTime;
     }
 
     public String getScanOfTheContractUrl() {
@@ -127,28 +127,28 @@ public class RentalDto {
         this.deliveryPhotosUrls = deliveryPhotosUrls;
     }
 
-    public String getRealReturnAddress() {
-        return realReturnAddress;
+    public String getActualReturnAddress() {
+        return actualReturnAddress;
     }
 
-    public void setRealReturnAddress(String realReturnAddress) {
-        this.realReturnAddress = realReturnAddress;
+    public void setActualReturnAddress(String actualReturnAddress) {
+        this.actualReturnAddress = actualReturnAddress;
     }
 
-    public String getRealReturnDate() {
-        return realReturnDate;
+    public String getActualReturnDate() {
+        return actualReturnDate;
     }
 
-    public void setRealReturnDate(String realReturnDate) {
-        this.realReturnDate = realReturnDate;
+    public void setActualReturnDate(String actualReturnDate) {
+        this.actualReturnDate = actualReturnDate;
     }
 
-    public String getRealReturnTime() {
-        return realReturnTime;
+    public String getActualReturnTime() {
+        return actualReturnTime;
     }
 
-    public void setRealReturnTime(String realReturnTime) {
-        this.realReturnTime = realReturnTime;
+    public void setActualReturnTime(String actualReturnTime) {
+        this.actualReturnTime = actualReturnTime;
     }
 
     public String getReturnPhotosUrls() {

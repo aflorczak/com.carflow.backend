@@ -16,7 +16,7 @@ public class RentalService {
     }
 
     public Rental createNewRental(Rental rental) {
-        return storage.createnewRental(rental);
+        return storage.createNewRental(rental);
     }
 
     public List<Rental> getAllRentals() {
