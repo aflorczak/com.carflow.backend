@@ -1,10 +1,11 @@
 package com.carflow.backend.infrastructure.boundaries.out.rental.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import com.carflow.backend.infrastructure.boundaries.out.attachment.entity.AttachmentEntity;
+import com.carflow.backend.infrastructure.boundaries.out.cars.entity.CarEntity;
+import com.carflow.backend.infrastructure.boundaries.out.operation.entity.OperationEntity;
+import com.carflow.backend.infrastructure.boundaries.out.order.entity.OrderEntity;
+import jakarta.persistence.*;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -12,40 +13,29 @@ public class RentalEntity {
     @Id
     @GeneratedValue
     private Integer id;
-    private Boolean archive;
-    private String orderId;
-    private Integer carId;
-    private String actualDeliveryAddress;
-    private LocalDateTime actualDeliveryDateTime;
-    private String scanOfTheContractUrl;
-    private String scansOfTheRegulationsUrls;
-    private String scanOfTheDeliveryProtocolUrl;
-    private String deliveryPhotosUrls;
-    private String actualReturnAddress;
-    private LocalDateTime actualReturnDateTime;
-    private String returnPhotosUrls;
-    private String scanOfTheReturnProtocolUrl;
-    private List<String> damageIds;
+    private Boolean archived;
+    @OneToOne(fetch = FetchType.LAZY)
+    private OrderEntity order;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private CarEntity car;
+    @OneToMany
+    private List<AttachmentEntity> attachments;
+    @OneToOne
+    private OperationEntity deliveryOperation;
+    @OneToOne
+    private OperationEntity returnOperation;
 
     public RentalEntity() {
     }
 
-    public RentalEntity(Integer id, Boolean archive, String orderId, Integer carId, String actualDeliveryAddress, LocalDateTime actualDeliveryDateTime, String scanOfTheContractUrl, String scansOfTheRegulationsUrls, String scanOfTheDeliveryProtocolUrl, String deliveryPhotosUrls, String actualReturnAddress, LocalDateTime actualReturnDateTime, String returnPhotosUrls, String scanOfTheReturnProtocolUrl, List<String> damageIds) {
+    public RentalEntity(Integer id, Boolean archived, OrderEntity order, CarEntity car, List<AttachmentEntity> attachments, OperationEntity deliveryOperation, OperationEntity returnOperation) {
         this.id = id;
-        this.archive = archive;
-        this.orderId = orderId;
-        this.carId = carId;
-        this.actualDeliveryAddress = actualDeliveryAddress;
-        this.actualDeliveryDateTime = actualDeliveryDateTime;
-        this.scanOfTheContractUrl = scanOfTheContractUrl;
-        this.scansOfTheRegulationsUrls = scansOfTheRegulationsUrls;
-        this.scanOfTheDeliveryProtocolUrl = scanOfTheDeliveryProtocolUrl;
-        this.deliveryPhotosUrls = deliveryPhotosUrls;
-        this.actualReturnAddress = actualReturnAddress;
-        this.actualReturnDateTime = actualReturnDateTime;
-        this.returnPhotosUrls = returnPhotosUrls;
-        this.scanOfTheReturnProtocolUrl = scanOfTheReturnProtocolUrl;
-        this.damageIds = damageIds;
+        this.archived = archived;
+        this.order = order;
+        this.car = car;
+        this.attachments = attachments;
+        this.deliveryOperation = deliveryOperation;
+        this.returnOperation = returnOperation;
     }
 
     public Integer getId() {
@@ -56,115 +46,64 @@ public class RentalEntity {
         this.id = id;
     }
 
-    public Boolean getArchive() {
-        return archive;
+    public Boolean getArchived() {
+        return archived;
     }
 
-    public void setArchive(Boolean archive) {
-        this.archive = archive;
+    public void setArchived(Boolean archived) {
+        this.archived = archived;
     }
 
-    public String getOrderId() {
-        return orderId;
+    public OrderEntity getOrder() {
+        return order;
     }
 
-    public void setOrderId(String orderId) {
-        this.orderId = orderId;
+    public void setOrder(OrderEntity order) {
+        this.order = order;
     }
 
-    public Integer getCarId() {
-        return carId;
+    public CarEntity getCar() {
+        return car;
     }
 
-    public void setCarId(Integer carId) {
-        this.carId = carId;
+    public void setCar(CarEntity car) {
+        this.car = car;
     }
 
-    public String getActualDeliveryAddress() {
-        return actualDeliveryAddress;
+    public List<AttachmentEntity> getAttachments() {
+        return attachments;
     }
 
-    public void setActualDeliveryAddress(String actualDeliveryAddress) {
-        this.actualDeliveryAddress = actualDeliveryAddress;
+    public void setAttachments(List<AttachmentEntity> attachments) {
+        this.attachments = attachments;
     }
 
-    public LocalDateTime getActualDeliveryDateTime() {
-        return actualDeliveryDateTime;
+    public OperationEntity getDeliveryOperation() {
+        return deliveryOperation;
     }
 
-    public void setActualDeliveryDateTime(LocalDateTime actualDeliveryDateTime) {
-        this.actualDeliveryDateTime = actualDeliveryDateTime;
+    public void setDeliveryOperation(OperationEntity deliveryOperation) {
+        this.deliveryOperation = deliveryOperation;
     }
 
-    public String getScanOfTheContractUrl() {
-        return scanOfTheContractUrl;
+    public OperationEntity getReturnOperation() {
+        return returnOperation;
     }
 
-    public void setScanOfTheContractUrl(String scanOfTheContractUrl) {
-        this.scanOfTheContractUrl = scanOfTheContractUrl;
+    public void setReturnOperation(OperationEntity returnOperation) {
+        this.returnOperation = returnOperation;
     }
 
-    public String getScansOfTheRegulationsUrls() {
-        return scansOfTheRegulationsUrls;
-    }
-
-    public void setScansOfTheRegulationsUrls(String scansOfTheRegulationsUrls) {
-        this.scansOfTheRegulationsUrls = scansOfTheRegulationsUrls;
-    }
-
-    public String getScanOfTheDeliveryProtocolUrl() {
-        return scanOfTheDeliveryProtocolUrl;
-    }
-
-    public void setScanOfTheDeliveryProtocolUrl(String scanOfTheDeliveryProtocolUrl) {
-        this.scanOfTheDeliveryProtocolUrl = scanOfTheDeliveryProtocolUrl;
-    }
-
-    public String getDeliveryPhotosUrls() {
-        return deliveryPhotosUrls;
-    }
-
-    public void setDeliveryPhotosUrls(String deliveryPhotosUrls) {
-        this.deliveryPhotosUrls = deliveryPhotosUrls;
-    }
-
-    public String getActualReturnAddress() {
-        return actualReturnAddress;
-    }
-
-    public void setActualReturnAddress(String actualReturnAddress) {
-        this.actualReturnAddress = actualReturnAddress;
-    }
-
-    public LocalDateTime getActualReturnDateTime() {
-        return actualReturnDateTime;
-    }
-
-    public void setActualReturnDateTime(LocalDateTime actualReturnDateTime) {
-        this.actualReturnDateTime = actualReturnDateTime;
-    }
-
-    public String getReturnPhotosUrls() {
-        return returnPhotosUrls;
-    }
-
-    public void setReturnPhotosUrls(String returnPhotosUrls) {
-        this.returnPhotosUrls = returnPhotosUrls;
-    }
-
-    public String getScanOfTheReturnProtocolUrl() {
-        return scanOfTheReturnProtocolUrl;
-    }
-
-    public void setScanOfTheReturnProtocolUrl(String scanOfTheReturnProtocolUrl) {
-        this.scanOfTheReturnProtocolUrl = scanOfTheReturnProtocolUrl;
-    }
-
-    public List<String> getDamageIds() {
-        return damageIds;
-    }
-
-    public void setDamageIds(List<String> damageIds) {
-        this.damageIds = damageIds;
+    @Override
+    public String toString() {
+        return "RentalEntity{" +
+                "id=" + id +
+                ", archived=" + archived +
+                ", order=" + order +
+                ", car=" + car +
+                ", attachments=" + attachments +
+                ", deliveryOperation=" + deliveryOperation +
+                ", returnOperation=" + returnOperation +
+                '}';
     }
 }

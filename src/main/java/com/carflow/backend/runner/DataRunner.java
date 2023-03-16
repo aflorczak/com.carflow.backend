@@ -4,30 +4,31 @@ import com.carflow.backend.infrastructure.boundaries.out.cars.entity.CarEntity;
 import com.carflow.backend.infrastructure.boundaries.out.cars.repository.CarRepository;
 import com.carflow.backend.infrastructure.boundaries.out.order.repository.OrderRepository;
 import com.carflow.backend.infrastructure.boundaries.out.order.entity.OrderEntity;
-import com.carflow.backend.infrastructure.boundaries.out.rental.entity.RentalEntity;
-import com.carflow.backend.infrastructure.boundaries.out.rental.repository.RentalRepository;
+import com.carflow.backend.infrastructure.boundaries.out.attachment.entity.AttachmentEntity;
+import com.carflow.backend.infrastructure.boundaries.out.attachment.repository.AttachmentRepository;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Service;
-
-import java.time.LocalDateTime;
 
 @Service
 public class DataRunner implements ApplicationRunner {
 
     private final OrderRepository orderRepository;
     private final CarRepository carRepository;
-    private final RentalRepository rentalRepository;
+    private final AttachmentRepository attachmentRepository;
 
-    public DataRunner(OrderRepository orderRepository, CarRepository carRepository, RentalRepository rentalRepository) {
+    public DataRunner(
+            OrderRepository orderRepository,
+            CarRepository carRepository,
+            AttachmentRepository attachmentRepository
+    ) {
         this.orderRepository = orderRepository;
         this.carRepository = carRepository;
-        this.rentalRepository = rentalRepository;
+        this.attachmentRepository = attachmentRepository;
     }
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        System.out.println("Runner");
         OrderEntity orderEntity = new OrderEntity(
                 1,
                 "ACCEPTED",
@@ -70,25 +71,13 @@ public class DataRunner implements ApplicationRunner {
                 null
         );
 
-        RentalEntity rentalEntity = new RentalEntity(
-                1,
-                false,
-                "1",
-                1,
-                "realny adres dostawy",
-                LocalDateTime.now(),
-                "URL do skanu umowy",
-                "URL do skanu regulaminu",
-                "URL do skanu protokou dostawy",
-                "URLe ze zdjeciami z wydania",
-                "realny adres zwrotu",
-                null,
-                "URLe ze zdjęciami",
-                "URL do skanu protokołu zwrotu",
-                null
-        );
+        AttachmentEntity attachmentEntity = new AttachmentEntity();
+        attachmentEntity.setId(1);
+        attachmentEntity.setName("Zalacznik do wynajmu");
+        attachmentEntity.setDescription("Pierwszy zalacznik do wynajmu");
+        attachmentEntity.setUrl("https://test.org");
 
-        rentalRepository.save(rentalEntity);
+        attachmentRepository.save(attachmentEntity);
         carRepository.save(carEntity);
         orderRepository.save(orderEntity);
     }
