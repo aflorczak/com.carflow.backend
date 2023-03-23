@@ -204,4 +204,29 @@ public class OrderEntity {
     public void setReasonForCancelingTheOrder(String reasonForCancelingTheOrder) {
         this.reasonForCancelingTheOrder = reasonForCancelingTheOrder;
     }
+
+    @Override
+    public String toString() {
+        return "OrderEntity{" +
+                "id=" + id +
+                ", status='" + status + '\'' +
+                ", clientsData='" + clientsData + '\'' +
+                ", principal='" + principal + '\'' +
+                ", internalCaseNumber='" + internalCaseNumber + '\'' +
+                ", externalCaseNumber='" + externalCaseNumber + '\'' +
+                ", segment='" + segment + '\'' +
+                ", deliveryAddress='" + deliveryAddress + '\'' +
+                ", deliveryDate='" + deliveryDate + '\'' +
+                ", deliveryTime='" + deliveryTime + '\'' +
+                ", deliveryComments='" + deliveryComments + '\'' +
+                ", deliveryBranch='" + deliveryBranch + '\'' +
+                ", returnAddress='" + returnAddress + '\'' +
+                ", returnDate='" + returnDate + '\'' +
+                ", returnTime='" + returnTime + '\'' +
+                ", returnComments='" + returnComments + '\'' +
+                ", returnBranch='" + returnBranch + '\'' +
+                ", archive=" + archive +
+                ", reasonForCancelingTheOrder='" + reasonForCancelingTheOrder + '\'' +
+                '}';
+    }
 }
