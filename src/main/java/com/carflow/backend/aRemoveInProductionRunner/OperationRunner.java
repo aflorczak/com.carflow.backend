@@ -1,6 +1,6 @@
 package com.carflow.backend.aRemoveInProductionRunner;
 
-import com.carflow.backend.customEnum.OperationTypes;
+import com.carflow.backend.customEnum.OperationType;
 import com.carflow.backend.module.operationModule.infrastructure.boundary.out.database.entity.OperationEntity;
 import com.carflow.backend.module.operationModule.infrastructure.boundary.out.database.repository.OperationRepository;
 import com.carflow.backend.module.placeModule.infrastructure.boundary.out.database.repository.PlaceRepository;
@@ -27,21 +27,21 @@ public class OperationRunner implements ApplicationRunner {
         OperationEntity secondOutOperation = new OperationEntity();
         OperationEntity firstInOperation = new OperationEntity();
         firstOutOperation.setId(1);
-        firstOutOperation.setOperationTypes(OperationTypes.DELIVERY_OPERATION);
+        firstOutOperation.setOperationTypes(OperationType.DELIVERY_OPERATION);
         firstOutOperation.setOperationAddress(placeRepository.findById("1").get());
         firstOutOperation.setOperationDateTime(LocalDateTime.now());
         firstOutOperation.setAttachments(null);
         firstOutOperation.setDamages(null);
 
         secondOutOperation.setId(2);
-        secondOutOperation.setOperationTypes(OperationTypes.DELIVERY_OPERATION);
+        secondOutOperation.setOperationTypes(OperationType.DELIVERY_OPERATION);
         secondOutOperation.setOperationAddress(placeRepository.findById("2").get());
         secondOutOperation.setOperationDateTime(LocalDateTime.now());
         secondOutOperation.setAttachments(null);
         secondOutOperation.setDamages(null);
 
         firstInOperation.setId(3);
-        firstInOperation.setOperationTypes(OperationTypes.RETURN_OPERATION);
+        firstInOperation.setOperationTypes(OperationType.RETURN_OPERATION);
         firstInOperation.setOperationAddress(placeRepository.findById("1").get());
         firstInOperation.setOperationDateTime(LocalDateTime.now().plusHours(2).plusDays(8));
         firstInOperation.setAttachments(null);

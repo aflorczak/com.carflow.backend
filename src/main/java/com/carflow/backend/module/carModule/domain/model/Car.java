@@ -1,4 +1,4 @@
-package com.carflow.backend.module.carModule.domain.models;
+package com.carflow.backend.module.carModule.domain.model;
 
 import com.carflow.backend.customEnum.BodyType;
 import com.carflow.backend.customEnum.CarSegment;

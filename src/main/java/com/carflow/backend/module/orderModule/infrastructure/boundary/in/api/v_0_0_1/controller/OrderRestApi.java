@@ -1,9 +1,9 @@
-package com.carflow.backend.module.orderModule.infrastructure.boundary.in.api.v_0_0_1.controllers;
+package com.carflow.backend.module.orderModule.infrastructure.boundary.in.api.v_0_0_1.controller;
 
-import com.carflow.backend.module.orderModule.domain.services.OrderService;
-import com.carflow.backend.module.orderModule.infrastructure.boundary.in.api.v_0_0_1.entities.OrderDto;
-import com.carflow.backend.module.orderModule.infrastructure.boundary.in.api.v_0_0_1.helpers.OrderApiConverter;
-import com.carflow.backend.module.orderModule.domain.models.Order;
+import com.carflow.backend.module.orderModule.domain.service.OrderService;
+import com.carflow.backend.module.orderModule.infrastructure.boundary.in.api.v_0_0_1.entity.OrderDto;
+import com.carflow.backend.module.orderModule.infrastructure.boundary.in.api.v_0_0_1.helper.OrderApiConverter;
+import com.carflow.backend.module.orderModule.domain.model.Order;
 import com.carflow.backend.exception.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

@@ -1,4 +1,4 @@
-package com.carflow.backend.module.orderModule.domain.models;
+package com.carflow.backend.module.orderModule.domain.model;
 
 public class Order {
     private Integer id;

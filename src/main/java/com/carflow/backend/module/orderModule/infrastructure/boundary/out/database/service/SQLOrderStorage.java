@@ -1,9 +1,9 @@
 package com.carflow.backend.module.orderModule.infrastructure.boundary.out.database.service;
 
 import com.carflow.backend.module.orderModule.domain.interfaces.OrderStorage;
-import com.carflow.backend.module.orderModule.domain.models.Order;
+import com.carflow.backend.module.orderModule.domain.model.Order;
 import com.carflow.backend.module.orderModule.infrastructure.boundary.out.database.entity.OrderEntity;
-import com.carflow.backend.module.orderModule.infrastructure.boundary.out.database.helpers.OrderEntityConverter;
+import com.carflow.backend.module.orderModule.infrastructure.boundary.out.database.helper.OrderEntityConverter;
 import com.carflow.backend.module.orderModule.infrastructure.boundary.out.database.repository.OrderRepository;
 import com.carflow.backend.exception.ObjectNotFoundException;
 import org.springframework.context.annotation.Profile;

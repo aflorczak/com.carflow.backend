@@ -1,6 +1,6 @@
-package com.carflow.backend.module.orderModule.infrastructure.boundary.out.database.helpers;
+package com.carflow.backend.module.orderModule.infrastructure.boundary.out.database.helper;
 
-import com.carflow.backend.module.orderModule.domain.models.Order;
+import com.carflow.backend.module.orderModule.domain.model.Order;
 import com.carflow.backend.module.orderModule.infrastructure.boundary.out.database.entity.OrderEntity;
 import org.springframework.stereotype.Service;
 

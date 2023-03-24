@@ -1,9 +1,9 @@
 package com.carflow.backend.module.carModule.infrastructure.boundary.out.database.service;
 
 import com.carflow.backend.module.carModule.domain.interfaces.CarStorage;
-import com.carflow.backend.module.carModule.domain.models.Car;
+import com.carflow.backend.module.carModule.domain.model.Car;
 import com.carflow.backend.module.carModule.infrastructure.boundary.out.database.entity.CarEntity;
-import com.carflow.backend.module.carModule.infrastructure.boundary.out.database.helpers.CarEntityConverter;
+import com.carflow.backend.module.carModule.infrastructure.boundary.out.database.helper.CarEntityConverter;
 import com.carflow.backend.module.carModule.infrastructure.boundary.out.database.repository.CarRepository;
 import com.carflow.backend.exception.ObjectNotFoundException;
 import org.springframework.context.annotation.Profile;

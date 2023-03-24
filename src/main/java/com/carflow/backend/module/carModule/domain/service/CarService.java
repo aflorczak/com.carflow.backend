@@ -1,6 +1,6 @@
-package com.carflow.backend.module.carModule.domain.services;
+package com.carflow.backend.module.carModule.domain.service;
 
-import com.carflow.backend.module.carModule.domain.models.Car;
+import com.carflow.backend.module.carModule.domain.model.Car;
 import com.carflow.backend.module.carModule.domain.interfaces.CarStorage;
 import com.carflow.backend.exception.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;

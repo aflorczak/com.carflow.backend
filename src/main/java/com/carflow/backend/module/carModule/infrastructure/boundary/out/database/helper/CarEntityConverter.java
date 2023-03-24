@@ -1,6 +1,6 @@
-package com.carflow.backend.module.carModule.infrastructure.boundary.out.database.helpers;
+package com.carflow.backend.module.carModule.infrastructure.boundary.out.database.helper;
 
-import com.carflow.backend.module.carModule.domain.models.Car;
+import com.carflow.backend.module.carModule.domain.model.Car;
 import com.carflow.backend.module.carModule.infrastructure.boundary.out.database.entity.CarEntity;
 import org.springframework.stereotype.Service;
 

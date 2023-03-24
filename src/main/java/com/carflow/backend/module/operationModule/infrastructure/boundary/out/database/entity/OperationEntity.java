@@ -1,6 +1,6 @@
 package com.carflow.backend.module.operationModule.infrastructure.boundary.out.database.entity;
 
-import com.carflow.backend.customEnum.OperationTypes;
+import com.carflow.backend.customEnum.OperationType;
 import com.carflow.backend.module.attachmentModule.infrastructure.boundary.out.database.entity.AttachmentEntity;
 import com.carflow.backend.module.damageModule.infrastructure.boundary.out.database.entity.DamageEntity;
 import com.carflow.backend.module.placeModule.infrastructure.boundary.out.database.entity.PlaceEntity;
@@ -14,7 +14,7 @@ public class OperationEntity {
     @Id
     @GeneratedValue
     private Integer id;
-    private OperationTypes operationTypes;
+    private OperationType operationTypes;
     @OneToOne
     private PlaceEntity operationAddress;
     private LocalDateTime operationDateTime;
@@ -26,7 +26,7 @@ public class OperationEntity {
     public OperationEntity() {
     }
 
-    public OperationEntity(Integer id, OperationTypes operationTypes, PlaceEntity operationAddress, LocalDateTime operationDateTime, List<AttachmentEntity> attachments, List<DamageEntity> damages) {
+    public OperationEntity(Integer id, OperationType operationTypes, PlaceEntity operationAddress, LocalDateTime operationDateTime, List<AttachmentEntity> attachments, List<DamageEntity> damages) {
         this.id = id;
         this.operationTypes = operationTypes;
         this.operationAddress = operationAddress;
@@ -43,11 +43,11 @@ public class OperationEntity {
         this.id = id;
     }
 
-    public OperationTypes getOperationTypes() {
+    public OperationType getOperationTypes() {
         return operationTypes;
     }
 
-    public void setOperationTypes(OperationTypes operationTypes) {
+    public void setOperationTypes(OperationType operationTypes) {
         this.operationTypes = operationTypes;
     }
 

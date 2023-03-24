@@ -1,7 +1,7 @@
 package com.carflow.backend.module.carModule.infrastructure.boundary.in.api.v_0_0_1.controllers;
 
-import com.carflow.backend.module.carModule.domain.models.Car;
-import com.carflow.backend.module.carModule.domain.services.CarService;
+import com.carflow.backend.module.carModule.domain.model.Car;
+import com.carflow.backend.module.carModule.domain.service.CarService;
 import com.carflow.backend.module.carModule.infrastructure.boundary.in.api.v_0_0_1.entities.CarDto;
 import com.carflow.backend.module.carModule.infrastructure.boundary.in.api.v_0_0_1.helpers.CarConverter;
 import com.carflow.backend.exception.ObjectNotFoundException;

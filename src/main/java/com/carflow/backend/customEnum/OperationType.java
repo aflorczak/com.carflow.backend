@@ -1,6 +1,6 @@
 package com.carflow.backend.customEnum;
 
-public enum OperationTypes {
+public enum OperationType {
     DELIVERY_OPERATION,
     RETURN_OPERATION
 }
