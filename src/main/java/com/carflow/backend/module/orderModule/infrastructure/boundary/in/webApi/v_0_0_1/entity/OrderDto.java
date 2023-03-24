@@ -1,4 +1,4 @@
-package com.carflow.backend.module.orderModule.infrastructure.boundary.in.api.v_0_0_1.entity;
+package com.carflow.backend.module.orderModule.infrastructure.boundary.in.webApi.v_0_0_1.entity;
 
 
 public class OrderDto {

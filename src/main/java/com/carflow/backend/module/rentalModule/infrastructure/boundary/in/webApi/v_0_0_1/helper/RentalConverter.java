@@ -1,7 +1,7 @@
-package com.carflow.backend.module.rentalModule.infrastructure.boundary.in.api.v_0_0_1.helper;
+package com.carflow.backend.module.rentalModule.infrastructure.boundary.in.webApi.v_0_0_1.helper;
 
 import com.carflow.backend.module.rentalModule.domain.model.Rental;
-import com.carflow.backend.module.rentalModule.infrastructure.boundary.in.api.v_0_0_1.model.RentalDto;
+import com.carflow.backend.module.rentalModule.infrastructure.boundary.in.webApi.v_0_0_1.model.RentalDto;
 import org.springframework.stereotype.Service;
 
 @Service

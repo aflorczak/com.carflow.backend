@@ -1,6 +1,6 @@
-package com.carflow.backend.module.orderModule.infrastructure.boundary.in.api.v_0_0_1.helper;
+package com.carflow.backend.module.orderModule.infrastructure.boundary.in.webApi.v_0_0_1.helper;
 
-import com.carflow.backend.module.orderModule.infrastructure.boundary.in.api.v_0_0_1.entity.OrderDto;
+import com.carflow.backend.module.orderModule.infrastructure.boundary.in.webApi.v_0_0_1.entity.OrderDto;
 import com.carflow.backend.module.orderModule.domain.model.Order;
 import org.springframework.stereotype.Service;
 

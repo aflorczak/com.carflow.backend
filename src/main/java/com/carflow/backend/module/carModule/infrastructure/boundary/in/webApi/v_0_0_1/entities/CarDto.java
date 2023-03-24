@@ -1,4 +1,4 @@
-package com.carflow.backend.module.carModule.infrastructure.boundary.in.api.v_0_0_1.entities;
+package com.carflow.backend.module.carModule.infrastructure.boundary.in.webApi.v_0_0_1.entities;
 
 import com.carflow.backend.customEnum.BodyType;
 import com.carflow.backend.customEnum.CarSegment;

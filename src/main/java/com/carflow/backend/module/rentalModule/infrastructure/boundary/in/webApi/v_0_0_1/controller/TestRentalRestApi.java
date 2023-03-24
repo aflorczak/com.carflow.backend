@@ -1,4 +1,4 @@
-package com.carflow.backend.module.rentalModule.infrastructure.boundary.in.api.v_0_0_1.controller;
+package com.carflow.backend.module.rentalModule.infrastructure.boundary.in.webApi.v_0_0_1.controller;
 
 import com.carflow.backend.module.rentalModule.infrastructure.boundary.out.database.entity.RentalEntity;
 import com.carflow.backend.module.rentalModule.infrastructure.boundary.out.database.repository.RentalRepository;
