@@ -12,5 +12,4 @@ public interface CarStorage {
     Car updateCarById(String id, Car updatedCar) throws ObjectNotFoundException;
     Car moveToArchive(String id) throws ObjectNotFoundException;
     void deleteCarById(String id) throws ObjectNotFoundException;
-
 }

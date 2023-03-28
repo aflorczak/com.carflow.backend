@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 public class CarService {
-    private CarStorage storage;
+    private final CarStorage storage;
 
     @Autowired
     public CarService(CarStorage storage) {

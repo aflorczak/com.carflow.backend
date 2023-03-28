@@ -1,25 +1,18 @@
-package com.carflow.backend.module.damageModule.infrastructure.boundary.out.database.entity;
+package com.carflow.backend.module.damageModule.domain.model;
 
 import com.carflow.backend.customEnum.DamageType;
 import com.carflow.backend.module.attachmentModule.infrastructure.boundary.out.database.entity.AttachmentEntity;
-import jakarta.persistence.*;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Entity
-public class DamageEntity {
-    @Id
-    @GeneratedValue
+public class Damage {
     private Integer id;
     private DamageType damageType;
     private String description;
-    @OneToMany
     private List<AttachmentEntity> attachment;
 
-    public DamageEntity() {
-    }
-
-    public DamageEntity(Integer id, DamageType damageType, String description, List<AttachmentEntity> attachment) {
+    public Damage(Integer id, DamageType damageType, String description, List<AttachmentEntity> attachment) {
         this.id = id;
         this.damageType = damageType;
         this.description = description;
