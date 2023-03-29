@@ -3,6 +3,7 @@ package com.carflow.backend.module.operationModule.infrastructure.boundary.out.d
 import com.carflow.backend.exception.ObjectNotFoundException;
 import com.carflow.backend.module.operationModule.domain.intrerfaces.OperationStorage;
 import com.carflow.backend.module.operationModule.domain.model.Operation;
+import com.carflow.backend.module.operationModule.infrastructure.boundary.out.database.entity.OperationEntity;
 import com.carflow.backend.module.operationModule.infrastructure.boundary.out.database.helper.OperationConverter;
 import com.carflow.backend.module.operationModule.infrastructure.boundary.out.database.repository.OperationRepository;
 import org.springframework.stereotype.Service;
@@ -30,22 +31,33 @@ public class SQLOperationStorage implements OperationStorage {
 
     @Override
     public List<Operation> getAllOperations() {
-        // skonczylem tutaj
-        return null;
+        List<OperationEntity> operationEntities = operationRepository.findAll();
+        return operationEntities.stream().map(converter::convertOperationEntityToOperation).toList();
     }
 
     @Override
     public Operation getOperationById(String id) throws ObjectNotFoundException {
-        return null;
+        Optional<OperationEntity> operationEntity = operationRepository.findById(id);
+        if (operationEntity.isPresent()) {
+            return converter.convertOperationEntityToOperation(operationEntity.get());
+        } else {
+            throw new ObjectNotFoundException("Object not found.");
+        }
     }
 
     @Override
     public Operation updateOperationById(String id, Operation updatedOperation) throws ObjectNotFoundException {
-        return null;
+        OperationEntity operationEntity = operationRepository.save(converter.convertOperationToOperationEntity(updatedOperation));
+        return converter.convertOperationEntityToOperation(operationEntity);
     }
 
     @Override
     public void deleteOperationById(String id) throws ObjectNotFoundException {
-        Optional<Operation> operation =
+        Optional<OperationEntity> operation = operationRepository.findById(id);
+        if (operation.isPresent()) {
+            operationRepository.deleteById(id);
+        } else {
+            throw new ObjectNotFoundException("Object not found.");
+        }
     }
 }

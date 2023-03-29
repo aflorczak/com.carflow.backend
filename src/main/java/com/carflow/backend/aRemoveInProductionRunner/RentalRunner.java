@@ -23,7 +23,6 @@ public class RentalRunner implements ApplicationRunner {
             OrderRepository orderRepository,
             OperationRepository operationRepository
     ) {
-        // tutaj nie wolamy repo z innych modulow tylko ich serwisy
         this.rentalRepository = rentalRepository;
         this.carRepository = carRepository;
         this.orderRepository = orderRepository;

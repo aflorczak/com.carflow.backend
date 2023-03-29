@@ -6,14 +6,12 @@ import com.carflow.backend.module.orderModule.infrastructure.boundary.out.databa
 import com.carflow.backend.module.orderModule.infrastructure.boundary.out.database.helper.OrderEntityConverter;
 import com.carflow.backend.module.orderModule.infrastructure.boundary.out.database.repository.OrderRepository;
 import com.carflow.backend.exception.ObjectNotFoundException;
-import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-@Profile("sqlStorage")
 public class SQLOrderStorage implements OrderStorage {
     final private OrderRepository orderRepository;
     final private OrderEntityConverter orderEntityConverter;

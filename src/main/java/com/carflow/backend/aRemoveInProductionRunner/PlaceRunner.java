@@ -4,9 +4,11 @@ import com.carflow.backend.module.placeModule.infrastructure.boundary.out.databa
 import com.carflow.backend.module.placeModule.infrastructure.boundary.out.database.repository.PlaceRepository;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 
 @Service
+@Order(1)
 public class PlaceRunner implements ApplicationRunner {
     private final PlaceRepository placeRepository;
 

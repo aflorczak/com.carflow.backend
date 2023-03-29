@@ -6,14 +6,12 @@ import com.carflow.backend.module.carModule.infrastructure.boundary.out.database
 import com.carflow.backend.module.carModule.infrastructure.boundary.out.database.helper.CarEntityConverter;
 import com.carflow.backend.module.carModule.infrastructure.boundary.out.database.repository.CarRepository;
 import com.carflow.backend.exception.ObjectNotFoundException;
-import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-@Profile("sqlStorage")
 public class SQLCarStorage implements CarStorage {
 
     final private CarRepository carRepository;

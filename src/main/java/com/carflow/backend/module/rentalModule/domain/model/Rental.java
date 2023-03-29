@@ -1,41 +1,37 @@
 package com.carflow.backend.module.rentalModule.domain.model;
 
-import java.time.LocalDateTime;
+import com.carflow.backend.module.attachmentModule.domain.model.Attachment;
+import com.carflow.backend.module.attachmentModule.infrastructure.boundary.out.database.entity.AttachmentEntity;
+import com.carflow.backend.module.carModule.domain.model.Car;
+import com.carflow.backend.module.carModule.infrastructure.boundary.out.database.entity.CarEntity;
+import com.carflow.backend.module.operationModule.domain.model.Operation;
+import com.carflow.backend.module.operationModule.infrastructure.boundary.out.database.entity.OperationEntity;
+import com.carflow.backend.module.orderModule.domain.model.Order;
+import com.carflow.backend.module.orderModule.infrastructure.boundary.in.webApi.v_0_0_1.entity.OrderDto;
+import com.carflow.backend.module.orderModule.infrastructure.boundary.out.database.entity.OrderEntity;
+
 import java.util.List;
 
 public class Rental {
     private Integer id;
-    private Boolean archive;
-    private String orderId;
-    private Integer carId;
-    private String actualDeliveryAddress;
-    private LocalDateTime actualDeliveryDateTime;
-    private String scanOfTheContractUrl;
-    private String scansOfTheRegulationsUrls;
-    private String scanOfTheDeliveryProtocolUrl;
-    private String deliveryPhotosUrls;
-    private String actualReturnAddress;
-    private LocalDateTime actualReturnDateTime;
-    private String returnPhotosUrls;
-    private String scanOfTheReturnProtocolUrl;
-    private List<String> damageIds;
+    private Boolean archived;
+    private Order order;
+    private Car car;
+    private List<Attachment> attachments;
+    private Operation deliveryOperation;
+    private Operation returnOperation;
 
-    public Rental(Integer id, Boolean archive, String orderId, Integer carId, String actualDeliveryAddress, LocalDateTime actualDeliveryDateTime, String scanOfTheContractUrl, String scansOfTheRegulationsUrls, String scanOfTheDeliveryProtocolUrl, String deliveryPhotosUrls, String actualReturnAddress, LocalDateTime actualReturnDateTime, String returnPhotosUrls, String scanOfTheReturnProtocolUrl, List<String> damageIds) {
+    public Rental() {
+    }
+
+    public Rental(Integer id, Boolean archived, Order order, Car car, List<Attachment> attachments, Operation deliveryOperation, Operation returnOperation) {
         this.id = id;
-        this.archive = archive;
-        this.orderId = orderId;
-        this.carId = carId;
-        this.actualDeliveryAddress = actualDeliveryAddress;
-        this.actualDeliveryDateTime = actualDeliveryDateTime;
-        this.scanOfTheContractUrl = scanOfTheContractUrl;
-        this.scansOfTheRegulationsUrls = scansOfTheRegulationsUrls;
-        this.scanOfTheDeliveryProtocolUrl = scanOfTheDeliveryProtocolUrl;
-        this.deliveryPhotosUrls = deliveryPhotosUrls;
-        this.actualReturnAddress = actualReturnAddress;
-        this.actualReturnDateTime = actualReturnDateTime;
-        this.returnPhotosUrls = returnPhotosUrls;
-        this.scanOfTheReturnProtocolUrl = scanOfTheReturnProtocolUrl;
-        this.damageIds = damageIds;
+        this.archived = archived;
+        this.order = order;
+        this.car = car;
+        this.attachments = attachments;
+        this.deliveryOperation = deliveryOperation;
+        this.returnOperation = returnOperation;
     }
 
     public Integer getId() {
@@ -46,115 +42,51 @@ public class Rental {
         this.id = id;
     }
 
-    public Boolean getArchive() {
-        return archive;
+    public Boolean getArchived() {
+        return archived;
     }
 
-    public void setArchive(Boolean archive) {
-        this.archive = archive;
+    public void setArchived(Boolean archived) {
+        this.archived = archived;
     }
 
-    public String getOrderId() {
-        return orderId;
+    public Order getOrder() {
+        return order;
     }
 
-    public void setOrderId(String orderId) {
-        this.orderId = orderId;
+    public void setOrder(Order order) {
+        this.order = order;
     }
 
-    public Integer getCarId() {
-        return carId;
+    public Car getCar() {
+        return car;
     }
 
-    public void setCarId(Integer carId) {
-        this.carId = carId;
+    public void setCar(Car car) {
+        this.car = car;
     }
 
-    public String getActualDeliveryAddress() {
-        return actualDeliveryAddress;
+    public List<Attachment> getAttachments() {
+        return attachments;
     }
 
-    public void setActualDeliveryAddress(String actualDeliveryAddress) {
-        this.actualDeliveryAddress = actualDeliveryAddress;
+    public void setAttachments(List<Attachment> attachments) {
+        this.attachments = attachments;
     }
 
-    public LocalDateTime getActualDeliveryDateTime() {
-        return actualDeliveryDateTime;
+    public Operation getDeliveryOperation() {
+        return deliveryOperation;
     }
 
-    public void setActualDeliveryDateTime(LocalDateTime actualDeliveryDateTime) {
-        this.actualDeliveryDateTime = actualDeliveryDateTime;
+    public void setDeliveryOperation(Operation deliveryOperation) {
+        this.deliveryOperation = deliveryOperation;
     }
 
-    public String getScanOfTheContractUrl() {
-        return scanOfTheContractUrl;
+    public Operation getReturnOperation() {
+        return returnOperation;
     }
 
-    public void setScanOfTheContractUrl(String scanOfTheContractUrl) {
-        this.scanOfTheContractUrl = scanOfTheContractUrl;
-    }
-
-    public String getScansOfTheRegulationsUrls() {
-        return scansOfTheRegulationsUrls;
-    }
-
-    public void setScansOfTheRegulationsUrls(String scansOfTheRegulationsUrls) {
-        this.scansOfTheRegulationsUrls = scansOfTheRegulationsUrls;
-    }
-
-    public String getScanOfTheDeliveryProtocolUrl() {
-        return scanOfTheDeliveryProtocolUrl;
-    }
-
-    public void setScanOfTheDeliveryProtocolUrl(String scanOfTheDeliveryProtocolUrl) {
-        this.scanOfTheDeliveryProtocolUrl = scanOfTheDeliveryProtocolUrl;
-    }
-
-    public String getDeliveryPhotosUrls() {
-        return deliveryPhotosUrls;
-    }
-
-    public void setDeliveryPhotosUrls(String deliveryPhotosUrls) {
-        this.deliveryPhotosUrls = deliveryPhotosUrls;
-    }
-
-    public String getActualReturnAddress() {
-        return actualReturnAddress;
-    }
-
-    public void setActualReturnAddress(String actualReturnAddress) {
-        this.actualReturnAddress = actualReturnAddress;
-    }
-
-    public LocalDateTime getActualReturnDateTime() {
-        return actualReturnDateTime;
-    }
-
-    public void setActualReturnDateTime(LocalDateTime actualReturnDateTime) {
-        this.actualReturnDateTime = actualReturnDateTime;
-    }
-
-    public String getReturnPhotosUrls() {
-        return returnPhotosUrls;
-    }
-
-    public void setReturnPhotosUrls(String returnPhotosUrls) {
-        this.returnPhotosUrls = returnPhotosUrls;
-    }
-
-    public String getScanOfTheReturnProtocolUrl() {
-        return scanOfTheReturnProtocolUrl;
-    }
-
-    public void setScanOfTheReturnProtocolUrl(String scanOfTheReturnProtocolUrl) {
-        this.scanOfTheReturnProtocolUrl = scanOfTheReturnProtocolUrl;
-    }
-
-    public List<String> getDamageIds() {
-        return damageIds;
-    }
-
-    public void setDamageIds(List<String> damageIds) {
-        this.damageIds = damageIds;
+    public void setReturnOperation(Operation returnOperation) {
+        this.returnOperation = returnOperation;
     }
 }

@@ -2,7 +2,9 @@ package com.carflow.backend.module.damageModule.infrastructure.boundary.out.data
 
 import com.carflow.backend.module.damageModule.domain.model.Damage;
 import com.carflow.backend.module.damageModule.infrastructure.boundary.out.database.entity.DamageEntity;
+import org.springframework.stereotype.Service;
 
+@Service
 public class DamageEntityConverter {
     public DamageEntity convertDamageToDamageEntity(Damage damage) {
         return new DamageEntity(
