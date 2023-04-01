@@ -19,13 +19,13 @@ public class RentalService {
 
     public Rental createNewRental(Rental rental) {
         return storage.createNewRental(new Rental(
-                0,
-                false,
-                rental.getOrder(),
-                rental.getCar(),
-                rental.getAttachments(),
-                rental.getDeliveryOperation(),
-                rental.getReturnOperation()
+                rental.getId(),
+                rental.getArchived(),
+                rental.getOrderId(),
+                rental.getCarId(),
+                rental.getAttachmentsIds(),
+                rental.getDeliveryOperationId(),
+                rental.getReturnOperationId()
         ));
     }
 

@@ -13,29 +13,24 @@ public class RentalEntity {
     @Id
     @GeneratedValue
     private Integer id;
-    private Boolean archived;
-    @OneToOne(fetch = FetchType.LAZY)
-    private OrderEntity order;
-    @ManyToOne(fetch = FetchType.LAZY)
-    private CarEntity car;
-    @OneToMany
-    private List<AttachmentEntity> attachments;
-    @OneToOne
-    private OperationEntity deliveryOperation;
-    @OneToOne
-    private OperationEntity returnOperation;
+    private Boolean isArchived;
+    private String orderId;
+    private String carId;
+    private List<String> attachmentsIds;
+    private String deliveryOperationId;
+    private String returnOperationId;
 
     public RentalEntity() {
     }
 
-    public RentalEntity(Integer id, Boolean archived, OrderEntity order, CarEntity car, List<AttachmentEntity> attachments, OperationEntity deliveryOperation, OperationEntity returnOperation) {
+    public RentalEntity(Integer id, Boolean isArchived, String orderId, String carId, List<String> attachmentsIds, String deliveryOperationId, String returnOperationId) {
         this.id = id;
-        this.archived = archived;
-        this.order = order;
-        this.car = car;
-        this.attachments = attachments;
-        this.deliveryOperation = deliveryOperation;
-        this.returnOperation = returnOperation;
+        this.isArchived = isArchived;
+        this.orderId = orderId;
+        this.carId = carId;
+        this.attachmentsIds = attachmentsIds;
+        this.deliveryOperationId = deliveryOperationId;
+        this.returnOperationId = returnOperationId;
     }
 
     public Integer getId() {
@@ -47,63 +42,50 @@ public class RentalEntity {
     }
 
     public Boolean getArchived() {
-        return archived;
+        return isArchived;
     }
 
     public void setArchived(Boolean archived) {
-        this.archived = archived;
+        isArchived = archived;
     }
 
-    public OrderEntity getOrder() {
-        return order;
+    public String getOrderId() {
+        return orderId;
     }
 
-    public void setOrder(OrderEntity order) {
-        this.order = order;
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
     }
 
-    public CarEntity getCar() {
-        return car;
+    public String getCarId() {
+        return carId;
     }
 
-    public void setCar(CarEntity car) {
-        this.car = car;
+    public void setCarId(String carId) {
+        this.carId = carId;
     }
 
-    public List<AttachmentEntity> getAttachments() {
-        return attachments;
+    public List<String> getAttachmentsIds() {
+        return attachmentsIds;
     }
 
-    public void setAttachments(List<AttachmentEntity> attachments) {
-        this.attachments = attachments;
+    public void setAttachmentsIds(List<String> attachmentsIds) {
+        this.attachmentsIds = attachmentsIds;
     }
 
-    public OperationEntity getDeliveryOperation() {
-        return deliveryOperation;
+    public String getDeliveryOperationId() {
+        return deliveryOperationId;
     }
 
-    public void setDeliveryOperation(OperationEntity deliveryOperation) {
-        this.deliveryOperation = deliveryOperation;
+    public void setDeliveryOperationId(String deliveryOperationId) {
+        this.deliveryOperationId = deliveryOperationId;
     }
 
-    public OperationEntity getReturnOperation() {
-        return returnOperation;
+    public String getReturnOperationId() {
+        return returnOperationId;
     }
 
-    public void setReturnOperation(OperationEntity returnOperation) {
-        this.returnOperation = returnOperation;
-    }
-
-    @Override
-    public String toString() {
-        return "RentalEntity{" +
-                "id=" + id +
-                ", archived=" + archived +
-                ", order=" + order +
-                ", car=" + car +
-                ", attachments=" + attachments +
-                ", deliveryOperation=" + deliveryOperation +
-                ", returnOperation=" + returnOperation +
-                '}';
+    public void setReturnOperationId(String returnOperationId) {
+        this.returnOperationId = returnOperationId;
     }
 }

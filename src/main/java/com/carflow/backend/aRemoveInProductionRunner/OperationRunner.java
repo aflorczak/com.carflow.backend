@@ -27,32 +27,24 @@ public class OperationRunner implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        OperationEntity firstOutOperation = new OperationEntity();
-        OperationEntity secondOutOperation = new OperationEntity();
-        OperationEntity firstInOperation = new OperationEntity();
-        firstOutOperation.setId(1);
-        firstOutOperation.setOperationTypes(OperationType.DELIVERY_OPERATION);
-        firstOutOperation.setOperationAddress(placeRepository.findById("1").get());
-        firstOutOperation.setOperationDateTime(LocalDateTime.now());
-        firstOutOperation.setAttachments(null);
-        firstOutOperation.setDamages(null);
-
-        secondOutOperation.setId(2);
-        secondOutOperation.setOperationTypes(OperationType.DELIVERY_OPERATION);
-        secondOutOperation.setOperationAddress(placeRepository.findById("2").get());
-        secondOutOperation.setOperationDateTime(LocalDateTime.now());
-        secondOutOperation.setAttachments(null);
-        secondOutOperation.setDamages(null);
-
-        firstInOperation.setId(3);
-        firstInOperation.setOperationTypes(OperationType.RETURN_OPERATION);
-        firstInOperation.setOperationAddress(placeRepository.findById("1").get());
-        firstInOperation.setOperationDateTime(LocalDateTime.now().plusHours(2).plusDays(8));
-        firstInOperation.setAttachments(null);
-        firstInOperation.setDamages(null);
-
-        operationRepository.save(firstOutOperation);
-        operationRepository.save(secondOutOperation);
-        operationRepository.save(firstInOperation);
+//        OperationEntity firstOutOperation = new OperationEntity();
+//        OperationEntity firstInOperation = new OperationEntity();
+//
+//        firstOutOperation.setId(1);
+//        firstOutOperation.setOperationTypes(OperationType.DELIVERY_OPERATION);
+//        firstOutOperation.setOperationAddressId(null);
+//        firstOutOperation.setOperationDateTime(LocalDateTime.now());
+//        firstOutOperation.setAttachmentsIds(null);
+//        firstOutOperation.setDamagesIds(null);
+//
+//        firstInOperation.setId(2);
+//        firstInOperation.setOperationTypes(OperationType.RETURN_OPERATION);
+//        firstInOperation.setOperationAddressId(null);
+//        firstInOperation.setOperationDateTime(LocalDateTime.now());
+//        firstInOperation.setAttachmentsIds(null);
+//        firstInOperation.setDamagesIds(null);
+//
+//        operationRepository.save(firstOutOperation);
+//        operationRepository.save(firstInOperation);
     }
 }

@@ -1,22 +1,21 @@
-package com.carflow.backend.module.damageModule.domain.model;
+package com.carflow.backend.module.damageModule.infrastructure.boundary.in.webApi.v_0_0_1.model;
 
 import com.carflow.backend.customEnum.DamageType;
 import com.carflow.backend.module.attachmentModule.infrastructure.boundary.out.database.entity.AttachmentEntity;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-public class Damage {
+public class DamageDto {
     private Integer id;
     private Boolean isArchived;
     private DamageType damageType;
     private String description;
     private List<String> attachmentIds;
 
-    public Damage() {
+    public DamageDto() {
     }
 
-    public Damage(Integer id, Boolean isArchived, DamageType damageType, String description, List<String> attachmentIds) {
+    public DamageDto(Integer id, Boolean isArchived, DamageType damageType, String description, List<String> attachmentIds) {
         this.id = id;
         this.isArchived = isArchived;
         this.damageType = damageType;

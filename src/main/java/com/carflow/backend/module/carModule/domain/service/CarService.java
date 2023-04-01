@@ -35,8 +35,4 @@ public class CarService {
     public void deleteCarById(String id) throws ObjectNotFoundException {
         storage.deleteCarById(id);
     }
-
-    public void moveToArchive(String id) throws ObjectNotFoundException {
-        storage.moveToArchive(id);
-    }
 }

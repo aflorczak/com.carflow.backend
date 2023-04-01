@@ -11,19 +11,20 @@ public class DamageEntity {
     @Id
     @GeneratedValue
     private Integer id;
+    private Boolean isArchived;
     private DamageType damageType;
     private String description;
-    @OneToMany
-    private List<AttachmentEntity> attachment;
+    private List<String> attachmentIds;
 
     public DamageEntity() {
     }
 
-    public DamageEntity(Integer id, DamageType damageType, String description, List<AttachmentEntity> attachment) {
+    public DamageEntity(Integer id, Boolean isArchived, DamageType damageType, String description, List<String> attachmentIds) {
         this.id = id;
+        this.isArchived = isArchived;
         this.damageType = damageType;
         this.description = description;
-        this.attachment = attachment;
+        this.attachmentIds = attachmentIds;
     }
 
     public Integer getId() {
@@ -32,6 +33,14 @@ public class DamageEntity {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Boolean getArchived() {
+        return isArchived;
+    }
+
+    public void setArchived(Boolean archived) {
+        isArchived = archived;
     }
 
     public DamageType getDamageType() {
@@ -50,11 +59,11 @@ public class DamageEntity {
         this.description = description;
     }
 
-    public List<AttachmentEntity> getAttachment() {
-        return attachment;
+    public List<String> getAttachmentIds() {
+        return attachmentIds;
     }
 
-    public void setAttachment(List<AttachmentEntity> attachment) {
-        this.attachment = attachment;
+    public void setAttachmentIds(List<String> attachmentIds) {
+        this.attachmentIds = attachmentIds;
     }
 }

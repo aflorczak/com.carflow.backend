@@ -9,6 +9,7 @@ public class AttachmentEntityConverter {
     public AttachmentEntity convertAttachmentToAttachmentEntity(Attachment attachment) {
         return new AttachmentEntity(
                 attachment.getId(),
+                attachment.getArchived(),
                 attachment.getName(),
                 attachment.getDescription(),
                 attachment.getUrl()
@@ -18,6 +19,7 @@ public class AttachmentEntityConverter {
     public Attachment convertAttachmentEntityToAttachment(AttachmentEntity attachmentEntity) {
         return new Attachment(
                 attachmentEntity.getId(),
+                attachmentEntity.getArchived(),
                 attachmentEntity.getName(),
                 attachmentEntity.getDescription(),
                 attachmentEntity.getUrl()

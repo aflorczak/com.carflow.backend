@@ -14,24 +14,24 @@ import java.util.List;
 
 public class Rental {
     private Integer id;
-    private Boolean archived;
-    private Order order;
-    private Car car;
-    private List<Attachment> attachments;
-    private Operation deliveryOperation;
-    private Operation returnOperation;
+    private Boolean isArchived;
+    private String orderId;
+    private String carId;
+    private List<String> attachmentsIds;
+    private String deliveryOperationId;
+    private String returnOperationId;
 
     public Rental() {
     }
 
-    public Rental(Integer id, Boolean archived, Order order, Car car, List<Attachment> attachments, Operation deliveryOperation, Operation returnOperation) {
+    public Rental(Integer id, Boolean isArchived, String orderId, String carId, List<String> attachmentsIds, String deliveryOperationId, String returnOperationId) {
         this.id = id;
-        this.archived = archived;
-        this.order = order;
-        this.car = car;
-        this.attachments = attachments;
-        this.deliveryOperation = deliveryOperation;
-        this.returnOperation = returnOperation;
+        this.isArchived = isArchived;
+        this.orderId = orderId;
+        this.carId = carId;
+        this.attachmentsIds = attachmentsIds;
+        this.deliveryOperationId = deliveryOperationId;
+        this.returnOperationId = returnOperationId;
     }
 
     public Integer getId() {
@@ -43,50 +43,50 @@ public class Rental {
     }
 
     public Boolean getArchived() {
-        return archived;
+        return isArchived;
     }
 
     public void setArchived(Boolean archived) {
-        this.archived = archived;
+        isArchived = archived;
     }
 
-    public Order getOrder() {
-        return order;
+    public String getOrderId() {
+        return orderId;
     }
 
-    public void setOrder(Order order) {
-        this.order = order;
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
     }
 
-    public Car getCar() {
-        return car;
+    public String getCarId() {
+        return carId;
     }
 
-    public void setCar(Car car) {
-        this.car = car;
+    public void setCarId(String carId) {
+        this.carId = carId;
     }
 
-    public List<Attachment> getAttachments() {
-        return attachments;
+    public List<String> getAttachmentsIds() {
+        return attachmentsIds;
     }
 
-    public void setAttachments(List<Attachment> attachments) {
-        this.attachments = attachments;
+    public void setAttachmentsIds(List<String> attachmentsIds) {
+        this.attachmentsIds = attachmentsIds;
     }
 
-    public Operation getDeliveryOperation() {
-        return deliveryOperation;
+    public String getDeliveryOperationId() {
+        return deliveryOperationId;
     }
 
-    public void setDeliveryOperation(Operation deliveryOperation) {
-        this.deliveryOperation = deliveryOperation;
+    public void setDeliveryOperationId(String deliveryOperationId) {
+        this.deliveryOperationId = deliveryOperationId;
     }
 
-    public Operation getReturnOperation() {
-        return returnOperation;
+    public String getReturnOperationId() {
+        return returnOperationId;
     }
 
-    public void setReturnOperation(Operation returnOperation) {
-        this.returnOperation = returnOperation;
+    public void setReturnOperationId(String returnOperationId) {
+        this.returnOperationId = returnOperationId;
     }
 }

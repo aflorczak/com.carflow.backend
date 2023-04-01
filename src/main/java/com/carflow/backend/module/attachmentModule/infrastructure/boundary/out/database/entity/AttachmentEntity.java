@@ -9,6 +9,7 @@ public class AttachmentEntity {
     @Id
     @GeneratedValue
     private Integer id;
+    private Boolean isArchived;
     private String name;
     private String description;
     private String url;
@@ -16,8 +17,9 @@ public class AttachmentEntity {
     public AttachmentEntity() {
     }
 
-    public AttachmentEntity(Integer id, String name, String description, String url) {
+    public AttachmentEntity(Integer id, Boolean isArchived, String name, String description, String url) {
         this.id = id;
+        this.isArchived = isArchived;
         this.name = name;
         this.description = description;
         this.url = url;
@@ -29,6 +31,14 @@ public class AttachmentEntity {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Boolean getArchived() {
+        return isArchived;
+    }
+
+    public void setArchived(Boolean archived) {
+        isArchived = archived;
     }
 
     public String getName() {

@@ -2,12 +2,17 @@ package com.carflow.backend.module.attachmentModule.domain.model;
 
 public class Attachment {
     private Integer id;
+    private Boolean isArchived;
     private String name;
     private String description;
     private String url;
 
-    public Attachment(Integer id, String name, String description, String url) {
+    public Attachment() {
+    }
+
+    public Attachment(Integer id, Boolean isArchived, String name, String description, String url) {
         this.id = id;
+        this.isArchived = isArchived;
         this.name = name;
         this.description = description;
         this.url = url;
@@ -19,6 +24,14 @@ public class Attachment {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Boolean getArchived() {
+        return isArchived;
+    }
+
+    public void setArchived(Boolean archived) {
+        isArchived = archived;
     }
 
     public String getName() {

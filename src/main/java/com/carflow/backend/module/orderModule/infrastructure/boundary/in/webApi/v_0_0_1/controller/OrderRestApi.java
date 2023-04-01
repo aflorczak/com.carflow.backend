@@ -54,13 +54,6 @@ public class OrderRestApi {
         orderService.moveToArchiveById(id);
     }
 
-    @PatchMapping("/orders/{id}/cancelled")
-    public void moveToCancelledById(@PathVariable String id, @RequestBody String cancelledMessage) throws ObjectNotFoundException {
-        String[] splitMessage = cancelledMessage.split(":");
-        String message = splitMessage[1].replace("}", "").replace("\"", "");
-        orderService.moveToCancelledById(id, message);
-    }
-
     @DeleteMapping("/orders/{id}")
     public void deleteOrderById(@PathVariable String id) throws ObjectNotFoundException {
         orderService.deleteOrderById(id);
