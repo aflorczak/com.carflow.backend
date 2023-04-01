@@ -49,18 +49,6 @@ public class SQLCarStorage implements CarStorage {
     }
 
     @Override
-    public Car moveToArchive(String id) throws ObjectNotFoundException {
-        Optional<CarEntity> car = carRepository.findById(id);
-        if (car.isPresent()) {
-            CarEntity updatedCar = car.get();
-            updatedCar.setArchive(true);
-            return carEntityConverter.convertCarEntityToCar(carRepository.save(updatedCar));
-        } else {
-            throw new ObjectNotFoundException("Object not found");
-        }
-    }
-
-    @Override
     public void deleteCarById(String id) throws ObjectNotFoundException {
         Optional<CarEntity> car = carRepository.findById(id);
         if (car.isPresent()) {

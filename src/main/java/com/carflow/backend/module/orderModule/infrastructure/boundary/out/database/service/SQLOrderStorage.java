@@ -63,18 +63,6 @@ public class SQLOrderStorage implements OrderStorage {
     }
 
     @Override
-    public void moveToCancelledById(String id, String message) throws ObjectNotFoundException {
-        Optional<OrderEntity> order = orderRepository.findById(id);
-        if (order.isPresent()) {
-            order.get().setStatus("CANCELLED");
-            order.get().setReasonForCancelingTheOrder(message);
-            orderRepository.save(order.get());
-        } else {
-            throw new ObjectNotFoundException("Obiekt nie istnieje.");
-        }
-    }
-
-    @Override
     public void deleteOrderById(String id) throws ObjectNotFoundException {
         if(orderRepository.existsById(id)) {
             orderRepository.deleteById(id);

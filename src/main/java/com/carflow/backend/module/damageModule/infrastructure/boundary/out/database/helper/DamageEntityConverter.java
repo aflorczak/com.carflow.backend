@@ -9,18 +9,20 @@ public class DamageEntityConverter {
     public DamageEntity convertDamageToDamageEntity(Damage damage) {
         return new DamageEntity(
                 damage.getId(),
+                damage.getArchived(),
                 damage.getDamageType(),
                 damage.getDescription(),
-                damage.getAttachment()
+                damage.getAttachmentIds()
         );
     }
 
     public Damage convertDamageEntityToDamage(DamageEntity damageEntity) {
         return new Damage(
                 damageEntity.getId(),
+                damageEntity.getArchived(),
                 damageEntity.getDamageType(),
                 damageEntity.getDescription(),
-                damageEntity.getAttachment()
+                damageEntity.getAttachmentIds()
         );
     }
 }

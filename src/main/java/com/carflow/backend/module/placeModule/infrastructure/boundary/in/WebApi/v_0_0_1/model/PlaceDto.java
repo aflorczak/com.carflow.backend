@@ -1,6 +1,9 @@
-package com.carflow.backend.module.placeModule.domain.model;
+package com.carflow.backend.module.placeModule.infrastructure.boundary.in.WebApi.v_0_0_1.model;
 
-public class Place {
+import org.springframework.stereotype.Service;
+
+@Service
+public class PlaceDto {
     private Integer id;
     private Boolean isArchived;
     private String street;
@@ -10,10 +13,10 @@ public class Place {
     private String city;
     private String country;
 
-    public Place() {
+    public PlaceDto() {
     }
 
-    public Place(Integer id, Boolean isArchived, String street, String buildingNumber, String apartmentNumber, String postCode, String city, String country) {
+    public PlaceDto(Integer id, Boolean isArchived, String street, String buildingNumber, String apartmentNumber, String postCode, String city, String country) {
         this.id = id;
         this.isArchived = isArchived;
         this.street = street;

@@ -36,10 +36,6 @@ public class OrderService {
         storage.moveToArchiveById(id);
     }
 
-    public void moveToCancelledById(String id, String message) throws ObjectNotFoundException {
-        storage.moveToCancelledById(id, message);
-    }
-
     public void deleteOrderById(String id) throws ObjectNotFoundException {
         storage.deleteOrderById(id);
     }

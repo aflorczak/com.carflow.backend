@@ -14,25 +14,24 @@ public class OperationEntity {
     @Id
     @GeneratedValue
     private Integer id;
+    private Boolean isArchived;
     private OperationType operationTypes;
-    @OneToOne
-    private PlaceEntity operationAddress;
+    private String operationAddressId;
     private LocalDateTime operationDateTime;
-    @OneToMany
-    private List<AttachmentEntity> attachments;
-    @OneToMany
-    private List<DamageEntity> damages;
+    private List<String> attachmentsIds;
+    private List<String> damagesIds;
 
     public OperationEntity() {
     }
 
-    public OperationEntity(Integer id, OperationType operationTypes, PlaceEntity operationAddress, LocalDateTime operationDateTime, List<AttachmentEntity> attachments, List<DamageEntity> damages) {
+    public OperationEntity(Integer id, Boolean isArchived, OperationType operationTypes, String operationAddressId, LocalDateTime operationDateTime, List<String> attachmentsIds, List<String> damagesIds) {
         this.id = id;
+        this.isArchived = isArchived;
         this.operationTypes = operationTypes;
-        this.operationAddress = operationAddress;
+        this.operationAddressId = operationAddressId;
         this.operationDateTime = operationDateTime;
-        this.attachments = attachments;
-        this.damages = damages;
+        this.attachmentsIds = attachmentsIds;
+        this.damagesIds = damagesIds;
     }
 
     public Integer getId() {
@@ -43,6 +42,14 @@ public class OperationEntity {
         this.id = id;
     }
 
+    public Boolean getArchived() {
+        return isArchived;
+    }
+
+    public void setArchived(Boolean archived) {
+        isArchived = archived;
+    }
+
     public OperationType getOperationTypes() {
         return operationTypes;
     }
@@ -51,12 +58,12 @@ public class OperationEntity {
         this.operationTypes = operationTypes;
     }
 
-    public PlaceEntity getOperationAddress() {
-        return operationAddress;
+    public String getOperationAddressId() {
+        return operationAddressId;
     }
 
-    public void setOperationAddress(PlaceEntity operationAddress) {
-        this.operationAddress = operationAddress;
+    public void setOperationAddressId(String operationAddressId) {
+        this.operationAddressId = operationAddressId;
     }
 
     public LocalDateTime getOperationDateTime() {
@@ -67,19 +74,19 @@ public class OperationEntity {
         this.operationDateTime = operationDateTime;
     }
 
-    public List<AttachmentEntity> getAttachments() {
-        return attachments;
+    public List<String> getAttachmentsIds() {
+        return attachmentsIds;
     }
 
-    public void setAttachments(List<AttachmentEntity> attachments) {
-        this.attachments = attachments;
+    public void setAttachmentsIds(List<String> attachmentsIds) {
+        this.attachmentsIds = attachmentsIds;
     }
 
-    public List<DamageEntity> getDamages() {
-        return damages;
+    public List<String> getDamagesIds() {
+        return damagesIds;
     }
 
-    public void setDamages(List<DamageEntity> damages) {
-        this.damages = damages;
+    public void setDamagesIds(List<String> damagesIds) {
+        this.damagesIds = damagesIds;
     }
 }

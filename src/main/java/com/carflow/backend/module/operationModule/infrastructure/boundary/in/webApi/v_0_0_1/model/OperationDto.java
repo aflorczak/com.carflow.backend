@@ -10,22 +10,24 @@ import java.util.List;
 
 public class OperationDto {
     private Integer id;
+    private Boolean isArchived;
     private OperationType operationTypes;
-    private PlaceEntity operationAddress;
+    private String operationAddressId;
     private LocalDateTime operationDateTime;
-    private List<AttachmentEntity> attachments;
-    private List<DamageEntity> damages;
+    private List<String> attachmentsIds;
+    private List<String> damagesIds;
 
     public OperationDto() {
     }
 
-    public OperationDto(Integer id, OperationType operationTypes, PlaceEntity operationAddress, LocalDateTime operationDateTime, List<AttachmentEntity> attachments, List<DamageEntity> damages) {
+    public OperationDto(Integer id, Boolean isArchived, OperationType operationTypes, String operationAddressId, LocalDateTime operationDateTime, List<String> attachmentsIds, List<String> damagesIds) {
         this.id = id;
+        this.isArchived = isArchived;
         this.operationTypes = operationTypes;
-        this.operationAddress = operationAddress;
+        this.operationAddressId = operationAddressId;
         this.operationDateTime = operationDateTime;
-        this.attachments = attachments;
-        this.damages = damages;
+        this.attachmentsIds = attachmentsIds;
+        this.damagesIds = damagesIds;
     }
 
     public Integer getId() {
@@ -36,6 +38,14 @@ public class OperationDto {
         this.id = id;
     }
 
+    public Boolean getArchived() {
+        return isArchived;
+    }
+
+    public void setArchived(Boolean archived) {
+        isArchived = archived;
+    }
+
     public OperationType getOperationTypes() {
         return operationTypes;
     }
@@ -44,12 +54,12 @@ public class OperationDto {
         this.operationTypes = operationTypes;
     }
 
-    public PlaceEntity getOperationAddress() {
-        return operationAddress;
+    public String getOperationAddressId() {
+        return operationAddressId;
     }
 
-    public void setOperationAddress(PlaceEntity operationAddress) {
-        this.operationAddress = operationAddress;
+    public void setOperationAddressId(String operationAddressId) {
+        this.operationAddressId = operationAddressId;
     }
 
     public LocalDateTime getOperationDateTime() {
@@ -60,19 +70,19 @@ public class OperationDto {
         this.operationDateTime = operationDateTime;
     }
 
-    public List<AttachmentEntity> getAttachments() {
-        return attachments;
+    public List<String> getAttachmentsIds() {
+        return attachmentsIds;
     }
 
-    public void setAttachments(List<AttachmentEntity> attachments) {
-        this.attachments = attachments;
+    public void setAttachmentsIds(List<String> attachmentsIds) {
+        this.attachmentsIds = attachmentsIds;
     }
 
-    public List<DamageEntity> getDamages() {
-        return damages;
+    public List<String> getDamagesIds() {
+        return damagesIds;
     }
 
-    public void setDamages(List<DamageEntity> damages) {
-        this.damages = damages;
+    public void setDamagesIds(List<String> damagesIds) {
+        this.damagesIds = damagesIds;
     }
 }
