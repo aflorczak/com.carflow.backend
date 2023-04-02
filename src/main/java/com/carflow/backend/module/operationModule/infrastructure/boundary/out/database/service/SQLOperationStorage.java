@@ -47,8 +47,12 @@ public class SQLOperationStorage implements OperationStorage {
 
     @Override
     public Operation updateOperationById(String id, Operation updatedOperation) throws ObjectNotFoundException {
-        OperationEntity operationEntity = operationRepository.save(converter.convertOperationToOperationEntity(updatedOperation));
-        return converter.convertOperationEntityToOperation(operationEntity);
+        if (operationRepository.existsById(id)) {
+            OperationEntity operationEntity = operationRepository.save(converter.convertOperationToOperationEntity(updatedOperation));
+            return converter.convertOperationEntityToOperation(operationEntity);
+        } else {
+            throw new ObjectNotFoundException("Object not found");
+        }
     }
 
     @Override

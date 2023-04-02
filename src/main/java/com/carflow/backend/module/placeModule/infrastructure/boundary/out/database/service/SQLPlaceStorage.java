@@ -44,7 +44,11 @@ public class SQLPlaceStorage implements PlaceStorage {
 
     @Override
     public Place updatePlaceById(String id, Place place) throws ObjectNotFoundException {
-        return placeConverter.convertPlaceEntityToPlace(placeRepository.save(placeConverter.convertPlaceToPlaceEntity(place)));
+        if (placeRepository.existsById(id)) {
+            return placeConverter.convertPlaceEntityToPlace(placeRepository.save(placeConverter.convertPlaceToPlaceEntity(place)));
+        } else {
+            throw new ObjectNotFoundException("Object not found");
+        }
     }
 
     @Override

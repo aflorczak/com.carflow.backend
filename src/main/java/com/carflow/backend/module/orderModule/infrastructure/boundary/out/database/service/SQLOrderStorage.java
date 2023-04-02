@@ -48,7 +48,11 @@ public class SQLOrderStorage implements OrderStorage {
 
     @Override
     public Order updateOrderById(String id, Order order) throws ObjectNotFoundException {
-        return orderEntityConverter.convertOrderEntityToOrder(orderRepository.save(orderEntityConverter.convertOrderToOrderEntity(order)));
+        if (orderRepository.existsById(id)) {
+            return orderEntityConverter.convertOrderEntityToOrder(orderRepository.save(orderEntityConverter.convertOrderToOrderEntity(order)));
+        } else {
+            throw new ObjectNotFoundException("Object not found");
+        }
     }
 
     @Override

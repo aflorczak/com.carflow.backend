@@ -37,7 +37,7 @@ public class DamageRestApi {
         return damageConverter.convertDamageToDamageDto(damage);
     }
 
-    @PostMapping("/{id}")
+    @PutMapping("/{id}")
     public DamageDto updateDamageById(@PathVariable String id, DamageDto damageDto) throws ObjectNotFoundException {
         Damage updatedDamage = damageConverter.convertDamageDtoToDamage(damageDto);
         Damage damageResponse = damageService.updateDamageById(id, updatedDamage);

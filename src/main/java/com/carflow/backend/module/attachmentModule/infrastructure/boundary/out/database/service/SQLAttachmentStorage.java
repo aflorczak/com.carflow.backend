@@ -46,8 +46,12 @@ public class SQLAttachmentStorage implements AttachmentStorage {
 
     @Override
     public Attachment updateAttachmentById(String id, Attachment updatedAttachment) throws ObjectNotFoundException {
-       AttachmentEntity attachmentEntity = attachmentRepository.save(converter.convertAttachmentToAttachmentEntity(updatedAttachment));
-       return converter.convertAttachmentEntityToAttachment(attachmentEntity);
+       if (attachmentRepository.existsById(id)) {
+           AttachmentEntity attachmentEntity = attachmentRepository.save(converter.convertAttachmentToAttachmentEntity(updatedAttachment));
+           return converter.convertAttachmentEntityToAttachment(attachmentEntity);
+       } else {
+           throw new ObjectNotFoundException("Object not found.");
+       }
     }
 
     @Override

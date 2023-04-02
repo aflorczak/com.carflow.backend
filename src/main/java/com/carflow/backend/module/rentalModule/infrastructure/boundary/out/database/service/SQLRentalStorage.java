@@ -45,7 +45,11 @@ public class SQLRentalStorage implements RentalStorage {
 
     @Override
     public Rental updateRentalById(String id, Rental updatedRental) throws ObjectNotFoundException {
-        return rentalEntityConverter.convertRentalEntityToRental(rentalRepository.save(rentalEntityConverter.convertRentalToRentalEntity(updatedRental)));
+        if (rentalRepository.existsById(id)) {
+            return rentalEntityConverter.convertRentalEntityToRental(rentalRepository.save(rentalEntityConverter.convertRentalToRentalEntity(updatedRental)));
+        } else {
+            throw new ObjectNotFoundException("Object not found.");
+        }
     }
 
     @Override
