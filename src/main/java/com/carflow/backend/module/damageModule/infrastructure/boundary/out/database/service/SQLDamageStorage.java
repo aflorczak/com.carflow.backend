@@ -46,8 +46,12 @@ public class SQLDamageStorage implements DamageStorage {
 
     @Override
     public Damage updateDamageById(String id, Damage updatedDamage) throws ObjectNotFoundException {
-        DamageEntity damageEntity = damageRepository.save(converter.convertDamageToDamageEntity(updatedDamage));
-        return converter.convertDamageEntityToDamage(damageEntity);
+        if (damageRepository.existsById(id)) {
+            DamageEntity damageEntity = damageRepository.save(converter.convertDamageToDamageEntity(updatedDamage));
+            return converter.convertDamageEntityToDamage(damageEntity);
+        } else {
+            throw new ObjectNotFoundException("Object not found.");
+        }
     }
 
     @Override
