@@ -49,11 +49,6 @@ public class OrderRestApi {
         return orderApiConverter.convertOrderToOrderDto(orderResponse);
     }
 
-    @PatchMapping("/{id}/archive")
-    public void moveToArchiveById(@PathVariable String id) throws ObjectNotFoundException {
-        orderService.moveToArchiveById(id);
-    }
-
     @DeleteMapping("/{id}")
     public void deleteOrderById(@PathVariable String id) throws ObjectNotFoundException {
         orderService.deleteOrderById(id);

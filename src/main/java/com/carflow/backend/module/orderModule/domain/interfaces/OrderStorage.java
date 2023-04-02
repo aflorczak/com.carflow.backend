@@ -11,6 +11,5 @@ public interface OrderStorage {
     List<Order> getOrders(List<String> statuses);
     Order getOrderById(String id) throws ObjectNotFoundException;
     Order updateOrderById(String id, Order order) throws ObjectNotFoundException;
-    void moveToArchiveById(String id) throws ObjectNotFoundException;
     void deleteOrderById(String id) throws ObjectNotFoundException;
 }

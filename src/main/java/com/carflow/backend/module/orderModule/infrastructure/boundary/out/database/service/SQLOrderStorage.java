@@ -56,17 +56,6 @@ public class SQLOrderStorage implements OrderStorage {
     }
 
     @Override
-    public void moveToArchiveById(String id) throws ObjectNotFoundException {
-        Optional<OrderEntity> order = orderRepository.findById(id);
-        if (order.isPresent()) {
-            order.get().setArchive(true);
-            orderRepository.save(order.get());
-        } else {
-            throw new ObjectNotFoundException("Obiekt nie istnieje.");
-        }
-    }
-
-    @Override
     public void deleteOrderById(String id) throws ObjectNotFoundException {
         if(orderRepository.existsById(id)) {
             orderRepository.deleteById(id);
