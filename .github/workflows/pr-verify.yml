@@ -1,0 +1,30 @@
+name: CF App Verify
+run-name: Verifying CarFLOw
+on: [pull_request]
+jobs:
+  Run_Test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: Set up JDK 19
+        uses: actions/setup-java@v3
+        with:
+          java-version: 19
+          distribution: 'temurin'
+      - name: Validate gradle wrapper
+        uses: gradle/wrapper-validation-action@v1
+      - name: Build project
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: build
+      - name: Upload Test Report
+        if: success() || failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-report
+          path: build/reports/tests/test/
+      - run: echo "🍏 This job's status is ${{ job.status }}."
