@@ -32,7 +32,7 @@ jobs:
           name: test-report
           path: build/reports/tests/test/
       - name: Login to Azure
-        uses: actions/login@v1
+        uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
       - name: Build And Push Docker Image
