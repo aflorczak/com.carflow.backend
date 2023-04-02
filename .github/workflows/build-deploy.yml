@@ -44,24 +44,24 @@ jobs:
       - run: |
           docker build . -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/carflow-backend:${{ github.sha }}
           docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/carflow-backend:${{ github.sha }}
-#  DeployContainerApp:
-#    runs-on: ubuntu-latest
-#    needs: BuildAndPushImage
-#    steps:
-#      - name: Login to Azure
-#        uses: azure/login@v1
-#        with:
-#          creds: ${{ secrets.AZURE_CREDENTIALS }}
-#      - name: Deploy to Azure Container Apps
-#        uses: azure/container-apps-deploy-action@v0
-#        with:
-#          acrName: ${{ secrets.REGISTRY_NAME }}
-#          acrUsername: ${{ secrets.REGISTRY_USERNAME }}
-#          acrPassword: ${{ secrets.REGISTRY_PASSWORD }}
-#          imageToDeploy: ${{ secrets.REGISTRY_LOGIN_SERVER }}/carflow-backend:${{ github.sha }}
-#          containerAppName: cd-deployment-scaler
-#          resourceGroup: ${{ secrets.RESOURCE_GROUP }}
-#          containerAppEnvironment: managedEnvironment-playground-ba45
-#          environmentVariables: SPRING_DATASOURCE_PASSWORD=secretref:dbpass
-#          location: West Europe
-#          ingress: external
+  DeployContainerApp:
+    runs-on: ubuntu-latest
+    needs: BuildAndPushImage
+    steps:
+      - name: Login to Azure
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+      - name: Deploy to Azure Container Apps
+        uses: azure/container-apps-deploy-action@v0
+        with:
+          acrName: ${{ secrets.REGISTRY_NAME }}
+          acrUsername: ${{ secrets.REGISTRY_USERNAME }}
+          acrPassword: ${{ secrets.REGISTRY_PASSWORD }}
+          imageToDeploy: ${{ secrets.REGISTRY_LOGIN_SERVER }}/carflow-backend:${{ github.sha }}
+          containerAppName: carflow-backend
+          resourceGroup: ${{ secrets.RESOURCE_GROUP }}
+          containerAppEnvironment: managedEnvironment-playground-ba45
+          environmentVariables: SPRING_DATASOURCE_PASSWORD=secretref:dbpass SPRING_DATASOURCE_USERNAME=secretref:dbuser SPRING_DATASOURCE_URL=secretref:dburl
+          location: West Europe
+          ingress: external
