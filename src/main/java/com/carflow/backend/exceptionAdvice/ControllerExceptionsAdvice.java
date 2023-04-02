@@ -13,4 +13,10 @@ public class ControllerExceptionsAdvice {
     public String notFoundHandler(ObjectNotFoundException exception) {
         return exception.getMessage();
     }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public String IllegalArgumentException(IllegalArgumentException exception) {
+        return exception.getMessage();
+    }
 }
