@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v-0.0.1")
+@RequestMapping("/api/v-0.0.1/operations")
 public class OperationRestApi {
     private final OperationService operationService;
     private final OperationApiConverter operationApiConverter;
@@ -21,31 +21,31 @@ public class OperationRestApi {
         this.operationApiConverter = operationApiConverter;
     }
 
-    @PostMapping("/operations")
+    @PostMapping()
     public OperationDto createNewOperation(@RequestBody OperationDto operationDto) {
         Operation operation = operationService.createNewOperation(operationApiConverter.convertOperationDtoToOperation(operationDto));
         return operationApiConverter.convertOperationToOperationDto(operation);
     }
 
-    @GetMapping("/operations")
+    @GetMapping()
     public List<OperationDto> getAllOperations() {
         return operationService.getAllOperations().stream().map(operationApiConverter::convertOperationToOperationDto).toList();
     }
 
-    @GetMapping("/operations/{id}")
+    @GetMapping("/{id}")
     public OperationDto getOperationById(@PathVariable String id) throws ObjectNotFoundException {
         Operation operation = operationService.getOperationById(id);
         return operationApiConverter.convertOperationToOperationDto(operation);
     }
 
-    @PutMapping("/operations/{id}")
+    @PutMapping("/{id}")
     public OperationDto updateOperationById(@PathVariable String id, @RequestBody OperationDto operationDto) throws ObjectNotFoundException {
         Operation operation = operationApiConverter.convertOperationDtoToOperation(operationDto);
         Operation operationResponse = operationService.updateDamageById(id, operation);
         return operationApiConverter.convertOperationToOperationDto(operationResponse);
     }
 
-    @DeleteMapping("/operations/{id}")
+    @DeleteMapping("/{id}")
     public void deleteOperationById(@PathVariable String id) throws ObjectNotFoundException {
         operationService.deleteOperationById(id);
     }

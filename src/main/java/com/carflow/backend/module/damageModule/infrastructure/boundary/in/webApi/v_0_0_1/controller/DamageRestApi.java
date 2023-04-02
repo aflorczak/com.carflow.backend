@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v-0.0.1")
+@RequestMapping("/api/v-0.0.1/damages")
 public class DamageRestApi {
     private final DamageService damageService;
     private final DamageConverter damageConverter;
@@ -20,31 +20,31 @@ public class DamageRestApi {
         this.damageConverter = damageConverter;
     }
 
-    @PostMapping("/damages")
+    @PostMapping()
     public DamageDto createNewDamage(@RequestBody DamageDto newDamage) {
         Damage damage = damageService.createNewDamage(damageConverter.convertDamageDtoToDamage(newDamage));
         return damageConverter.convertDamageToDamageDto(damage);
     }
 
-    @GetMapping("/damages")
+    @GetMapping()
     public List<DamageDto> getAllDamages() {
         return damageService.getAllDamages().stream().map(damageConverter::convertDamageToDamageDto).toList();
     }
 
-    @GetMapping("/damages/{id}")
+    @GetMapping("/{id}")
     public DamageDto getDamageById(@PathVariable String id) throws ObjectNotFoundException {
         Damage damage = damageService.getDamageById(id);
         return damageConverter.convertDamageToDamageDto(damage);
     }
 
-    @PostMapping("/damages/{id}")
+    @PostMapping("/{id}")
     public DamageDto updateDamageById(@PathVariable String id, DamageDto damageDto) throws ObjectNotFoundException {
         Damage updatedDamage = damageConverter.convertDamageDtoToDamage(damageDto);
         Damage damageResponse = damageService.updateDamageById(id, updatedDamage);
         return damageConverter.convertDamageToDamageDto(damageResponse);
     }
 
-    @DeleteMapping("/damages/{id}")
+    @DeleteMapping("/{id}")
     public void deleteDamageById(@PathVariable String id) throws ObjectNotFoundException {
         damageService.deleteDamageById(id);
     }

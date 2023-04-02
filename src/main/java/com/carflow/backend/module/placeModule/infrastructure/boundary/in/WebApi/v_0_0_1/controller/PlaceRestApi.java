@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v-0.0.1")
+@RequestMapping("/api/v-0.0.1/places")
 public class PlaceRestApi {
     private final PlaceService placeService;
 
@@ -22,30 +22,30 @@ public class PlaceRestApi {
         this.placeApiConverter = placeApiConverter;
     }
 
-    @PostMapping("/places")
+    @PostMapping()
     public PlaceDto createNewPlace(@RequestBody PlaceDto placeDto) {
         Place place = placeService.createNewPlace(placeApiConverter.convertPlaceDtoToPlace(placeDto));
         return placeApiConverter.convertPlaceToPlaceDto(place);
     }
 
-    @GetMapping("/places")
+    @GetMapping()
     public List<PlaceDto> getAllPlaces() {
         return placeService.getAllPlaces().stream().map(placeApiConverter::convertPlaceToPlaceDto).toList();
     }
 
-    @GetMapping("/places/{id}")
+    @GetMapping("/{id}")
     public PlaceDto getPlaceById(@PathVariable String id) throws ObjectNotFoundException {
         return placeApiConverter.convertPlaceToPlaceDto(placeService.getPlaceById(id));
     }
 
-    @PutMapping("/places/{id}")
+    @PutMapping("/{id}")
     public PlaceDto updatePlaceById(@PathVariable String id, @RequestBody PlaceDto placeDto) throws ObjectNotFoundException {
         Place place = placeApiConverter.convertPlaceDtoToPlace(placeDto);
         Place responsePlace = placeService.updatePlaceById(id, place);
         return placeApiConverter.convertPlaceToPlaceDto(responsePlace);
     }
 
-    @DeleteMapping("/places/{id}")
+    @DeleteMapping("/{id}")
     public void deletePlaceById(@PathVariable String id) throws ObjectNotFoundException {
         placeService.deletePlaceById(id);
     }

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v-0.0.1")
+@RequestMapping("/api/v-0.0.1/rentals")
 public class RentalRestApi {
     private final RentalService service;
     private final RentalApiConverter rentalApiConverter;
@@ -20,31 +20,31 @@ public class RentalRestApi {
         this.rentalApiConverter = rentalApiConverter;
     }
 
-    @PostMapping("/rentals")
+    @PostMapping()
     public RentalDto createNewRental(@RequestBody RentalDto rentalDto) {
         Rental rental = service.createNewRental(rentalApiConverter.convertRentalDtoToRental(rentalDto));
         return rentalApiConverter.convertRentalToRentalDto(rental);
     }
 
-    @GetMapping("/rentals")
+    @GetMapping()
     public List<RentalDto> getAllRentals() {
         return service.getAllRentals().stream().map(rentalApiConverter::convertRentalToRentalDto).toList();
     }
 
-    @GetMapping("/rentals/{id}")
+    @GetMapping("/{id}")
     public RentalDto getRentalById(@PathVariable String id) throws ObjectNotFoundException {
         Rental rental = service.getRentalById(id);
         return rentalApiConverter.convertRentalToRentalDto(rental);
     }
 
-    @PutMapping("/rentals/{id}")
+    @PutMapping("/{id}")
     public RentalDto updateRentalById(@PathVariable String id, @RequestBody RentalDto rentalDto) throws ObjectNotFoundException {
         Rental updatedRental = rentalApiConverter.convertRentalDtoToRental(rentalDto);
         Rental rentalResponse = service.updateRentalById(id, updatedRental);
         return rentalApiConverter.convertRentalToRentalDto(rentalResponse);
     }
 
-    @DeleteMapping("/rentals/{id}")
+    @DeleteMapping("/{id}")
     public void deleteRentalById(@PathVariable String id) throws ObjectNotFoundException {
         service.deleteRentalById(id);
     }
