@@ -14,11 +14,14 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v-0.0.1/attachments")
 public class AttachmentRestApi {
-    private AttachmentService attachmentService;
-    private AttachmentConverter attachmentConverter;
+    private final AttachmentService attachmentService;
+    private final AttachmentConverter attachmentConverter;
+    private final AttachmentValidator attachmentValidator;
+
     public AttachmentRestApi(
             AttachmentService attachmentService,
-            AttachmentConverter attachmentConverter
+            AttachmentConverter attachmentConverter,
+            AttachmentValidator attachmentValidator
     ) {
         this.attachmentService = attachmentService;
         this.attachmentConverter = attachmentConverter;
